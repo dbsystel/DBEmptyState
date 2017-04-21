@@ -84,6 +84,7 @@
 				C6CF233E1EAA026600580862 /* State */,
 				C6CF233C1EAA024400580862 /* GlobalStateManaging.swift */,
 				C634F9C11EA9D7400016232D /* StateManaging.swift */,
+				C634F9C21EA9D7400016232D /* StateMachine.swift */,
 				C634F9AA1EA9D7210016232D /* DBEmptyState.h */,
 				C634F9AB1EA9D7210016232D /* Info.plist */,
 			);
@@ -223,6 +224,7 @@
 				C634F9C31EA9D7400016232D /* StateManaging.swift in Sources */,
 				C6CF23391EA9E2C100580862 /* StateRepresenting.swift in Sources */,
 				C6CF233D1EAA024400580862 /* GlobalStateManaging.swift in Sources */,
+				C634F9C41EA9D7400016232D /* StateMachine.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
