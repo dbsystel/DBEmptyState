@@ -82,9 +82,7 @@
 			isa = PBXGroup;
 			children = (
 				C6CF233E1EAA026600580862 /* State */,
-				C6CF233C1EAA024400580862 /* GlobalStateManaging.swift */,
-				C634F9C11EA9D7400016232D /* StateManaging.swift */,
-				C634F9C21EA9D7400016232D /* StateMachine.swift */,
+				C6CF233F1EAA100700580862 /* StateManaging */,
 				C634F9AA1EA9D7210016232D /* DBEmptyState.h */,
 				C634F9AB1EA9D7210016232D /* Info.plist */,
 			);
@@ -94,7 +92,7 @@
 		C634F9B41EA9D7210016232D /* DBEmptyStateTests */ = {
 			isa = PBXGroup;
 			children = (
-				C634F9B51EA9D7210016232D /* DBEmptyStateTests.swift */,
+				C634F9C51EA9DC750016232D /* StateMachineTest.swift */,
 				C634F9B71EA9D7210016232D /* Info.plist */,
 			);
 			path = DBEmptyStateTests;
@@ -107,6 +105,16 @@
 				C6CF233A1EAA020A00580862 /* GlobalStateRepresenting.swift */,
 			);
 			name = State;
+			sourceTree = "<group>";
+		};
+		C6CF233F1EAA100700580862 /* StateManaging */ = {
+			isa = PBXGroup;
+			children = (
+				C6CF233C1EAA024400580862 /* GlobalStateManaging.swift */,
+				C634F9C11EA9D7400016232D /* StateManaging.swift */,
+				C634F9C21EA9D7400016232D /* StateMachine.swift */,
+			);
+			name = StateManaging;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -232,7 +240,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C634F9B61EA9D7210016232D /* DBEmptyStateTests.swift in Sources */,
+				C634F9C61EA9DC750016232D /* StateMachineTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

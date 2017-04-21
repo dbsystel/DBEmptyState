@@ -32,22 +32,20 @@ public class StateMachine: StateManaging {
     public typealias State = StateRepresenting
     var registrations: [(State) -> Void] = []
     public var state: StateRepresenting {
-        return globalStateManaging.state.flatMap { return $0.rank >= 0 ? $0 : nil } ?? internalState
+        return globalStateManaging.state ?? internalState
     }
     
     var internalState: StateRepresenting {
         didSet { notify() }
     }
-    let globalStateManaging: GlobalEmptyStateManaging
+    let globalStateManaging: GlobalStateManaging
     var observerToken: NSObjectProtocol?
     
-    public init(initialState: State, globalStateManaging: GlobalEmptyStateManaging) {
+    public init(initialState: State, globalStateManaging: GlobalStateManaging) {
         internalState = initialState
         self.globalStateManaging = globalStateManaging
         observerToken = globalStateManaging.addObserver(execute: { [weak self] newState in
-            if newState.rank >= 0 {
-                self?.notify()
-            }
+           self?.notify()
         })
     }
     

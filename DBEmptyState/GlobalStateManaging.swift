@@ -22,7 +22,7 @@
 
 import Foundation
 
-public protocol GlobalEmptyStateManaging: class {
+public protocol GlobalStateManaging: class {
     typealias State = GlobalStateRepresenting
     
     var state: State? { get }
