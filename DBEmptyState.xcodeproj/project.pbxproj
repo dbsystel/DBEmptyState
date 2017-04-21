@@ -8,8 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		C634F9B11EA9D7210016232D /* DBEmptyState.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C634F9A71EA9D7210016232D /* DBEmptyState.framework */; };
-		C634F9B61EA9D7210016232D /* DBEmptyStateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C634F9B51EA9D7210016232D /* DBEmptyStateTests.swift */; };
 		C634F9B81EA9D7210016232D /* DBEmptyState.h in Headers */ = {isa = PBXBuildFile; fileRef = C634F9AA1EA9D7210016232D /* DBEmptyState.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C634F9C31EA9D7400016232D /* StateManaging.swift in Sources */ = {isa = PBXBuildFile; fileRef = C634F9C11EA9D7400016232D /* StateManaging.swift */; };
+		C634F9C41EA9D7400016232D /* StateMachine.swift in Sources */ = {isa = PBXBuildFile; fileRef = C634F9C21EA9D7400016232D /* StateMachine.swift */; };
+		C634F9C61EA9DC750016232D /* StateMachineTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C634F9C51EA9DC750016232D /* StateMachineTest.swift */; };
+		C6CF23391EA9E2C100580862 /* StateRepresenting.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6CF23381EA9E2C100580862 /* StateRepresenting.swift */; };
+		C6CF233B1EAA020A00580862 /* GlobalStateRepresenting.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6CF233A1EAA020A00580862 /* GlobalStateRepresenting.swift */; };
+		C6CF233D1EAA024400580862 /* GlobalStateManaging.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6CF233C1EAA024400580862 /* GlobalStateManaging.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -27,8 +32,13 @@
 		C634F9AA1EA9D7210016232D /* DBEmptyState.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DBEmptyState.h; sourceTree = "<group>"; };
 		C634F9AB1EA9D7210016232D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C634F9B01EA9D7210016232D /* DBEmptyStateTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DBEmptyStateTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		C634F9B51EA9D7210016232D /* DBEmptyStateTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBEmptyStateTests.swift; sourceTree = "<group>"; };
 		C634F9B71EA9D7210016232D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C634F9C11EA9D7400016232D /* StateManaging.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StateManaging.swift; sourceTree = "<group>"; };
+		C634F9C21EA9D7400016232D /* StateMachine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StateMachine.swift; sourceTree = "<group>"; };
+		C634F9C51EA9DC750016232D /* StateMachineTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StateMachineTest.swift; sourceTree = "<group>"; };
+		C6CF23381EA9E2C100580862 /* StateRepresenting.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StateRepresenting.swift; sourceTree = "<group>"; };
+		C6CF233A1EAA020A00580862 /* GlobalStateRepresenting.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GlobalStateRepresenting.swift; sourceTree = "<group>"; };
+		C6CF233C1EAA024400580862 /* GlobalStateManaging.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GlobalStateManaging.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,6 +81,9 @@
 		C634F9A91EA9D7210016232D /* DBEmptyState */ = {
 			isa = PBXGroup;
 			children = (
+				C6CF233E1EAA026600580862 /* State */,
+				C6CF233C1EAA024400580862 /* GlobalStateManaging.swift */,
+				C634F9C11EA9D7400016232D /* StateManaging.swift */,
 				C634F9AA1EA9D7210016232D /* DBEmptyState.h */,
 				C634F9AB1EA9D7210016232D /* Info.plist */,
 			);
@@ -84,6 +97,15 @@
 				C634F9B71EA9D7210016232D /* Info.plist */,
 			);
 			path = DBEmptyStateTests;
+			sourceTree = "<group>";
+		};
+		C6CF233E1EAA026600580862 /* State */ = {
+			isa = PBXGroup;
+			children = (
+				C6CF23381EA9E2C100580862 /* StateRepresenting.swift */,
+				C6CF233A1EAA020A00580862 /* GlobalStateRepresenting.swift */,
+			);
+			name = State;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -148,6 +170,7 @@
 				TargetAttributes = {
 					C634F9A61EA9D7210016232D = {
 						CreatedOnToolsVersion = 8.3.2;
+						LastSwiftMigration = 0830;
 						ProvisioningStyle = Automatic;
 					};
 					C634F9AF1EA9D7210016232D = {
@@ -196,6 +219,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C6CF233B1EAA020A00580862 /* GlobalStateRepresenting.swift in Sources */,
+				C634F9C31EA9D7400016232D /* StateManaging.swift in Sources */,
+				C6CF23391EA9E2C100580862 /* StateRepresenting.swift in Sources */,
+				C6CF233D1EAA024400580862 /* GlobalStateManaging.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -322,6 +349,7 @@
 		C634F9BC1EA9D7210016232D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -333,6 +361,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.dbsystel.DBEmptyState;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -340,6 +369,7 @@
 		C634F9BD1EA9D7210016232D /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -358,6 +388,7 @@
 		C634F9BF1EA9D7210016232D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				INFOPLIST_FILE = DBEmptyStateTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.dbsystel.DBEmptyStateTests;
@@ -369,6 +400,7 @@
 		C634F9C01EA9D7210016232D /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				INFOPLIST_FILE = DBEmptyStateTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.dbsystel.DBEmptyStateTests;
@@ -396,6 +428,7 @@
 				C634F9BD1EA9D7210016232D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		C634F9BE1EA9D7210016232D /* Build configuration list for PBXNativeTarget "DBEmptyStateTests" */ = {
 			isa = XCConfigurationList;
@@ -404,6 +437,7 @@
 				C634F9C01EA9D7210016232D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
