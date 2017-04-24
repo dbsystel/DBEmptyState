@@ -15,6 +15,9 @@
 		C6CF23391EA9E2C100580862 /* StateRepresenting.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6CF23381EA9E2C100580862 /* StateRepresenting.swift */; };
 		C6CF233B1EAA020A00580862 /* GlobalStateRepresenting.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6CF233A1EAA020A00580862 /* GlobalStateRepresenting.swift */; };
 		C6CF233D1EAA024400580862 /* GlobalStateManaging.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6CF233C1EAA024400580862 /* GlobalStateManaging.swift */; };
+		C6CF23441EADC11200580862 /* StringStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6CF23411EADC11200580862 /* StringStyle.swift */; };
+		C6CF23451EADC11200580862 /* EmptyContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6CF23421EADC11200580862 /* EmptyContent.swift */; };
+		C6CF23461EADC11200580862 /* EmptyContentStyling.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6CF23431EADC11200580862 /* EmptyContentStyling.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,6 +42,9 @@
 		C6CF23381EA9E2C100580862 /* StateRepresenting.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StateRepresenting.swift; sourceTree = "<group>"; };
 		C6CF233A1EAA020A00580862 /* GlobalStateRepresenting.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GlobalStateRepresenting.swift; sourceTree = "<group>"; };
 		C6CF233C1EAA024400580862 /* GlobalStateManaging.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GlobalStateManaging.swift; sourceTree = "<group>"; };
+		C6CF23411EADC11200580862 /* StringStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringStyle.swift; sourceTree = "<group>"; };
+		C6CF23421EADC11200580862 /* EmptyContent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptyContent.swift; sourceTree = "<group>"; };
+		C6CF23431EADC11200580862 /* EmptyContentStyling.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptyContentStyling.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +87,7 @@
 		C634F9A91EA9D7210016232D /* DBEmptyState */ = {
 			isa = PBXGroup;
 			children = (
+				C6CF23401EADC0F400580862 /* EmptyContent */,
 				C6CF233E1EAA026600580862 /* State */,
 				C6CF233F1EAA100700580862 /* StateManaging */,
 				C634F9AA1EA9D7210016232D /* DBEmptyState.h */,
@@ -115,6 +122,16 @@
 				C634F9C21EA9D7400016232D /* StateMachine.swift */,
 			);
 			name = StateManaging;
+			sourceTree = "<group>";
+		};
+		C6CF23401EADC0F400580862 /* EmptyContent */ = {
+			isa = PBXGroup;
+			children = (
+				C6CF23411EADC11200580862 /* StringStyle.swift */,
+				C6CF23421EADC11200580862 /* EmptyContent.swift */,
+				C6CF23431EADC11200580862 /* EmptyContentStyling.swift */,
+			);
+			name = EmptyContent;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -228,11 +245,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C6CF23461EADC11200580862 /* EmptyContentStyling.swift in Sources */,
 				C6CF233B1EAA020A00580862 /* GlobalStateRepresenting.swift in Sources */,
 				C634F9C31EA9D7400016232D /* StateManaging.swift in Sources */,
+				C6CF23441EADC11200580862 /* StringStyle.swift in Sources */,
 				C6CF23391EA9E2C100580862 /* StateRepresenting.swift in Sources */,
 				C6CF233D1EAA024400580862 /* GlobalStateManaging.swift in Sources */,
 				C634F9C41EA9D7400016232D /* StateMachine.swift in Sources */,
+				C6CF23451EADC11200580862 /* EmptyContent.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
