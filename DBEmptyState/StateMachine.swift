@@ -32,25 +32,25 @@ public class StateMachine: StateManaging {
     public typealias State = StateRepresenting
     var registrations: [(State) -> Void] = []
     public var state: StateRepresenting {
-        return globalStateManaging.state ?? internalState
+        return globalStateManaging?.state ?? internalState
     }
     
     var internalState: StateRepresenting {
         didSet { notify() }
     }
-    let globalStateManaging: GlobalStateManaging
+    let globalStateManaging: GlobalStateManaging?
     var observerToken: NSObjectProtocol?
     
-    public init(initialState: State, globalStateManaging: GlobalStateManaging) {
+    public init(initialState: State, globalStateManaging: GlobalStateManaging? = nil) {
         internalState = initialState
         self.globalStateManaging = globalStateManaging
-        observerToken = globalStateManaging.addObserver(execute: { [weak self] newState in
+        observerToken = globalStateManaging?.addObserver(execute: { [weak self] newState in
            self?.notify()
         })
     }
     
     deinit {
-        observerToken.map { globalStateManaging.removeObserver($0) }
+        observerToken.map { globalStateManaging?.removeObserver($0) }
     }
     
     public func transition(to newState: State) {
@@ -65,6 +65,3 @@ public class StateMachine: StateManaging {
         registrations.forEach { $0(state) }
     }
 }
-
-
-//.NoNetwork - .error
