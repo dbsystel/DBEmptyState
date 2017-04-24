@@ -51,9 +51,9 @@ open class DZNEmptyTableViewDataSource: NSObject {
     
     func emptyContent() -> EmptyContent? {
         guard let state = stateManaging?.state else {
-            return
+            return nil
         }
-        return dataSource?.emptyContent(for: state)
+        return dataSource?.emptyContent(for: state) ?? (state as? DefaultContentProviding)?.emptyContent
         
     }
     

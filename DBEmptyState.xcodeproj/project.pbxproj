@@ -22,6 +22,7 @@
 		C6CF23501EADC21B00580862 /* RetryProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6CF234D1EADC21B00580862 /* RetryProviding.swift */; };
 		C6CF23511EADC21B00580862 /* DZNEmptyTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6CF234E1EADC21B00580862 /* DZNEmptyTableViewDataSource.swift */; };
 		C6CF23521EADC21B00580862 /* DZNEmptyDisplayingTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6CF234F1EADC21B00580862 /* DZNEmptyDisplayingTableView.swift */; };
+		C6CF23541EADC51900580862 /* DefaultContentProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6CF23531EADC51900580862 /* DefaultContentProviding.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +54,7 @@
 		C6CF234D1EADC21B00580862 /* RetryProviding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RetryProviding.swift; sourceTree = "<group>"; };
 		C6CF234E1EADC21B00580862 /* DZNEmptyTableViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DZNEmptyTableViewDataSource.swift; sourceTree = "<group>"; };
 		C6CF234F1EADC21B00580862 /* DZNEmptyDisplayingTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DZNEmptyDisplayingTableView.swift; sourceTree = "<group>"; };
+		C6CF23531EADC51900580862 /* DefaultContentProviding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultContentProviding.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -140,6 +142,7 @@
 				C6CF23411EADC11200580862 /* StringStyle.swift */,
 				C6CF23421EADC11200580862 /* EmptyContent.swift */,
 				C6CF23431EADC11200580862 /* EmptyContentStyling.swift */,
+				C6CF23531EADC51900580862 /* DefaultContentProviding.swift */,
 			);
 			name = EmptyContent;
 			sourceTree = "<group>";
@@ -285,6 +288,7 @@
 				C634F9C41EA9D7400016232D /* StateMachine.swift in Sources */,
 				C6CF23451EADC11200580862 /* EmptyContent.swift in Sources */,
 				C6CF23501EADC21B00580862 /* RetryProviding.swift in Sources */,
+				C6CF23541EADC51900580862 /* DefaultContentProviding.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
