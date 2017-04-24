@@ -20,17 +20,16 @@
 //  DEALINGS IN THE SOFTWARE.
 //
 
-
 import Foundation
+import DBEmptyState
 
-public protocol EmptyContentDataSource: class, EmptyContentStyling {
-    func emptyContent(for: StateRepresenting) -> EmptyContent?
+class DZNEmptyDisplayingTableViewMock: DZNEmptyDisplayingTableView {
+    var reloadCount = 0
     
-    func customView() -> UIView?
-}
-
-extension EmptyContentDataSource {
-    public func customView() -> UIView? {
-        return nil
+    func reloadEmptyDataSet() {
+        reloadCount += 1
     }
+    var isEmptyDataSetVisible: Bool = false
+    
+    var tableFooterView: UIView?
 }

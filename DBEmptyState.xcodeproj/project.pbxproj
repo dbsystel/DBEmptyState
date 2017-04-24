@@ -23,6 +23,11 @@
 		C6CF23511EADC21B00580862 /* DZNEmptyTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6CF234E1EADC21B00580862 /* DZNEmptyTableViewDataSource.swift */; };
 		C6CF23521EADC21B00580862 /* DZNEmptyDisplayingTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6CF234F1EADC21B00580862 /* DZNEmptyDisplayingTableView.swift */; };
 		C6CF23541EADC51900580862 /* DefaultContentProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6CF23531EADC51900580862 /* DefaultContentProviding.swift */; };
+		C6CF23561EADCAB400580862 /* EmptyContentTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6CF23551EADCAB400580862 /* EmptyContentTest.swift */; };
+		C6CF23591EADCACD00580862 /* DZNEmptyTableViewDataSourceTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6CF23571EADCACD00580862 /* DZNEmptyTableViewDataSourceTest.swift */; };
+		C6CF235A1EADCACD00580862 /* EmptyContentProvidingMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6CF23581EADCACD00580862 /* EmptyContentProvidingMock.swift */; };
+		C6CF235C1EADCC3D00580862 /* DZNEmptyDisplayingTableViewMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6CF235B1EADCC3D00580862 /* DZNEmptyDisplayingTableViewMock.swift */; };
+		C6CF235F1EADE97E00580862 /* StateRepresentingTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6CF235E1EADE97E00580862 /* StateRepresentingTest.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +60,11 @@
 		C6CF234E1EADC21B00580862 /* DZNEmptyTableViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DZNEmptyTableViewDataSource.swift; sourceTree = "<group>"; };
 		C6CF234F1EADC21B00580862 /* DZNEmptyDisplayingTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DZNEmptyDisplayingTableView.swift; sourceTree = "<group>"; };
 		C6CF23531EADC51900580862 /* DefaultContentProviding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultContentProviding.swift; sourceTree = "<group>"; };
+		C6CF23551EADCAB400580862 /* EmptyContentTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptyContentTest.swift; sourceTree = "<group>"; };
+		C6CF23571EADCACD00580862 /* DZNEmptyTableViewDataSourceTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DZNEmptyTableViewDataSourceTest.swift; sourceTree = "<group>"; };
+		C6CF23581EADCACD00580862 /* EmptyContentProvidingMock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptyContentProvidingMock.swift; sourceTree = "<group>"; };
+		C6CF235B1EADCC3D00580862 /* DZNEmptyDisplayingTableViewMock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DZNEmptyDisplayingTableViewMock.swift; sourceTree = "<group>"; };
+		C6CF235E1EADE97E00580862 /* StateRepresentingTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StateRepresentingTest.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,7 +108,7 @@
 			isa = PBXGroup;
 			children = (
 				C6CF234C1EADC21000580862 /* DZNEmptyDataSet-Binding */,
-				C6CF23471EADC14300580862 /* ViewController */,
+				C6CF23471EADC14300580862 /* DataSource */,
 				C6CF23401EADC0F400580862 /* EmptyContent */,
 				C6CF233E1EAA026600580862 /* State */,
 				C6CF233F1EAA100700580862 /* StateManaging */,
@@ -111,8 +121,12 @@
 		C634F9B41EA9D7210016232D /* DBEmptyStateTests */ = {
 			isa = PBXGroup;
 			children = (
+				C6CF235D1EADCC7200580862 /* Mocks */,
+				C6CF23551EADCAB400580862 /* EmptyContentTest.swift */,
 				C634F9C51EA9DC750016232D /* StateMachineTest.swift */,
+				C6CF23571EADCACD00580862 /* DZNEmptyTableViewDataSourceTest.swift */,
 				C634F9B71EA9D7210016232D /* Info.plist */,
+				C6CF235E1EADE97E00580862 /* StateRepresentingTest.swift */,
 			);
 			path = DBEmptyStateTests;
 			sourceTree = "<group>";
@@ -147,12 +161,12 @@
 			name = EmptyContent;
 			sourceTree = "<group>";
 		};
-		C6CF23471EADC14300580862 /* ViewController */ = {
+		C6CF23471EADC14300580862 /* DataSource */ = {
 			isa = PBXGroup;
 			children = (
 				C6CF23491EADC15E00580862 /* EmptyContentDataSource.swift */,
 			);
-			name = ViewController;
+			name = DataSource;
 			sourceTree = "<group>";
 		};
 		C6CF234C1EADC21000580862 /* DZNEmptyDataSet-Binding */ = {
@@ -163,6 +177,15 @@
 				C6CF234F1EADC21B00580862 /* DZNEmptyDisplayingTableView.swift */,
 			);
 			name = "DZNEmptyDataSet-Binding";
+			sourceTree = "<group>";
+		};
+		C6CF235D1EADCC7200580862 /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+				C6CF23581EADCACD00580862 /* EmptyContentProvidingMock.swift */,
+				C6CF235B1EADCC3D00580862 /* DZNEmptyDisplayingTableViewMock.swift */,
+			);
+			name = Mocks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -296,7 +319,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C6CF235A1EADCACD00580862 /* EmptyContentProvidingMock.swift in Sources */,
+				C6CF235F1EADE97E00580862 /* StateRepresentingTest.swift in Sources */,
+				C6CF23591EADCACD00580862 /* DZNEmptyTableViewDataSourceTest.swift in Sources */,
+				C6CF235C1EADCC3D00580862 /* DZNEmptyDisplayingTableViewMock.swift in Sources */,
 				C634F9C61EA9DC750016232D /* StateMachineTest.swift in Sources */,
+				C6CF23561EADCAB400580862 /* EmptyContentTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

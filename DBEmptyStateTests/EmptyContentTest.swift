@@ -20,17 +20,23 @@
 //  DEALINGS IN THE SOFTWARE.
 //
 
+import XCTest
+import DBEmptyState
 
-import Foundation
-
-public protocol EmptyContentDataSource: class, EmptyContentStyling {
-    func emptyContent(for: StateRepresenting) -> EmptyContent?
+class EmptyContentTest: XCTestCase {
     
-    func customView() -> UIView?
-}
-
-extension EmptyContentDataSource {
-    public func customView() -> UIView? {
-        return nil
+    func testInit() {
+        //Given
+        let title = "title"
+        let subtitle = "subtitle"
+        let image = UIImage()
+        
+        //When
+        let emptyContent = EmptyContent(title: title, subtitle: subtitle, image: image)
+        
+        //Then
+        XCTAssertEqual(emptyContent.title, title)
+        XCTAssertEqual(emptyContent.subtitle, subtitle)
+        XCTAssertEqual(emptyContent.image, image)
     }
 }

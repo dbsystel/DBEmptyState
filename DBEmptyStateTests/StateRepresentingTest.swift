@@ -20,17 +20,31 @@
 //  DEALINGS IN THE SOFTWARE.
 //
 
+import XCTest
 
-import Foundation
-
-public protocol EmptyContentDataSource: class, EmptyContentStyling {
-    func emptyContent(for: StateRepresenting) -> EmptyContent?
+class StateRepresentingTest: XCTestCase {
     
-    func customView() -> UIView?
-}
-
-extension EmptyContentDataSource {
-    public func customView() -> UIView? {
-        return nil
+    func testIsSame() {
+        //Given
+        let state1 = DataEmptyState.empty
+        let state2 = DataEmptyState.empty
+        
+        //When
+        let isSame = state1.isSame(as: state2)
+        
+        //Then
+        XCTAssert(isSame)
+    }
+    
+    func testIsNotSame() {
+        //Given
+        let state1 = DataEmptyState.empty
+        let state2 = NetworkState.noNetwork
+        
+        //When
+        let isSame = state1.isSame(as: state2)
+        
+        //Then
+        XCTAssertFalse(isSame)
     }
 }

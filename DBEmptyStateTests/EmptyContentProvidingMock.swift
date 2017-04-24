@@ -20,17 +20,6 @@
 //  DEALINGS IN THE SOFTWARE.
 //
 
-
 import Foundation
+import DBEmptyState
 
-public protocol EmptyContentDataSource: class, EmptyContentStyling {
-    func emptyContent(for: StateRepresenting) -> EmptyContent?
-    
-    func customView() -> UIView?
-}
-
-extension EmptyContentDataSource {
-    public func customView() -> UIView? {
-        return nil
-    }
-}

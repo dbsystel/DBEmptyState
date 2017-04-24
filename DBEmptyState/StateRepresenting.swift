@@ -23,13 +23,7 @@
 import Foundation
 
 public protocol StateRepresenting {
-    var overrideData: Bool { get }
-    
     func isSame(as emptyState: StateRepresenting) -> Bool
-}
-
-public extension StateRepresenting {
-    var overrideData: Bool { return false }
 }
 
 public extension StateRepresenting where Self: Equatable {
