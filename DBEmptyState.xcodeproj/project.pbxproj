@@ -19,6 +19,7 @@
 		C6878CFC1EB1D4E10065CDD2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C6878CFA1EB1D4E10065CDD2 /* Main.storyboard */; };
 		C6878CFE1EB1D4E10065CDD2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C6878CFD1EB1D4E10065CDD2 /* Assets.xcassets */; };
 		C6878D011EB1D4E10065CDD2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C6878CFF1EB1D4E10065CDD2 /* LaunchScreen.storyboard */; };
+		C6878D0A1EB1D64B0065CDD2 /* DZNEmptyDataSet.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C6878D091EB1D64B0065CDD2 /* DZNEmptyDataSet.framework */; };
 		C6CF23441EADC11200580862 /* StringStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6CF23411EADC11200580862 /* StringStyle.swift */; };
 		C6CF23451EADC11200580862 /* EmptyContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6CF23421EADC11200580862 /* EmptyContent.swift */; };
 		C6CF23461EADC11200580862 /* EmptyContentStyling.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6CF23431EADC11200580862 /* EmptyContentStyling.swift */; };
@@ -36,6 +37,13 @@
 
 /* Begin PBXContainerItemProxy section */
 		C634F9B21EA9D7210016232D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C634F99E1EA9D7210016232D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C634F9A61EA9D7210016232D;
+			remoteInfo = DBEmptyState;
+		};
+		C6878D061EB1D6460065CDD2 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = C634F99E1EA9D7210016232D /* Project object */;
 			proxyType = 1;
@@ -62,6 +70,7 @@
 		C6878CFD1EB1D4E10065CDD2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C6878D001EB1D4E10065CDD2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C6878D021EB1D4E10065CDD2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C6878D091EB1D64B0065CDD2 /* DZNEmptyDataSet.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = DZNEmptyDataSet.framework; path = Carthage/Build/iOS/DZNEmptyDataSet.framework; sourceTree = "<group>"; };
 		C6CF23411EADC11200580862 /* StringStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringStyle.swift; sourceTree = "<group>"; };
 		C6CF23421EADC11200580862 /* EmptyContent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptyContent.swift; sourceTree = "<group>"; };
 		C6CF23431EADC11200580862 /* EmptyContentStyling.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptyContentStyling.swift; sourceTree = "<group>"; };
@@ -97,6 +106,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C6878D0A1EB1D64B0065CDD2 /* DZNEmptyDataSet.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -110,6 +120,7 @@
 				C634F9B41EA9D7210016232D /* DBEmptyStateTests */,
 				C6878CF51EB1D4E10065CDD2 /* Example */,
 				C634F9A81EA9D7210016232D /* Products */,
+				C6878D081EB1D64B0065CDD2 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -160,6 +171,14 @@
 				C6878D021EB1D4E10065CDD2 /* Info.plist */,
 			);
 			path = Example;
+			sourceTree = "<group>";
+		};
+		C6878D081EB1D64B0065CDD2 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C6878D091EB1D64B0065CDD2 /* DZNEmptyDataSet.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		C6CF233E1EAA026600580862 /* State */ = {
@@ -276,10 +295,12 @@
 				C6878CF01EB1D4E10065CDD2 /* Sources */,
 				C6878CF11EB1D4E10065CDD2 /* Frameworks */,
 				C6878CF21EB1D4E10065CDD2 /* Resources */,
+				C6878D0B1EB1D6AB0065CDD2 /* 📦 Carthage Copy */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				C6878D071EB1D6460065CDD2 /* PBXTargetDependency */,
 			);
 			name = Example;
 			productName = Example;
@@ -358,6 +379,24 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		C6878D0B1EB1D6AB0065CDD2 /* 📦 Carthage Copy */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/DZNEmptyDataSet.framework",
+			);
+			name = "📦 Carthage Copy";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		C634F9A21EA9D7210016232D /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -407,6 +446,11 @@
 			isa = PBXTargetDependency;
 			target = C634F9A61EA9D7210016232D /* DBEmptyState */;
 			targetProxy = C634F9B21EA9D7210016232D /* PBXContainerItemProxy */;
+		};
+		C6878D071EB1D6460065CDD2 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C634F9A61EA9D7210016232D /* DBEmptyState */;
+			targetProxy = C6878D061EB1D6460065CDD2 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -598,6 +642,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = Example/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.dbsystel.Example;
@@ -610,6 +658,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = Example/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.dbsystel.Example;

@@ -21,3 +21,11 @@
 //
 
 import Foundation
+
+public enum EmptyState {
+    case initial
+    case success
+    case empty
+    case error
+    case loading
+}

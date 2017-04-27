@@ -21,11 +21,7 @@
 //
 import UIKit
 
-public enum EmptyState {
-    case initial
-}
-
-open class DZNEmptyTableViewDataSource<T: Equatable>: NSObject {
+open class GenericDZNEmptyTableViewDataSource<T: Equatable>: NSObject {
     let tableView: DZNEmptyDisplayingTableView
     public var dataSource: AnyEmptyContentDataSource<T>?
     weak var retry: RetryProviding?
@@ -80,3 +76,10 @@ open class DZNEmptyTableViewDataSource<T: Equatable>: NSObject {
 //    }
     
 }
+
+open class DZNEmptyTableViewDataSource: GenericDZNEmptyTableViewDataSource<EmptyState> {
+    public override init<StateManager: StateManaging, EmptyContentData: EmptyContentDataSource & EmptyContentCustomViewDataSource>(tableView: DZNEmptyDisplayingTableView, stateManaging: StateManager, dataSource: EmptyContentData, retry: RetryProviding? = nil) where StateManager.State == EmptyState, EmptyContentData.EmptyState == EmptyState {
+        super.init(tableView: tableView, stateManaging: stateManaging, dataSource: dataSource, retry: retry)
+    }
+}
+
