@@ -22,14 +22,14 @@
 
 import Foundation
 
-public class AnyEmptyContentDataSource<T: Equatable>: EmptyContentDataSource {
+public class AnyEmptyContentDataSource<T: Equatable>: EmptyContentDataSource, EmptyContentCustomViewDataSource {
     private let emptyContent: (T) -> EmptyContent?
     private let customView: (T) -> UIView?
     
     private let getTitleStyle: () -> StringStyle
     private let getSubtitleStyle: () -> StringStyle
     
-    init<D: EmptyContentDataSource>(_ emptyContentDataSource: D) where T == D.EmptyState {
+    init<D: EmptyContentDataSource & EmptyContentCustomViewDataSource>(_ emptyContentDataSource: D) where T == D.EmptyState {
         unowned let weakDataSource = emptyContentDataSource
         self.emptyContent = { weakDataSource.emptyContent(for: $0) }
         self.customView =  { weakDataSource.customView(for: $0) }

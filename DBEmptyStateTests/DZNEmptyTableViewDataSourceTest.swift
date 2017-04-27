@@ -23,7 +23,7 @@
 import XCTest
 @testable import DBEmptyState
 
-class EmptyContentDataSourceMock: EmptyContentDataSource {
+class EmptyContentDataSourceMock: EmptyContentDataSource, EmptyContentCustomViewDataSource {
     var memoryCheck: DZNEmptyTableViewDataSource<EmptyStateMock>?
     var emptyContentReturning: EmptyContent?
     var customViewReturning: UIView?

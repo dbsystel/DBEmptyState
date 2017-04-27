@@ -31,7 +31,7 @@ open class DZNEmptyTableViewDataSource<T: Equatable>: NSObject {
     weak var retry: RetryProviding?
     let stateManaging: AnyStateManaging<T>
     
-    public init<StateManager: StateManaging, EmptyContentData: EmptyContentDataSource>(tableView: DZNEmptyDisplayingTableView, stateManaging: StateManager, dataSource: EmptyContentData, retry: RetryProviding? = nil) where StateManager.State == T, EmptyContentData.EmptyState == T {
+    public init<StateManager: StateManaging, EmptyContentData: EmptyContentDataSource & EmptyContentCustomViewDataSource>(tableView: DZNEmptyDisplayingTableView, stateManaging: StateManager, dataSource: EmptyContentData, retry: RetryProviding? = nil) where StateManager.State == T, EmptyContentData.EmptyState == T {
         self.tableView = tableView
         self.dataSource = AnyEmptyContentDataSource(dataSource)
         self.retry = retry
