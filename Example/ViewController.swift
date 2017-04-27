@@ -11,7 +11,8 @@ import DBEmptyState
 import DZNEmptyDataSet
 
 extension UITableView: DZNEmptyDisplayingTableView {}
-extension DBEmptyState.DZNEmptyTableViewDataSource: DZNEmptyDataSetSource {}
+extension DBEmptyState.DZNEmptyTableViewDataSource: DZNEmptyDataSetSource {
+}
 
 
 

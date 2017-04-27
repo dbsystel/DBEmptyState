@@ -66,6 +66,13 @@ open class GenericDZNEmptyTableViewDataSource<T: Equatable>: NSObject {
     func emptyContent() -> EmptyContent? {
         return dataSource?.emptyContent(for: stateManaging.state)
     }
+
+    public func verticalOffset(forEmptyDataSet scrollView: UIScrollView!) -> CGFloat {
+        let top = scrollView.contentInset.top / 2
+        let bottom = scrollView.contentInset.bottom / 2
+        
+        return top - bottom
+    }
     
 //    open func buttonTitle(forEmptyDataSet scrollView: UIScrollView!, for state: UIControlState) -> NSAttributedString! {
 //        if let buttonTitle = retry?.buttonTitle, retry?.shouldDisplayRetryButton ?? false {
