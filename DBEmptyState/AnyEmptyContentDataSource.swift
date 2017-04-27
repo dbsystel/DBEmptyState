@@ -22,13 +22,29 @@
 
 import Foundation
 
-public protocol StateRepresenting {
-    func isSame(as emptyState: StateRepresenting) -> Bool
-}
-
-public extension StateRepresenting where Self: Equatable {
-    func isSame(as emptyState: StateRepresenting) -> Bool {
-        guard let ncs = emptyState as? Self else { return false }
-        return self == ncs
+public class AnyEmptyContentDataSource<T: Equatable>: EmptyContentDataSource {
+    private let emptyContent: (T) -> EmptyContent?
+    private let customView: (T) -> UIView?
+    
+    private let getTitleStyle: () -> StringStyle
+    private let getSubtitleStyle: () -> StringStyle
+    
+    init<D: EmptyContentDataSource>(_ emptyContentDataSource: D) where T == D.EmptyState {
+        unowned let weakDataSource = emptyContentDataSource
+        self.emptyContent = { weakDataSource.emptyContent(for: $0) }
+        self.customView =  { weakDataSource.customView(for: $0) }
+        self.getTitleStyle = { weakDataSource.titleStyle }
+        self.getSubtitleStyle = { weakDataSource.subtitleStyle }
     }
+    
+    public func emptyContent(for state: T) -> EmptyContent? {
+        return emptyContent(state)
+    }
+    
+    public func customView(for state: T) -> UIView? {
+        return customView(state)
+    }
+    
+    public var titleStyle: StringStyle { return getTitleStyle() }
+    public var subtitleStyle: StringStyle { return getSubtitleStyle() }
 }

@@ -23,11 +23,9 @@
 import Foundation
 
 public protocol StateManaging: class {
-    typealias State = StateRepresenting
+    associatedtype State: Equatable
     
-    var state: State { get }
-    
-    func transition(to newState: State)
+    var state: State { get set }
     
     func on(_ event: State, execute: @escaping (State) -> Void)
     
@@ -37,7 +35,7 @@ public protocol StateManaging: class {
 extension StateManaging {
     public func on(_ event: State, execute: @escaping (State) -> Void) {
         onChange(execute: { state in
-            if event.isSame(as: state) {
+            if event == state {
                 execute(state)
             }
         })

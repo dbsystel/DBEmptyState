@@ -21,17 +21,21 @@
 //
 import UIKit
 
-open class DZNEmptyTableViewDataSource: NSObject {
-    weak var tableView: DZNEmptyDisplayingTableView?
-    public weak var dataSource: EmptyContentDataSource?
+public enum EmptyState {
+    case initial
+}
+
+open class DZNEmptyTableViewDataSource<T: Equatable>: NSObject {
+    let tableView: DZNEmptyDisplayingTableView
+    public var dataSource: AnyEmptyContentDataSource<T>?
     weak var retry: RetryProviding?
-    weak var stateManaging: StateManaging?
+    let stateManaging: AnyStateManaging<T>
     
-    public init(tableView: DZNEmptyDisplayingTableView, stateManaging: StateManaging, dataSource: EmptyContentDataSource, retry: RetryProviding? = nil) {
+    public init<StateManager: StateManaging, EmptyContentData: EmptyContentDataSource>(tableView: DZNEmptyDisplayingTableView, stateManaging: StateManager, dataSource: EmptyContentData, retry: RetryProviding? = nil) where StateManager.State == T, EmptyContentData.EmptyState == T {
         self.tableView = tableView
-        self.dataSource = dataSource
+        self.dataSource = AnyEmptyContentDataSource(dataSource)
         self.retry = retry
-        self.stateManaging = stateManaging
+        self.stateManaging = AnyStateManaging(stateManaging)
         super.init()
         stateManaging.onChange(execute: { [weak self] _ in
             self?.update()
@@ -39,11 +43,11 @@ open class DZNEmptyTableViewDataSource: NSObject {
     }
     
     open func update() {
-        tableView?.reloadEmptyDataSet()
-        if tableView?.isEmptyDataSetVisible ?? false {
-            tableView?.tableFooterView = UIView()
+        tableView.reloadEmptyDataSet()
+        if tableView.isEmptyDataSetVisible {
+            tableView.tableFooterView = UIView()
         } else {
-            tableView?.tableFooterView = nil
+            tableView.tableFooterView = nil
         }
     }
     
@@ -60,14 +64,11 @@ open class DZNEmptyTableViewDataSource: NSObject {
     }
     
     open func customView(forEmptyDataSet scrollView: UIScrollView!) -> UIView! {
-        return dataSource?.customView()
+        return dataSource?.customView(for: stateManaging.state)
     }
     
     func emptyContent() -> EmptyContent? {
-        guard let state = stateManaging?.state else {
-            return nil
-        }
-        return dataSource?.emptyContent(for: state)
+        return dataSource?.emptyContent(for: stateManaging.state)
     }
     
 //    open func buttonTitle(forEmptyDataSet scrollView: UIScrollView!, for state: UIControlState) -> NSAttributedString! {

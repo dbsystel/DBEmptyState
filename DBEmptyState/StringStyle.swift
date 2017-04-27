@@ -29,7 +29,7 @@
 import Foundation
 
 public struct StringStyle {
-    let style: (String) -> NSAttributedString
+    private let style: (String) -> NSAttributedString
     
     public init(style: @escaping (String) -> NSAttributedString) {
         self.style = style

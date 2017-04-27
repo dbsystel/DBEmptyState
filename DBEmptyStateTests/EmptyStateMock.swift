@@ -20,31 +20,9 @@
 //  DEALINGS IN THE SOFTWARE.
 //
 
-import XCTest
+import Foundation
 
-class StateRepresentingTest: XCTestCase {
-    
-    func testIsSame() {
-        //Given
-        let state1 = DataEmptyState.empty
-        let state2 = DataEmptyState.empty
-        
-        //When
-        let isSame = state1.isSame(as: state2)
-        
-        //Then
-        XCTAssert(isSame)
-    }
-    
-    func testIsNotSame() {
-        //Given
-        let state1 = DataEmptyState.empty
-        let state2 = NetworkState.noNetwork
-        
-        //When
-        let isSame = state1.isSame(as: state2)
-        
-        //Then
-        XCTAssertFalse(isSame)
-    }
+enum EmptyStateMock {
+    case initial
+    case error
 }

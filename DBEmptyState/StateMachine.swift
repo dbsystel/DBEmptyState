@@ -28,33 +28,16 @@
 
 import Foundation
 
-public class StateMachine: StateManaging {
-    public typealias State = StateRepresenting
+public class StateMachine<State: Equatable>: StateManaging {
     var registrations: [(State) -> Void] = []
-    public var state: StateRepresenting {
-        return globalStateManaging?.state ?? internalState
+    public var state: State {
+        didSet {
+            notify()
+        }
     }
-    
-    var internalState: StateRepresenting {
-        didSet { notify() }
-    }
-    let globalStateManaging: GlobalStateManaging?
-    var observerToken: NSObjectProtocol?
-    
-    public init(initialState: State, globalStateManaging: GlobalStateManaging? = nil) {
-        internalState = initialState
-        self.globalStateManaging = globalStateManaging
-        observerToken = globalStateManaging?.addObserver(execute: { [weak self] newState in
-           self?.notify()
-        })
-    }
-    
-    deinit {
-        observerToken.map { globalStateManaging?.removeObserver($0) }
-    }
-    
-    public func transition(to newState: State) {
-        internalState = newState
+    public init(initialState: State) {
+       self.state = initialState
+        
     }
     
     public func onChange(execute: @escaping (State) -> Void) {

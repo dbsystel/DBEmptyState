@@ -29,48 +29,13 @@
 import XCTest
 @testable import DBEmptyState
 
-
-enum DataEmptyState: StateRepresenting {
-    case initial
-    case empty
-}
-
-enum NetworkState: GlobalStateRepresenting {
-    case noNetwork
-    
-    var rank: Int { return 1 }
-}
-
-
-class GlobalStateManagingMock: GlobalStateManaging {
-    var state: GlobalStateManaging.State?
-    var observer: ((State) -> Void)?
-    
-    func enter(newState: State) {
-    }
-    
-    func leave(state: State) {
-    }
-    
-    func addObserver(execute: @escaping (State) -> Void) -> NSObjectProtocol {
-        observer = execute
-        return "" as NSObjectProtocol
-    }
-    
-    func removeObserver(_ observer: NSObjectProtocol) {
-    }
-}
-
 class StateMachineTest: XCTestCase {
     
-    var stateMachine: StateManaging!
-    var globalStateManagingMock: GlobalStateManagingMock!
+    var stateMachine: AnyStateManaging<EmptyStateMock>!
     
     override func setUp() {
         super.setUp()
-        globalStateManagingMock = GlobalStateManagingMock()
-        stateMachine = StateMachine(initialState: DataEmptyState.initial, globalStateManaging: globalStateManagingMock)
-        XCTAssert(stateMachine.state.isSame(as: DataEmptyState.initial))
+        stateMachine = AnyStateManaging(StateMachine(initialState: .initial))
     }
     
     override func tearDown() {
@@ -80,61 +45,49 @@ class StateMachineTest: XCTestCase {
 
     func testWhenStateChanges_CorrectEvent() {
         //Given
-        var newState: StateRepresenting?
-        let whenStateChanges = {(int: StateRepresenting) in
+        var newState: EmptyStateMock?
+        let whenStateChanges = {(int: EmptyStateMock) in
             newState = int
         }
-        stateMachine.on(DataEmptyState.initial, execute: whenStateChanges)
+        stateMachine.on(.initial, execute: whenStateChanges)
         
         //When
-        stateMachine.transition(to: DataEmptyState.initial)
+        stateMachine.state = .initial
         
         //Then
-        XCTAssert(newState?.isSame(as: DataEmptyState.initial) ?? false)
-        XCTAssert(stateMachine.state.isSame(as: DataEmptyState.initial))
+        XCTAssertEqual(newState, .initial)
+        XCTAssertEqual(stateMachine.state, .initial)
     }
     
-    func testWhenGlobalStateChanges_CorrectEvent() {
-        //Given
-        var newState: StateRepresenting?
-        let whenStateChanges = {(int: StateRepresenting) in
-            newState = int
-        }
-        stateMachine.on(NetworkState.noNetwork, execute: whenStateChanges)
-        
-        //When
-        globalStateManagingMock.state = NetworkState.noNetwork
-        globalStateManagingMock.observer?(NetworkState.noNetwork)
-        
-        //Then
-        XCTAssert(newState?.isSame(as: NetworkState.noNetwork) ?? false)
-        XCTAssert(stateMachine.state.isSame(as: NetworkState.noNetwork))
-    }
     
     func testWhenStateChanges_withoutTheCorrectEvent() {
         //Given
-        var newState: StateRepresenting?
-        let whenStateChanges = {(int: StateRepresenting) in
+        var newState: EmptyStateMock?
+        let whenStateChanges = {(int: EmptyStateMock) in
             newState = int
         }
-        stateMachine.on(DataEmptyState.initial, execute: whenStateChanges)
+        stateMachine.on(.initial, execute: whenStateChanges)
         
         //When
-        stateMachine.transition(to: DataEmptyState.empty)
+        stateMachine.state = .error
         
         //Then
         XCTAssertNil(newState)
     }
     
-    func testWhenGlobalStateIaAvailabe() {
+    func testOnChange() {
         //Given
-        let newState = DataEmptyState.empty
-        globalStateManagingMock.state = NetworkState.noNetwork
+        var newState: EmptyStateMock?
+        let whenStateChanges = {(int: EmptyStateMock) in
+            newState = int
+        }
+        stateMachine.onChange(execute: whenStateChanges)
         
         //When
-        stateMachine.transition(to: newState)
+        stateMachine.state = .initial
         
         //Then
-        XCTAssert(stateMachine.state.isSame(as: NetworkState.noNetwork))
+        XCTAssertEqual(newState, .initial)
+        XCTAssertEqual(stateMachine.state, .initial)
     }
 }

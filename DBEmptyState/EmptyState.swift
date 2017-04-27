@@ -21,7 +21,3 @@
 //
 
 import Foundation
-
-public protocol GlobalStateRepresenting: StateRepresenting {
-    var rank: Int { get }
-}

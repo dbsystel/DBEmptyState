@@ -24,13 +24,15 @@
 import Foundation
 
 public protocol EmptyContentDataSource: class, EmptyContentStyling {
-    func emptyContent(for: StateRepresenting) -> EmptyContent?
+    associatedtype EmptyState: Equatable
     
-    func customView() -> UIView?
+    func emptyContent(for: EmptyState) -> EmptyContent?
+    
+    func customView(for: EmptyState) -> UIView?
 }
 
 extension EmptyContentDataSource {
-    public func customView() -> UIView? {
+    public func customView(for: EmptyState) -> UIView? {
         return nil
     }
 }

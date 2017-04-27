@@ -24,45 +24,39 @@ import XCTest
 @testable import DBEmptyState
 
 class EmptyContentDataSourceMock: EmptyContentDataSource {
+    var memoryCheck: DZNEmptyTableViewDataSource<EmptyStateMock>?
     var emptyContentReturning: EmptyContent?
     var customViewReturning: UIView?
-    var capturedState: StateRepresenting?
+    var capturedState: EmptyStateMock?
     
-    func emptyContent(for state: StateRepresenting) -> EmptyContent? {
+    func emptyContent(for state: EmptyStateMock) -> EmptyContent? {
         capturedState = state
         return emptyContentReturning
     }
     
-    func customView() -> UIView? {
+    func customView(for state: EmptyStateMock) -> UIView? {
         return customViewReturning
     }
 }
 
 class StateManagingMock: StateManaging {
     
-    var callback: ((StateManaging.State) -> Void)?
+    var callback: ((EmptyStateMock) -> Void)?
     
-    init(state: StateManaging.State) {
+    init(state: EmptyStateMock) {
         self.state = state
     }
     
-    var state: StateManaging.State
-    func transition(to newState: StateManaging.State) {
-        
-    }
-    func onChange(execute: @escaping (StateManaging.State) -> Void) {
+    var state: EmptyStateMock
+    
+    func onChange(execute: @escaping (EmptyStateMock) -> Void) {
         callback = execute
     }
 }
 
-enum MockState: StateRepresenting {
-    case initial
-    case empty
-}
-
 class DZNEmptyTableViewDataSourceTest: XCTestCase {
     var tableView: DZNEmptyDisplayingTableViewMock!
-    var emptyDataSource: DZNEmptyTableViewDataSource!
+    var emptyDataSource: DZNEmptyTableViewDataSource<EmptyStateMock>!
     var emptyContentDataSource: EmptyContentDataSourceMock!
     var stateManagingMock: StateManagingMock!
     
@@ -70,7 +64,7 @@ class DZNEmptyTableViewDataSourceTest: XCTestCase {
         super.setUp()
         tableView = DZNEmptyDisplayingTableViewMock()
         emptyContentDataSource = EmptyContentDataSourceMock()
-        stateManagingMock = StateManagingMock(state: MockState.initial)
+        stateManagingMock = StateManagingMock(state: .initial)
         emptyDataSource = DZNEmptyTableViewDataSource(tableView: tableView, stateManaging: stateManagingMock, dataSource: emptyContentDataSource)
     }
     
@@ -87,43 +81,59 @@ class DZNEmptyTableViewDataSourceTest: XCTestCase {
         XCTAssertNotNil(emptyDataSource.stateManaging)
     }
     
+    func testAgainstMemoryLeaks() {
+        //Given
+        let tableView = DZNEmptyDisplayingTableViewMock()
+        var emptyContentDataSource: EmptyContentDataSourceMock? = EmptyContentDataSourceMock()
+        emptyContentDataSource?.memoryCheck = DZNEmptyTableViewDataSource(tableView: tableView, stateManaging: stateManagingMock, dataSource: emptyContentDataSource!)
+        weak var emptyDataSource = emptyContentDataSource?.memoryCheck
+        
+        //When
+        emptyContentDataSource = nil
+        
+        //
+        XCTAssertNil(emptyDataSource)
+        
+    }
+
     func testUpdateWithVisibileEmptyDataSet() {
         //Given
         tableView.isEmptyDataSetVisible = true
         
         //When
-        stateManagingMock.callback?(MockState.empty)
+        stateManagingMock.callback?(.error)
         
         //Then
         XCTAssertEqual(tableView.reloadCount, 1)
         XCTAssertNotNil(tableView.tableFooterView)
     }
-    
+
     func testUpdateWithoutVisibileEmptyDataSet() {
         //Given
         tableView.isEmptyDataSetVisible = false
         
         //When
-        stateManagingMock.callback?(MockState.empty)
+        stateManagingMock.callback?(.error)
         
         //Then
         XCTAssertEqual(tableView.reloadCount, 1)
         XCTAssertNil(tableView.tableFooterView)
     }
-    
+
     func testTitle() {
         //Given
         emptyContentDataSource.emptyContentReturning = EmptyContent(title: "Title")
-        stateManagingMock.state = MockState.empty
+        stateManagingMock.state = .error
         
         //When
         let title = emptyDataSource.title(forEmptyDataSet: UIScrollView(frame: .zero))
         
         //Then
         XCTAssertEqual(title?.string, "Title")
-        XCTAssert(emptyContentDataSource.capturedState?.isSame(as: MockState.empty) ?? false)
+        XCTAssertEqual(emptyContentDataSource.capturedState, .error)
     }
-    
+
+
     func testSubtitle() {
         //Given
         emptyContentDataSource.emptyContentReturning = EmptyContent(subtitle: "Title")
@@ -134,7 +144,7 @@ class DZNEmptyTableViewDataSourceTest: XCTestCase {
         //Then
         XCTAssertEqual(subtitle?.string, "Title")
     }
-    
+
     func testImage() {
         //Given
         let image = UIImage()
@@ -146,7 +156,7 @@ class DZNEmptyTableViewDataSourceTest: XCTestCase {
         //Then
         XCTAssertEqual(image, returningImage)
     }
-    
+
     func testCustomView() {
         //Given
         let view = UIView()

@@ -22,16 +22,31 @@
 
 import Foundation
 
-public protocol GlobalStateManaging: class {
-    typealias State = GlobalStateRepresenting
+public class AnyStateManaging<State: Equatable>: StateManaging {
+    private let getState: () -> State
+    private let setState: (State) -> Void
     
-    var state: State? { get }
+    private let registerOn: (State, @escaping (State) -> Void) -> Void
+    private let registerOnChange: (@escaping (State) -> Void) -> Void
     
-    func enter(newState: State)
+    init<T: StateManaging>(_ stateManaging: T) where T.State == State {
+        self.getState = { stateManaging.state }
+        self.setState = { stateManaging.state = $0 }
+        
+        registerOn = { stateManaging.on($0, execute: $1) }
+        registerOnChange = { stateManaging.onChange(execute: $0) }
+    }
     
-    func leave(state: State)
+    public var state: State {
+        get { return getState() }
+        set { setState(newValue) }
+    }
     
-    func addObserver(execute: @escaping (State) -> Void) -> NSObjectProtocol
+    public func onChange(execute: @escaping (State) -> Void) {
+        registerOnChange(execute)
+    }
     
-    func removeObserver(_: NSObjectProtocol)
+    public func on(_ event: State, execute: @escaping (State) -> Void) {
+        registerOn(event, execute)
+    }
 }
