@@ -24,7 +24,7 @@ import XCTest
 @testable import DBEmptyState
 
 class EmptyContentDataSourceMock: EmptyContentDataSource, EmptyContentCustomViewDataSource {
-    var memoryCheck: DZNEmptyTableViewDataSource<EmptyStateMock>?
+    var memoryCheck: GenericDZNTableViewAdapter<EmptyStateMock>?
     var emptyContentReturning: EmptyContent?
     var customViewReturning: UIView?
     var capturedState: EmptyStateMock?
@@ -56,7 +56,7 @@ class StateManagingMock: StateManaging {
 
 class DZNEmptyTableViewDataSourceTest: XCTestCase {
     var tableView: DZNEmptyDisplayingTableViewMock!
-    var emptyDataSource: DZNEmptyTableViewDataSource<EmptyStateMock>!
+    var emptyDataSource: GenericDZNTableViewAdapter<EmptyStateMock>!
     var emptyContentDataSource: EmptyContentDataSourceMock!
     var stateManagingMock: StateManagingMock!
     
@@ -65,7 +65,7 @@ class DZNEmptyTableViewDataSourceTest: XCTestCase {
         tableView = DZNEmptyDisplayingTableViewMock()
         emptyContentDataSource = EmptyContentDataSourceMock()
         stateManagingMock = StateManagingMock(state: .initial)
-        emptyDataSource = DZNEmptyTableViewDataSource(tableView: tableView, stateManaging: stateManagingMock, dataSource: emptyContentDataSource)
+        emptyDataSource = GenericDZNTableViewAdapter(tableView: tableView, stateManaging: stateManagingMock, dataSource: emptyContentDataSource)
     }
     
     func testInit() {
@@ -73,7 +73,7 @@ class DZNEmptyTableViewDataSourceTest: XCTestCase {
         let tableView = DZNEmptyDisplayingTableViewMock()
         
         //When
-        let emptyDataSource = DZNEmptyTableViewDataSource(tableView: tableView, stateManaging: stateManagingMock, dataSource: emptyContentDataSource)
+        let emptyDataSource = GenericDZNTableViewAdapter(tableView: tableView, stateManaging: stateManagingMock, dataSource: emptyContentDataSource)
         
         //Then
         XCTAssertNotNil(emptyDataSource.tableView)
@@ -85,7 +85,7 @@ class DZNEmptyTableViewDataSourceTest: XCTestCase {
         //Given
         let tableView = DZNEmptyDisplayingTableViewMock()
         var emptyContentDataSource: EmptyContentDataSourceMock? = EmptyContentDataSourceMock()
-        emptyContentDataSource?.memoryCheck = DZNEmptyTableViewDataSource(tableView: tableView, stateManaging: stateManagingMock, dataSource: emptyContentDataSource!)
+        emptyContentDataSource?.memoryCheck = GenericDZNTableViewAdapter(tableView: tableView, stateManaging: stateManagingMock, dataSource: emptyContentDataSource!)
         weak var emptyDataSource = emptyContentDataSource?.memoryCheck
         
         //When

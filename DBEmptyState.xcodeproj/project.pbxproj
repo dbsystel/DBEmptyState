@@ -20,12 +20,13 @@
 		C6878CFE1EB1D4E10065CDD2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C6878CFD1EB1D4E10065CDD2 /* Assets.xcassets */; };
 		C6878D011EB1D4E10065CDD2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C6878CFF1EB1D4E10065CDD2 /* LaunchScreen.storyboard */; };
 		C6878D0A1EB1D64B0065CDD2 /* DZNEmptyDataSet.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C6878D091EB1D64B0065CDD2 /* DZNEmptyDataSet.framework */; };
+		C6878D0C1EB8B7EE0065CDD2 /* DZNEmptyDataSet.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C6878D091EB1D64B0065CDD2 /* DZNEmptyDataSet.framework */; };
 		C6CF23441EADC11200580862 /* StringStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6CF23411EADC11200580862 /* StringStyle.swift */; };
 		C6CF23451EADC11200580862 /* EmptyContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6CF23421EADC11200580862 /* EmptyContent.swift */; };
 		C6CF23461EADC11200580862 /* EmptyContentStyling.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6CF23431EADC11200580862 /* EmptyContentStyling.swift */; };
 		C6CF234B1EADC15E00580862 /* EmptyContentDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6CF23491EADC15E00580862 /* EmptyContentDataSource.swift */; };
 		C6CF23501EADC21B00580862 /* RetryProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6CF234D1EADC21B00580862 /* RetryProviding.swift */; };
-		C6CF23511EADC21B00580862 /* DZNEmptyTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6CF234E1EADC21B00580862 /* DZNEmptyTableViewDataSource.swift */; };
+		C6CF23511EADC21B00580862 /* DZNTableViewAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6CF234E1EADC21B00580862 /* DZNTableViewAdapter.swift */; };
 		C6CF23521EADC21B00580862 /* DZNEmptyDisplayingTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6CF234F1EADC21B00580862 /* DZNEmptyDisplayingTableView.swift */; };
 		C6CF23561EADCAB400580862 /* EmptyContentTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6CF23551EADCAB400580862 /* EmptyContentTest.swift */; };
 		C6CF23591EADCACD00580862 /* DZNEmptyTableViewDataSourceTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6CF23571EADCACD00580862 /* DZNEmptyTableViewDataSourceTest.swift */; };
@@ -76,7 +77,7 @@
 		C6CF23431EADC11200580862 /* EmptyContentStyling.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptyContentStyling.swift; sourceTree = "<group>"; };
 		C6CF23491EADC15E00580862 /* EmptyContentDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptyContentDataSource.swift; sourceTree = "<group>"; };
 		C6CF234D1EADC21B00580862 /* RetryProviding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RetryProviding.swift; sourceTree = "<group>"; };
-		C6CF234E1EADC21B00580862 /* DZNEmptyTableViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DZNEmptyTableViewDataSource.swift; sourceTree = "<group>"; };
+		C6CF234E1EADC21B00580862 /* DZNTableViewAdapter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DZNTableViewAdapter.swift; sourceTree = "<group>"; };
 		C6CF234F1EADC21B00580862 /* DZNEmptyDisplayingTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DZNEmptyDisplayingTableView.swift; sourceTree = "<group>"; };
 		C6CF23551EADCAB400580862 /* EmptyContentTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptyContentTest.swift; sourceTree = "<group>"; };
 		C6CF23571EADCACD00580862 /* DZNEmptyTableViewDataSourceTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DZNEmptyTableViewDataSourceTest.swift; sourceTree = "<group>"; };
@@ -91,6 +92,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C6878D0C1EB8B7EE0065CDD2 /* DZNEmptyDataSet.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -222,7 +224,7 @@
 			isa = PBXGroup;
 			children = (
 				C6CF234D1EADC21B00580862 /* RetryProviding.swift */,
-				C6CF234E1EADC21B00580862 /* DZNEmptyTableViewDataSource.swift */,
+				C6CF234E1EADC21B00580862 /* DZNTableViewAdapter.swift */,
 				C6CF234F1EADC21B00580862 /* DZNEmptyDisplayingTableView.swift */,
 			);
 			name = "DZNEmptyDataSet-Binding";
@@ -260,6 +262,7 @@
 				C634F9A31EA9D7210016232D /* Frameworks */,
 				C634F9A41EA9D7210016232D /* Headers */,
 				C634F9A51EA9D7210016232D /* Resources */,
+				C6878D0E1EB8B8100065CDD2 /* 📦 Carthage Copy */,
 			);
 			buildRules = (
 			);
@@ -395,6 +398,21 @@
 			shellPath = /bin/sh;
 			shellScript = "/usr/local/bin/carthage copy-frameworks";
 		};
+		C6878D0E1EB8B8100065CDD2 /* 📦 Carthage Copy */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/DZNEmptyDataSet.framework",
+			);
+			name = "📦 Carthage Copy";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks";
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -409,7 +427,7 @@
 				C634F9C31EA9D7400016232D /* StateManaging.swift in Sources */,
 				C6CF23441EADC11200580862 /* StringStyle.swift in Sources */,
 				C6CF23521EADC21B00580862 /* DZNEmptyDisplayingTableView.swift in Sources */,
-				C6CF23511EADC21B00580862 /* DZNEmptyTableViewDataSource.swift in Sources */,
+				C6CF23511EADC21B00580862 /* DZNTableViewAdapter.swift in Sources */,
 				C634F9C41EA9D7400016232D /* StateMachine.swift in Sources */,
 				C6CF237E1EAF372E00580862 /* AnyEmptyContentDataSource.swift in Sources */,
 				C6CF23451EADC11200580862 /* EmptyContent.swift in Sources */,
@@ -585,6 +603,10 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = DBEmptyState/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
@@ -607,6 +629,10 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = DBEmptyState/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;

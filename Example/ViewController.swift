@@ -8,25 +8,15 @@
 
 import UIKit
 import DBEmptyState
-import DZNEmptyDataSet
-
-extension UITableView: DZNEmptyDisplayingTableView {}
-extension DBEmptyState.DZNEmptyTableViewDataSource: DZNEmptyDataSetSource {
-}
-
-
 
 class ExampleViewController: UITableViewController {
     
     let emptyState = StateMachine<EmptyState>(initialState: .initial)
-    var emptyDataSet: DZNEmptyTableViewDataSource!
+    var emptyDataSet: DZNTableViewAdapter!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        emptyDataSet = DZNEmptyTableViewDataSource(tableView: tableView, stateManaging: emptyState, dataSource: self)
-        tableView.emptyDataSetSource = emptyDataSet
-        emptyDataSet.update()
+        emptyDataSet = DZNTableViewAdapter(tableView: tableView, stateManaging: emptyState, dataSource: self)
     }
     
     var stateIndex = 0

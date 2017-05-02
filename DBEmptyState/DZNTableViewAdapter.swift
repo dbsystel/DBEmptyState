@@ -20,19 +20,22 @@
 //  DEALINGS IN THE SOFTWARE.
 //
 import UIKit
+import DZNEmptyDataSet
 
-open class GenericDZNEmptyTableViewDataSource<T: Equatable>: NSObject {
-    let tableView: DZNEmptyDisplayingTableView
+open class GenericDZNTableViewAdapter<T: Equatable>: NSObject, DZNEmptyDataSetSource {
+    let tableView: UITableView
     public var dataSource: AnyEmptyContentDataSource<T>?
     weak var retry: RetryProviding?
     let stateManaging: AnyStateManaging<T>
     
-    public init<StateManager: StateManaging, EmptyContentData: EmptyContentDataSource & EmptyContentCustomViewDataSource>(tableView: DZNEmptyDisplayingTableView, stateManaging: StateManager, dataSource: EmptyContentData, retry: RetryProviding? = nil) where StateManager.State == T, EmptyContentData.EmptyState == T {
+    public init<StateManager: StateManaging, EmptyContentData: EmptyContentDataSource & EmptyContentCustomViewDataSource>(tableView: UITableView, stateManaging: StateManager, dataSource: EmptyContentData, retry: RetryProviding? = nil) where StateManager.State == T, EmptyContentData.EmptyState == T {
         self.tableView = tableView
         self.dataSource = AnyEmptyContentDataSource(dataSource)
         self.retry = retry
         self.stateManaging = AnyStateManaging(stateManaging)
         super.init()
+        tableView.emptyDataSetSource = self
+        update()
         stateManaging.onChange(execute: { [weak self] _ in
             self?.update()
         })
@@ -84,8 +87,8 @@ open class GenericDZNEmptyTableViewDataSource<T: Equatable>: NSObject {
     
 }
 
-open class DZNEmptyTableViewDataSource: GenericDZNEmptyTableViewDataSource<EmptyState> {
-    public override init<StateManager: StateManaging, EmptyContentData: EmptyContentDataSource & EmptyContentCustomViewDataSource>(tableView: DZNEmptyDisplayingTableView, stateManaging: StateManager, dataSource: EmptyContentData, retry: RetryProviding? = nil) where StateManager.State == EmptyState, EmptyContentData.EmptyState == EmptyState {
+open class DZNTableViewAdapter: GenericDZNTableViewAdapter<EmptyState> {
+    public override init<StateManager: StateManaging, EmptyContentData: EmptyContentDataSource & EmptyContentCustomViewDataSource>(tableView: UITableView, stateManaging: StateManager, dataSource: EmptyContentData, retry: RetryProviding? = nil) where StateManager.State == EmptyState, EmptyContentData.EmptyState == EmptyState {
         super.init(tableView: tableView, stateManaging: stateManaging, dataSource: dataSource, retry: retry)
     }
 }
