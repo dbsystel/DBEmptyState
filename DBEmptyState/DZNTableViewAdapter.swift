@@ -47,6 +47,22 @@ open class EmptyTableViewAdapter<T: Equatable>: NSObject, DZNEmptyDataSetSource 
         })
     }
     
+    public init<StateManager: StateManaging, EmptyContentSource: EmptyContentDataSource>
+        (tableView: UITableView, stateManaging: StateManager, dataSource: EmptyContentSource?)
+        where StateManager.State == T, EmptyContentSource.EmptyState == T {
+            self.tableView = tableView
+            self.dataSource = dataSource.map { AnyEmptyContentDataSource($0) }
+            self.customViewDataSource = nil
+            self.actionButtonDataSource = nil
+            self.stateManaging = AnyStateManaging(stateManaging)
+            super.init()
+            tableView.emptyDataSetSource = self
+            update()
+            stateManaging.onChange(execute: { [weak self] _ in
+                self?.update()
+            })
+    }
+    
     open func update() {
         tableView.reloadEmptyDataSet()
         if tableView.isEmptyDataSetVisible {
@@ -104,12 +120,7 @@ extension EmptyTableViewAdapter {
     public convenience init<StateManager: StateManaging, EmptyContentData: EmptyContentDataSource & CustomEmptyViewDataSource & ActionButtonDataSource>(tableView: UITableView, stateManaging: StateManager, dataSource: EmptyContentData) where StateManager.State == T, EmptyContentData.EmptyState == T  {
         self.init(tableView: tableView, stateManaging: stateManaging, dataSource: dataSource, customViewDataSource: dataSource, buttonDataSource: dataSource)
     }
-    
-    public convenience init<StateManager: StateManaging, EmptyContentSource: EmptyContentDataSource>
-        (tableView: UITableView, stateManaging: StateManager, dataSource: EmptyContentSource?)
-        where StateManager.State == T, EmptyContentSource.EmptyState == T {
-            self.init(tableView: tableView, stateManaging: stateManaging, dataSource: dataSource)
-    }
+
 }
 
 

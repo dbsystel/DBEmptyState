@@ -44,3 +44,15 @@ extension ExampleViewController: EmptyContentDataSource {
     }
 }
 
+//extension ExampleViewController: CustomEmptyViewDataSource {
+//    func customView(for state: EmptyState, with content: EmptyContent) -> UIView? {
+//        return nil
+//    }
+//}
+//
+//extension ExampleViewController: ActionButtonDataSource {
+//    func button(for state: EmptyState) -> ButtonModel? {
+//        return nil
+//    }
+//}
+
