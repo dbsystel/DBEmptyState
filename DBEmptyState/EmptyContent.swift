@@ -39,3 +39,7 @@ public struct EmptyContent {
     public let subtitle: String?
     public let image: UIImage?
 }
+
+public extension EmptyContent {
+    static let customPresentation = EmptyContent(title: nil, subtitle: nil, image: nil)
+}

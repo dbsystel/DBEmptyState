@@ -28,14 +28,3 @@ public protocol EmptyContentDataSource: class, EmptyContentStyling {
     
     func emptyContent(for: EmptyState) -> EmptyContent?
 }
-
-public protocol EmptyContentCustomViewDataSource {
-    associatedtype EmptyState: Equatable
-    func customView(for: EmptyState) -> UIView?
-}
-
-extension EmptyContentCustomViewDataSource {
-    public func customView(for: EmptyState) -> UIView? {
-        return nil
-    }
-}

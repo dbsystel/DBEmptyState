@@ -26,20 +26,42 @@
 //  Created by Lukas Schmidt on 20.03.17.
 //
 
-import Foundation
+import UIKit
 
-public protocol RetryProviding: class {
-    var buttonTitle: String { get }
-    
-    var shouldDisplayRetryButton: Bool { get }
-    
-    func buttonTitleStyle(for state: UIControlState) -> StringStyle
-    
-    func retry()
+public struct ButtonModel {
+    public let action: () -> Void
+    public let title: String
 }
 
-extension RetryProviding {
-    public func buttonTitleStyle(for state: UIControlState) -> StringStyle {
+public protocol ActionButtonDataSource: class {
+    associatedtype EmptyState: Equatable
+    
+    func button(for state: EmptyState) -> ButtonModel?
+    
+    func buttonTitleStyle(for buttonState: UIControlState, with emptyState: EmptyState) -> StringStyle
+    
+}
+
+extension ActionButtonDataSource {
+    public func buttonTitleStyle(for buttonState: UIControlState, with emptyState: EmptyState) -> StringStyle {
         return .default
+    }
+}
+
+public class AnyActionButtonDataSource<EmptyState: Equatable>: ActionButtonDataSource {
+    private let butonFor: (EmptyState) -> ButtonModel?
+    private let buttonTitleStyleFor: (UIControlState, EmptyState) -> StringStyle
+    
+    init<D: ActionButtonDataSource>(_ buttonActionProviding: D) where D.EmptyState == EmptyState {
+        butonFor = buttonActionProviding.button
+        buttonTitleStyleFor = buttonActionProviding.buttonTitleStyle
+    }
+    
+    public func button(for state: EmptyState) -> ButtonModel? {
+        return butonFor(state)
+    }
+    
+    public func buttonTitleStyle(for buttonState: UIControlState, with emptyState: EmptyState) -> StringStyle {
+        return buttonTitleStyleFor(buttonState, emptyState)
     }
 }

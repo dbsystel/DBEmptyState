@@ -20,16 +20,9 @@
 //  DEALINGS IN THE SOFTWARE.
 //
 
-import Foundation
-import DBEmptyState
+import UIKit
 
-class DZNEmptyDisplayingTableViewMock: DZNEmptyDisplayingTableView {
-    var reloadCount = 0
-    
-    func reloadEmptyDataSet() {
-        reloadCount += 1
-    }
-    var isEmptyDataSetVisible: Bool = false
-    
-    var tableFooterView: UIView?
+public protocol CustomEmptyViewDataSource: class {
+    associatedtype EmptyState: Equatable
+    func customView(for state: EmptyState, with content: EmptyContent) -> UIView?
 }

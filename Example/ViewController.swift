@@ -12,11 +12,11 @@ import DBEmptyState
 class ExampleViewController: UITableViewController {
     
     let emptyState = StateMachine<EmptyState>(initialState: .initial)
-    var emptyDataSet: DZNTableViewAdapter!
+    var emptyDataSet: EmptyTableViewAdapter<EmptyState>!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        emptyDataSet = DZNTableViewAdapter(tableView: tableView, stateManaging: emptyState, dataSource: self)
+        emptyDataSet = EmptyTableViewAdapter(tableView: tableView, stateManaging: emptyState, dataSource: self)
     }
     
     var stateIndex = 0
@@ -36,10 +36,11 @@ extension ExampleViewController: EmptyContentDataSource {
             return EmptyContent(title: "Error")
         case .initial:
             return EmptyContent(title: "Initial State", subtitle: "This is an initial state with subtitles", image: UIImage(named: "ic_impressum_dbkeks.png"))
+        case .loading:
+            return .customPresentation
         default:
             return nil
         }
     }
 }
 
-extension ExampleViewController: EmptyContentCustomViewDataSource {}

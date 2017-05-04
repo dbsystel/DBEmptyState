@@ -20,12 +20,17 @@
 //  DEALINGS IN THE SOFTWARE.
 //
 
-import Foundation
+import UIKit
 
-public protocol DZNEmptyDisplayingTableView: class {
-    func reloadEmptyDataSet()
+public class AnyCustomEmptyViewDataSource<T: Equatable>: CustomEmptyViewDataSource {
+    private let customView: (T, EmptyContent) -> UIView?
     
-    var isEmptyDataSetVisible: Bool { get }
+    init<D: CustomEmptyViewDataSource>(_ emptyContentDataSource: D) where T == D.EmptyState {
+        unowned let weakDataSource = emptyContentDataSource
+        self.customView =  { weakDataSource.customView(for: $0, with: $1) }
+    }
     
-    var tableFooterView: UIView? { get set }
+    public func customView(for state: T, with content: EmptyContent) -> UIView? {
+        return customView(state, content)
+    }
 }

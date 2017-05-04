@@ -22,16 +22,22 @@
 import UIKit
 import DZNEmptyDataSet
 
-open class GenericDZNTableViewAdapter<T: Equatable>: NSObject, DZNEmptyDataSetSource {
-    let tableView: UITableView
+
+open class EmptyTableViewAdapter<T: Equatable>: NSObject, DZNEmptyDataSetSource {
     public var dataSource: AnyEmptyContentDataSource<T>?
-    weak var retry: RetryProviding?
+    public var customViewDataSource: AnyCustomEmptyViewDataSource<T>?
+    public var actionButtonDataSource: AnyActionButtonDataSource<T>?
+    
+    let tableView: UITableView
     let stateManaging: AnyStateManaging<T>
     
-    public init<StateManager: StateManaging, EmptyContentData: EmptyContentDataSource & EmptyContentCustomViewDataSource>(tableView: UITableView, stateManaging: StateManager, dataSource: EmptyContentData, retry: RetryProviding? = nil) where StateManager.State == T, EmptyContentData.EmptyState == T {
+    public init<StateManager: StateManaging, EmptyContentSource: EmptyContentDataSource, CustomViewSource: CustomEmptyViewDataSource, ButtonDataSource: ActionButtonDataSource>
+        (tableView: UITableView, stateManaging: StateManager, dataSource: EmptyContentSource?, customViewDataSource: CustomViewSource? = nil, buttonDataSource: ButtonDataSource? = nil)
+            where StateManager.State == T, EmptyContentSource.EmptyState == T, CustomViewSource.EmptyState == T, ButtonDataSource.EmptyState == T {
         self.tableView = tableView
-        self.dataSource = AnyEmptyContentDataSource(dataSource)
-        self.retry = retry
+        self.dataSource = dataSource.map { AnyEmptyContentDataSource($0) }
+        self.customViewDataSource = customViewDataSource.map { AnyCustomEmptyViewDataSource($0) }
+        self.actionButtonDataSource = buttonDataSource.map { AnyActionButtonDataSource($0) }
         self.stateManaging = AnyStateManaging(stateManaging)
         super.init()
         tableView.emptyDataSetSource = self
@@ -63,7 +69,10 @@ open class GenericDZNTableViewAdapter<T: Equatable>: NSObject, DZNEmptyDataSetSo
     }
     
     open func customView(forEmptyDataSet scrollView: UIScrollView!) -> UIView! {
-        return dataSource?.customView(for: stateManaging.state)
+        guard let emptyContent = emptyContent() else {
+            return nil
+        }
+        return customViewDataSource?.customView(for: stateManaging.state, with: emptyContent)
     }
     
     func emptyContent() -> EmptyContent? {
@@ -87,9 +96,20 @@ open class GenericDZNTableViewAdapter<T: Equatable>: NSObject, DZNEmptyDataSetSo
     
 }
 
-open class DZNTableViewAdapter: GenericDZNTableViewAdapter<EmptyState> {
-    public override init<StateManager: StateManaging, EmptyContentData: EmptyContentDataSource & EmptyContentCustomViewDataSource>(tableView: UITableView, stateManaging: StateManager, dataSource: EmptyContentData, retry: RetryProviding? = nil) where StateManager.State == EmptyState, EmptyContentData.EmptyState == EmptyState {
-        super.init(tableView: tableView, stateManaging: stateManaging, dataSource: dataSource, retry: retry)
+extension EmptyTableViewAdapter {
+    public convenience init<StateManager: StateManaging, EmptyContentData: EmptyContentDataSource & CustomEmptyViewDataSource, ButtonDataSource: ActionButtonDataSource>(tableView: UITableView, stateManaging: StateManager, dataSource: EmptyContentData, buttonDataSource: ButtonDataSource? = nil) where StateManager.State == T, EmptyContentData.EmptyState == T, ButtonDataSource.EmptyState == T  {
+        self.init(tableView: tableView, stateManaging: stateManaging, dataSource: dataSource, customViewDataSource: dataSource, buttonDataSource: buttonDataSource)
+    }
+    
+    public convenience init<StateManager: StateManaging, EmptyContentData: EmptyContentDataSource & CustomEmptyViewDataSource & ActionButtonDataSource>(tableView: UITableView, stateManaging: StateManager, dataSource: EmptyContentData) where StateManager.State == T, EmptyContentData.EmptyState == T  {
+        self.init(tableView: tableView, stateManaging: stateManaging, dataSource: dataSource, customViewDataSource: dataSource, buttonDataSource: dataSource)
+    }
+    
+    public convenience init<StateManager: StateManaging, EmptyContentSource: EmptyContentDataSource>
+        (tableView: UITableView, stateManaging: StateManager, dataSource: EmptyContentSource?)
+        where StateManager.State == T, EmptyContentSource.EmptyState == T {
+            self.init(tableView: tableView, stateManaging: stateManaging, dataSource: dataSource)
     }
 }
+
 

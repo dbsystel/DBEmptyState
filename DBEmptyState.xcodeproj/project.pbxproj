@@ -7,11 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C618ABD81EBAF4FF007C11F9 /* DZNEmptyDataSet.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C6878D091EB1D64B0065CDD2 /* DZNEmptyDataSet.framework */; };
 		C634F9B11EA9D7210016232D /* DBEmptyState.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C634F9A71EA9D7210016232D /* DBEmptyState.framework */; };
 		C634F9B81EA9D7210016232D /* DBEmptyState.h in Headers */ = {isa = PBXBuildFile; fileRef = C634F9AA1EA9D7210016232D /* DBEmptyState.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C634F9C31EA9D7400016232D /* StateManaging.swift in Sources */ = {isa = PBXBuildFile; fileRef = C634F9C11EA9D7400016232D /* StateManaging.swift */; };
 		C634F9C41EA9D7400016232D /* StateMachine.swift in Sources */ = {isa = PBXBuildFile; fileRef = C634F9C21EA9D7400016232D /* StateMachine.swift */; };
 		C634F9C61EA9DC750016232D /* StateMachineTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C634F9C51EA9DC750016232D /* StateMachineTest.swift */; };
+		C64C0B181EB9A7E100B04871 /* CustomEmptyContentViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64C0B171EB9A7E100B04871 /* CustomEmptyContentViewDataSource.swift */; };
+		C64C0B1A1EB9A81500B04871 /* AnyCustomEmptyContentViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64C0B191EB9A81500B04871 /* AnyCustomEmptyContentViewDataSource.swift */; };
 		C6878CED1EB1BE000065CDD2 /* EmptyState.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6878CEC1EB1BE000065CDD2 /* EmptyState.swift */; };
 		C6878CEF1EB1BE190065CDD2 /* EmptyStateMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6878CEE1EB1BE190065CDD2 /* EmptyStateMock.swift */; };
 		C6878CF71EB1D4E10065CDD2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6878CF61EB1D4E10065CDD2 /* AppDelegate.swift */; };
@@ -19,19 +22,15 @@
 		C6878CFC1EB1D4E10065CDD2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C6878CFA1EB1D4E10065CDD2 /* Main.storyboard */; };
 		C6878CFE1EB1D4E10065CDD2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C6878CFD1EB1D4E10065CDD2 /* Assets.xcassets */; };
 		C6878D011EB1D4E10065CDD2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C6878CFF1EB1D4E10065CDD2 /* LaunchScreen.storyboard */; };
-		C6878D0A1EB1D64B0065CDD2 /* DZNEmptyDataSet.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C6878D091EB1D64B0065CDD2 /* DZNEmptyDataSet.framework */; };
-		C6878D0C1EB8B7EE0065CDD2 /* DZNEmptyDataSet.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C6878D091EB1D64B0065CDD2 /* DZNEmptyDataSet.framework */; };
 		C6CF23441EADC11200580862 /* StringStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6CF23411EADC11200580862 /* StringStyle.swift */; };
 		C6CF23451EADC11200580862 /* EmptyContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6CF23421EADC11200580862 /* EmptyContent.swift */; };
 		C6CF23461EADC11200580862 /* EmptyContentStyling.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6CF23431EADC11200580862 /* EmptyContentStyling.swift */; };
 		C6CF234B1EADC15E00580862 /* EmptyContentDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6CF23491EADC15E00580862 /* EmptyContentDataSource.swift */; };
-		C6CF23501EADC21B00580862 /* RetryProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6CF234D1EADC21B00580862 /* RetryProviding.swift */; };
+		C6CF23501EADC21B00580862 /* ActionButtonProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6CF234D1EADC21B00580862 /* ActionButtonProviding.swift */; };
 		C6CF23511EADC21B00580862 /* DZNTableViewAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6CF234E1EADC21B00580862 /* DZNTableViewAdapter.swift */; };
-		C6CF23521EADC21B00580862 /* DZNEmptyDisplayingTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6CF234F1EADC21B00580862 /* DZNEmptyDisplayingTableView.swift */; };
 		C6CF23561EADCAB400580862 /* EmptyContentTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6CF23551EADCAB400580862 /* EmptyContentTest.swift */; };
 		C6CF23591EADCACD00580862 /* DZNEmptyTableViewDataSourceTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6CF23571EADCACD00580862 /* DZNEmptyTableViewDataSourceTest.swift */; };
 		C6CF235A1EADCACD00580862 /* EmptyContentProvidingMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6CF23581EADCACD00580862 /* EmptyContentProvidingMock.swift */; };
-		C6CF235C1EADCC3D00580862 /* DZNEmptyDisplayingTableViewMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6CF235B1EADCC3D00580862 /* DZNEmptyDisplayingTableViewMock.swift */; };
 		C6CF237E1EAF372E00580862 /* AnyEmptyContentDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6CF237D1EAF372E00580862 /* AnyEmptyContentDataSource.swift */; };
 		C6CF23801EB070E400580862 /* AnyStateManaging.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6CF237F1EB070E400580862 /* AnyStateManaging.swift */; };
 /* End PBXBuildFile section */
@@ -62,6 +61,8 @@
 		C634F9C11EA9D7400016232D /* StateManaging.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StateManaging.swift; sourceTree = "<group>"; };
 		C634F9C21EA9D7400016232D /* StateMachine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StateMachine.swift; sourceTree = "<group>"; };
 		C634F9C51EA9DC750016232D /* StateMachineTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StateMachineTest.swift; sourceTree = "<group>"; };
+		C64C0B171EB9A7E100B04871 /* CustomEmptyContentViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomEmptyContentViewDataSource.swift; sourceTree = "<group>"; };
+		C64C0B191EB9A81500B04871 /* AnyCustomEmptyContentViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnyCustomEmptyContentViewDataSource.swift; sourceTree = "<group>"; };
 		C6878CEC1EB1BE000065CDD2 /* EmptyState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptyState.swift; sourceTree = "<group>"; };
 		C6878CEE1EB1BE190065CDD2 /* EmptyStateMock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptyStateMock.swift; sourceTree = "<group>"; };
 		C6878CF41EB1D4E10065CDD2 /* Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -76,13 +77,11 @@
 		C6CF23421EADC11200580862 /* EmptyContent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptyContent.swift; sourceTree = "<group>"; };
 		C6CF23431EADC11200580862 /* EmptyContentStyling.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptyContentStyling.swift; sourceTree = "<group>"; };
 		C6CF23491EADC15E00580862 /* EmptyContentDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptyContentDataSource.swift; sourceTree = "<group>"; };
-		C6CF234D1EADC21B00580862 /* RetryProviding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RetryProviding.swift; sourceTree = "<group>"; };
+		C6CF234D1EADC21B00580862 /* ActionButtonProviding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActionButtonProviding.swift; sourceTree = "<group>"; };
 		C6CF234E1EADC21B00580862 /* DZNTableViewAdapter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DZNTableViewAdapter.swift; sourceTree = "<group>"; };
-		C6CF234F1EADC21B00580862 /* DZNEmptyDisplayingTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DZNEmptyDisplayingTableView.swift; sourceTree = "<group>"; };
 		C6CF23551EADCAB400580862 /* EmptyContentTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptyContentTest.swift; sourceTree = "<group>"; };
 		C6CF23571EADCACD00580862 /* DZNEmptyTableViewDataSourceTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DZNEmptyTableViewDataSourceTest.swift; sourceTree = "<group>"; };
 		C6CF23581EADCACD00580862 /* EmptyContentProvidingMock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptyContentProvidingMock.swift; sourceTree = "<group>"; };
-		C6CF235B1EADCC3D00580862 /* DZNEmptyDisplayingTableViewMock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DZNEmptyDisplayingTableViewMock.swift; sourceTree = "<group>"; };
 		C6CF237D1EAF372E00580862 /* AnyEmptyContentDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnyEmptyContentDataSource.swift; sourceTree = "<group>"; };
 		C6CF237F1EB070E400580862 /* AnyStateManaging.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnyStateManaging.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -92,7 +91,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C6878D0C1EB8B7EE0065CDD2 /* DZNEmptyDataSet.framework in Frameworks */,
+				C618ABD81EBAF4FF007C11F9 /* DZNEmptyDataSet.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -108,7 +107,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C6878D0A1EB1D64B0065CDD2 /* DZNEmptyDataSet.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -216,6 +214,9 @@
 			children = (
 				C6CF23491EADC15E00580862 /* EmptyContentDataSource.swift */,
 				C6CF237D1EAF372E00580862 /* AnyEmptyContentDataSource.swift */,
+				C64C0B171EB9A7E100B04871 /* CustomEmptyContentViewDataSource.swift */,
+				C64C0B191EB9A81500B04871 /* AnyCustomEmptyContentViewDataSource.swift */,
+				C6CF234D1EADC21B00580862 /* ActionButtonProviding.swift */,
 			);
 			name = DataSource;
 			sourceTree = "<group>";
@@ -223,9 +224,7 @@
 		C6CF234C1EADC21000580862 /* DZNEmptyDataSet-Binding */ = {
 			isa = PBXGroup;
 			children = (
-				C6CF234D1EADC21B00580862 /* RetryProviding.swift */,
 				C6CF234E1EADC21B00580862 /* DZNTableViewAdapter.swift */,
-				C6CF234F1EADC21B00580862 /* DZNEmptyDisplayingTableView.swift */,
 			);
 			name = "DZNEmptyDataSet-Binding";
 			sourceTree = "<group>";
@@ -234,7 +233,6 @@
 			isa = PBXGroup;
 			children = (
 				C6CF23581EADCACD00580862 /* EmptyContentProvidingMock.swift */,
-				C6CF235B1EADCC3D00580862 /* DZNEmptyDisplayingTableViewMock.swift */,
 				C6878CEE1EB1BE190065CDD2 /* EmptyStateMock.swift */,
 			);
 			name = Mocks;
@@ -389,7 +387,6 @@
 			files = (
 			);
 			inputPaths = (
-				"$(SRCROOT)/Carthage/Build/iOS/DZNEmptyDataSet.framework",
 			);
 			name = "📦 Carthage Copy";
 			outputPaths = (
@@ -423,15 +420,16 @@
 				C6CF23801EB070E400580862 /* AnyStateManaging.swift in Sources */,
 				C6CF234B1EADC15E00580862 /* EmptyContentDataSource.swift in Sources */,
 				C6CF23461EADC11200580862 /* EmptyContentStyling.swift in Sources */,
+				C64C0B181EB9A7E100B04871 /* CustomEmptyContentViewDataSource.swift in Sources */,
 				C6878CED1EB1BE000065CDD2 /* EmptyState.swift in Sources */,
 				C634F9C31EA9D7400016232D /* StateManaging.swift in Sources */,
 				C6CF23441EADC11200580862 /* StringStyle.swift in Sources */,
-				C6CF23521EADC21B00580862 /* DZNEmptyDisplayingTableView.swift in Sources */,
 				C6CF23511EADC21B00580862 /* DZNTableViewAdapter.swift in Sources */,
 				C634F9C41EA9D7400016232D /* StateMachine.swift in Sources */,
 				C6CF237E1EAF372E00580862 /* AnyEmptyContentDataSource.swift in Sources */,
+				C64C0B1A1EB9A81500B04871 /* AnyCustomEmptyContentViewDataSource.swift in Sources */,
 				C6CF23451EADC11200580862 /* EmptyContent.swift in Sources */,
-				C6CF23501EADC21B00580862 /* RetryProviding.swift in Sources */,
+				C6CF23501EADC21B00580862 /* ActionButtonProviding.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -442,7 +440,6 @@
 				C6CF235A1EADCACD00580862 /* EmptyContentProvidingMock.swift in Sources */,
 				C6878CEF1EB1BE190065CDD2 /* EmptyStateMock.swift in Sources */,
 				C6CF23591EADCACD00580862 /* DZNEmptyTableViewDataSourceTest.swift in Sources */,
-				C6CF235C1EADCC3D00580862 /* DZNEmptyDisplayingTableViewMock.swift in Sources */,
 				C634F9C61EA9DC750016232D /* StateMachineTest.swift in Sources */,
 				C6CF23561EADCAB400580862 /* EmptyContentTest.swift in Sources */,
 			);
@@ -648,10 +645,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/Carthage/Build/iOS";
 				INFOPLIST_FILE = DBEmptyStateTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.dbsystel.DBEmptyStateTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				REEXPORTED_FRAMEWORK_NAMES = "";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -660,10 +659,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/Carthage/Build/iOS";
 				INFOPLIST_FILE = DBEmptyStateTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.dbsystel.DBEmptyStateTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				REEXPORTED_FRAMEWORK_NAMES = "";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
