@@ -23,7 +23,7 @@
 import XCTest
 import UIKit
 import DZNEmptyDataSet
-@testable import DBEmptyState
+import DBEmptyState
 
 class DZNEmptyTableViewDataSourceTest: XCTestCase {
     var tableView: UITableView!
@@ -47,9 +47,9 @@ class DZNEmptyTableViewDataSourceTest: XCTestCase {
         let emptyDataSource = EmptyTableViewAdapter(tableView: tableView, stateManaging: stateManagingMock, dataSource: emptyContentDataSource)
         
         //Then
-        XCTAssertNotNil(emptyDataSource.tableView)
-        XCTAssertNotNil(emptyDataSource.dataSource)
-        XCTAssertNotNil(emptyDataSource.stateManaging)
+        XCTAssertNotNil(emptyDataSource.emptyContentDataSource)
+        XCTAssertNotNil(emptyDataSource.customViewDataSource)
+        XCTAssertNotNil(emptyDataSource.actionButtonDataSource)
     }
     
     func testAgainstMemoryLeaks() {

@@ -24,7 +24,7 @@ import DZNEmptyDataSet
 
 
 open class EmptyTableViewAdapter<T: Equatable>: NSObject, DZNEmptyDataSetSource, DZNEmptyDataSetDelegate {
-    public var dataSource: AnyEmptyContentDataSource<T>?
+    public var emptyContentDataSource: AnyEmptyContentDataSource<T>?
     public var customViewDataSource: AnyCustomEmptyViewDataSource<T>?
     public var actionButtonDataSource: AnyActionButtonDataSource<T>?
     
@@ -35,23 +35,19 @@ open class EmptyTableViewAdapter<T: Equatable>: NSObject, DZNEmptyDataSetSource,
         (tableView: UITableView, stateManaging: StateManager, emptyContentDataSource: EmptyContentSource, customViewDataSource: CustomViewSource, buttonDataSource: ButtonDataSource)
             where StateManager.State == T, EmptyContentSource.EmptyState == T, CustomViewSource.EmptyState == T, ButtonDataSource.EmptyState == T {
         self.tableView = tableView
-        self.dataSource = AnyEmptyContentDataSource(emptyContentDataSource)
+        self.emptyContentDataSource = AnyEmptyContentDataSource(emptyContentDataSource)
         self.customViewDataSource = AnyCustomEmptyViewDataSource(customViewDataSource)
         self.actionButtonDataSource = AnyActionButtonDataSource(buttonDataSource)
         self.stateManaging = AnyStateManaging(stateManaging)
         super.init()
-        tableView.emptyDataSetSource = self
-        update()
-        stateManaging.onChange(execute: { [weak self] _ in
-            self?.update()
-        })
+        setup()
     }
     
     public init<StateManager: StateManaging, EmptyContentSource: EmptyContentDataSource>
         (tableView: UITableView, stateManaging: StateManager, emptyContentDataSource: EmptyContentSource)
         where StateManager.State == T, EmptyContentSource.EmptyState == T {
             self.tableView = tableView
-            self.dataSource = AnyEmptyContentDataSource(emptyContentDataSource)
+            self.emptyContentDataSource = AnyEmptyContentDataSource(emptyContentDataSource)
             self.stateManaging = AnyStateManaging(stateManaging)
             super.init()
             setup()
@@ -75,11 +71,11 @@ open class EmptyTableViewAdapter<T: Equatable>: NSObject, DZNEmptyDataSetSource,
     }
     
     open func title(forEmptyDataSet scrollView: UIScrollView!) -> NSAttributedString! {
-        return emptyContent()?.title.flatMap { dataSource?.titleStyle.style($0) }
+        return emptyContent()?.title.flatMap { emptyContentDataSource?.titleStyle.style($0) }
     }
     
     open func description(forEmptyDataSet scrollView: UIScrollView!) -> NSAttributedString! {
-        return emptyContent()?.subtitle.flatMap { dataSource?.subtitleStyle.style($0) }
+        return emptyContent()?.subtitle.flatMap { emptyContentDataSource?.subtitleStyle.style($0) }
     }
     
     open func image(forEmptyDataSet scrollView: UIScrollView!) -> UIImage! {
@@ -94,7 +90,7 @@ open class EmptyTableViewAdapter<T: Equatable>: NSObject, DZNEmptyDataSetSource,
     }
     
     private func emptyContent() -> EmptyContent? {
-        return dataSource?.emptyContent(for: stateManaging.state)
+        return emptyContentDataSource?.emptyContent(for: stateManaging.state)
     }
     
     private func button() -> ButtonModel? {
