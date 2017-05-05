@@ -27,7 +27,7 @@ public class AnyCustomEmptyViewDataSource<T: Equatable>: CustomEmptyViewDataSour
     
     init<D: CustomEmptyViewDataSource>(_ emptyContentDataSource: D) where T == D.EmptyState {
         unowned let weakDataSource = emptyContentDataSource
-        self.customView =  { weakDataSource.customView(for: $0, with: $1) }
+        self.customView = { weakDataSource.customView(for: $0, with: $1) }
     }
     
     public func customView(for state: T, with content: EmptyContent) -> UIView? {

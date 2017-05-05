@@ -46,8 +46,8 @@ class StateMachineTest: XCTestCase {
     func testWhenStateChanges_CorrectEvent() {
         //Given
         var newState: EmptyStateMock?
-        let whenStateChanges = {(int: EmptyStateMock) in
-            newState = int
+        let whenStateChanges = {(emptyState: EmptyStateMock) in
+            newState = emptyState
         }
         stateMachine.on(.initial, execute: whenStateChanges)
         
@@ -59,12 +59,11 @@ class StateMachineTest: XCTestCase {
         XCTAssertEqual(stateMachine.state, .initial)
     }
     
-    
     func testWhenStateChanges_withoutTheCorrectEvent() {
         //Given
         var newState: EmptyStateMock?
-        let whenStateChanges = {(int: EmptyStateMock) in
-            newState = int
+        let whenStateChanges = {(emptyState: EmptyStateMock) in
+            newState = emptyState
         }
         stateMachine.on(.initial, execute: whenStateChanges)
         
@@ -78,8 +77,8 @@ class StateMachineTest: XCTestCase {
     func testOnChange() {
         //Given
         var newState: EmptyStateMock?
-        let whenStateChanges = {(int: EmptyStateMock) in
-            newState = int
+        let whenStateChanges = {(emptyState: EmptyStateMock) in
+            newState = emptyState
         }
         stateMachine.onChange(execute: whenStateChanges)
         

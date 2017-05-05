@@ -55,7 +55,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		C618ABDB1EBB2795007C11F9 /* AnyActionButtonDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AnyActionButtonDataSource.swift; path = ../AnyActionButtonDataSource.swift; sourceTree = "<group>"; };
+		C618ABDB1EBB2795007C11F9 /* AnyActionButtonDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnyActionButtonDataSource.swift; sourceTree = "<group>"; };
 		C618ABDD1EBB27D6007C11F9 /* StateManagingMock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StateManagingMock.swift; sourceTree = "<group>"; };
 		C634F9A71EA9D7210016232D /* DBEmptyState.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = DBEmptyState.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C634F9AA1EA9D7210016232D /* DBEmptyState.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DBEmptyState.h; sourceTree = "<group>"; };
@@ -267,6 +267,7 @@
 				C634F9A41EA9D7210016232D /* Headers */,
 				C634F9A51EA9D7210016232D /* Resources */,
 				C6878D0E1EB8B8100065CDD2 /* 📦 Carthage Copy */,
+				C656817C1EBC7AE800F5E20F /* 🚧 Swift Lint */,
 			);
 			buildRules = (
 			);
@@ -387,6 +388,20 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		C656817C1EBC7AE800F5E20F /* 🚧 Swift Lint */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "🚧 Swift Lint";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftlint >/dev/null; then\nswiftlint\nelse\necho \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi";
+		};
 		C6878D0B1EB1D6AB0065CDD2 /* 📦 Carthage Copy */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;

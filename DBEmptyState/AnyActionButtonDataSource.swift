@@ -28,8 +28,8 @@ public class AnyActionButtonDataSource<EmptyState: Equatable>: ActionButtonDataS
     
     public init<D: ActionButtonDataSource>(_ buttonActionProviding: D) where D.EmptyState == EmptyState {
         unowned let weakButtonActionProviding = buttonActionProviding
-        butonFor =  { weakButtonActionProviding.button(for: $0) }
-        buttonTitleStyleFor =  { weakButtonActionProviding.buttonTitleStyle(for: $0, with: $1) }
+        butonFor = { weakButtonActionProviding.button(for: $0) }
+        buttonTitleStyleFor = { weakButtonActionProviding.buttonTitleStyle(for: $0, with: $1) }
     }
     
     public func button(for state: EmptyState) -> ButtonModel? {

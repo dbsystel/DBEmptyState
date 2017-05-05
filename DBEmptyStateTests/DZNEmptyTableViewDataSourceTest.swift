@@ -55,8 +55,8 @@ class DZNEmptyTableViewDataSourceTest: XCTestCase {
     func testAgainstMemoryLeaks() {
         //Given
         let tableView = UITableView()
-        var emptyContentDataSource: EmptyContentDataSourceMock? = EmptyContentDataSourceMock()
-        emptyContentDataSource?.memoryCheck = EmptyTableViewAdapter(tableView: tableView, stateManaging: stateManagingMock, dataSource: emptyContentDataSource!)
+        var emptyContentDataSource: EmptyContentDataSourceMock! = EmptyContentDataSourceMock()
+        emptyContentDataSource?.memoryCheck = EmptyTableViewAdapter(tableView: tableView, stateManaging: stateManagingMock, dataSource: emptyContentDataSource)
         weak var emptyDataSource = emptyContentDataSource?.memoryCheck
         
         //When
@@ -78,7 +78,6 @@ class DZNEmptyTableViewDataSourceTest: XCTestCase {
         XCTAssertEqual(title?.string, "Title")
         XCTAssertEqual(emptyContentDataSource.capturedState, .error)
     }
-
 
     func testSubtitle() {
         //Given

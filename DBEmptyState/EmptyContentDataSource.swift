@@ -20,7 +20,6 @@
 //  DEALINGS IN THE SOFTWARE.
 //
 
-
 import Foundation
 
 public protocol EmptyContentDataSource: class, EmptyContentStyling {
