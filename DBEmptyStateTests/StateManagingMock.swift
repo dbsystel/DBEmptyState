@@ -23,3 +23,17 @@
 import Foundation
 import DBEmptyState
 
+class StateManagingMock: StateManaging {
+    
+    var callback: ((EmptyStateMock) -> Void)?
+    
+    init(state: EmptyStateMock) {
+        self.state = state
+    }
+    
+    var state: EmptyStateMock
+    
+    func onChange(execute: @escaping (EmptyStateMock) -> Void) {
+        callback = execute
+    }
+}

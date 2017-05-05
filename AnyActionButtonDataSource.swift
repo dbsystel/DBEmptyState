@@ -22,22 +22,21 @@
 
 import UIKit
 
-public struct ButtonModel {
-    public let title: String
-    public let action: () -> Void
-}
-
-public protocol ActionButtonDataSource: class {
-    associatedtype EmptyState: Equatable
+public class AnyActionButtonDataSource<EmptyState: Equatable>: ActionButtonDataSource {
+    private let butonFor: (EmptyState) -> ButtonModel?
+    private let buttonTitleStyleFor: (UIControlState, EmptyState) -> StringStyle
     
-    func button(for state: EmptyState) -> ButtonModel?
+    public init<D: ActionButtonDataSource>(_ buttonActionProviding: D) where D.EmptyState == EmptyState {
+        unowned let weakButtonActionProviding = buttonActionProviding
+        butonFor =  { weakButtonActionProviding.button(for: $0) }
+        buttonTitleStyleFor =  { weakButtonActionProviding.buttonTitleStyle(for: $0, with: $1) }
+    }
     
-    func buttonTitleStyle(for buttonState: UIControlState, with emptyState: EmptyState) -> StringStyle
+    public func button(for state: EmptyState) -> ButtonModel? {
+        return butonFor(state)
+    }
     
-}
-
-extension ActionButtonDataSource {
     public func buttonTitleStyle(for buttonState: UIControlState, with emptyState: EmptyState) -> StringStyle {
-        return .default
+        return buttonTitleStyleFor(buttonState, emptyState)
     }
 }

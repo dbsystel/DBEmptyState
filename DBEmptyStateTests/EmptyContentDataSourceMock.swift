@@ -20,24 +20,26 @@
 //  DEALINGS IN THE SOFTWARE.
 //
 
-import UIKit
+import Foundation
+import DBEmptyState
 
-public struct ButtonModel {
-    public let title: String
-    public let action: () -> Void
-}
-
-public protocol ActionButtonDataSource: class {
-    associatedtype EmptyState: Equatable
+class EmptyContentDataSourceMock: EmptyContentDataSource, CustomEmptyViewDataSource, ActionButtonDataSource {
+    var memoryCheck: EmptyTableViewAdapter<EmptyStateMock>?
+    var emptyContentReturning: EmptyContent?
+    var customViewReturning: UIView?
+    var buttonReturning: ButtonModel?
+    var capturedState: EmptyStateMock?
     
-    func button(for state: EmptyState) -> ButtonModel?
+    func emptyContent(for state: EmptyStateMock) -> EmptyContent? {
+        capturedState = state
+        return emptyContentReturning
+    }
     
-    func buttonTitleStyle(for buttonState: UIControlState, with emptyState: EmptyState) -> StringStyle
+    func customView(for state: EmptyStateMock, with content: EmptyContent) -> UIView? {
+        return customViewReturning
+    }
     
-}
-
-extension ActionButtonDataSource {
-    public func buttonTitleStyle(for buttonState: UIControlState, with emptyState: EmptyState) -> StringStyle {
-        return .default
+    func button(for state: EmptyStateMock) -> ButtonModel? {
+        return buttonReturning
     }
 }

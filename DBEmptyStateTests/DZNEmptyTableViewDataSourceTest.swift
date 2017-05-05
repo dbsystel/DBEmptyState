@@ -25,41 +25,6 @@ import UIKit
 import DZNEmptyDataSet
 @testable import DBEmptyState
 
-class EmptyContentDataSourceMock: EmptyContentDataSource, CustomEmptyViewDataSource, ActionButtonDataSource {
-    var memoryCheck: EmptyTableViewAdapter<EmptyStateMock>?
-    var emptyContentReturning: EmptyContent?
-    var customViewReturning: UIView?
-    var capturedState: EmptyStateMock?
-    
-    func emptyContent(for state: EmptyStateMock) -> EmptyContent? {
-        capturedState = state
-        return emptyContentReturning
-    }
-    
-    func customView(for state: EmptyStateMock, with content: EmptyContent) -> UIView? {
-        return customViewReturning
-    }
-    
-    func button(for state: EmptyStateMock) -> ButtonModel? {
-        return nil
-    }
-}
-
-class StateManagingMock: StateManaging {
-    
-    var callback: ((EmptyStateMock) -> Void)?
-    
-    init(state: EmptyStateMock) {
-        self.state = state
-    }
-    
-    var state: EmptyStateMock
-    
-    func onChange(execute: @escaping (EmptyStateMock) -> Void) {
-        callback = execute
-    }
-}
-
 class DZNEmptyTableViewDataSourceTest: XCTestCase {
     var tableView: UITableView!
     var emptyDataSource: EmptyTableViewAdapter<EmptyStateMock>!
@@ -99,32 +64,7 @@ class DZNEmptyTableViewDataSourceTest: XCTestCase {
         
         //
         XCTAssertNil(emptyDataSource)
-        
     }
-
-//    func testUpdateWithVisibileEmptyDataSet() {
-//        //Given
-//        tableView.isEmptyDataSetVisible = true
-//        
-//        //When
-//        stateManagingMock.callback?(.error)
-//        
-//        //Then
-//        XCTAssertEqual(tableView.reloadCount, 1)
-//        XCTAssertNotNil(tableView.tableFooterView)
-//    }
-//
-//    func testUpdateWithoutVisibileEmptyDataSet() {
-//        //Given
-//        tableView.isEmptyDataSetVisible = false
-//        
-//        //When
-//        stateManagingMock.callback?(.error)
-//        
-//        //Then
-//        XCTAssertEqual(tableView.reloadCount, 1)
-//        XCTAssertNil(tableView.tableFooterView)
-//    }
 
     func testTitle() {
         //Given
@@ -174,5 +114,18 @@ class DZNEmptyTableViewDataSourceTest: XCTestCase {
         
         //Then
         XCTAssertEqual(view, returningView)
+    }
+    
+    func testButonTitle() {
+        //Given
+        let button = ButtonModel(title: "Title", action: {})
+        emptyContentDataSource.buttonReturning = button
+        
+        //When
+        let returningTitle = emptyDataSource.buttonTitle(forEmptyDataSet: UIScrollView(frame: .zero), for: .normal)
+        
+        //Then
+        XCTAssertEqual(returningTitle?.string, "Title")
+
     }
 }
