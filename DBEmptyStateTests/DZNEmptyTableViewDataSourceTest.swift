@@ -126,6 +126,18 @@ class DZNEmptyTableViewDataSourceTest: XCTestCase {
         
         //Then
         XCTAssertEqual(returningTitle?.string, "Title")
-
+    }
+    
+    func testButtonAction() {
+        //Given
+        var didCallAction = false
+        let button = ButtonModel(title: "Title", action: { didCallAction = true })
+        emptyContentDataSource.buttonReturning = button
+        
+        //When
+        emptyDataSource.emptyDataSet( UIScrollView(frame: .zero), didTap: UIButton(frame: .zero))
+        
+        //Then
+        XCTAssertTrue(didCallAction)
     }
 }
