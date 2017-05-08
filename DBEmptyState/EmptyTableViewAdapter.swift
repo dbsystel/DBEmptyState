@@ -49,6 +49,7 @@ open class EmptyTableViewAdapter<T: Equatable>: NSObject, DZNEmptyDataSetSource,
         where StateManager.State == T, EmptyContentSource.EmptyState == T {
             self.tableView = tableView
             self.emptyContentDataSource = AnyEmptyContentDataSource(emptyContentCustomViewDataSource)
+            self.customViewDataSource = AnyCustomEmptyViewDataSource(emptyContentCustomViewDataSource)
             self.stateManaging = AnyStateManaging(stateManaging)
             super.init()
             setup()

@@ -20,19 +20,12 @@
 //  DEALINGS IN THE SOFTWARE.
 //
 
-import UIKit
-
-public protocol ActionButtonDataSource: class {
-    associatedtype EmptyState: Equatable
+public struct ButtonModel {
+    public let title: String
+    public let action: () -> Void
     
-    func button(for state: EmptyState) -> ButtonModel?
-    
-    func buttonTitleStyle(for buttonState: UIControlState, with emptyState: EmptyState) -> StringStyle
-    
-}
-
-extension ActionButtonDataSource {
-    public func buttonTitleStyle(for buttonState: UIControlState, with emptyState: EmptyState) -> StringStyle {
-        return .default
+    public init(title: String, action: @escaping () -> Void) {
+        self.title = title
+        self.action = action
     }
 }

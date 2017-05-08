@@ -18,6 +18,7 @@
 		C64C0B181EB9A7E100B04871 /* CustomEmptyContentViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64C0B171EB9A7E100B04871 /* CustomEmptyContentViewDataSource.swift */; };
 		C64C0B1A1EB9A81500B04871 /* AnyCustomEmptyContentViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64C0B191EB9A81500B04871 /* AnyCustomEmptyContentViewDataSource.swift */; };
 		C656817E1EBC894100F5E20F /* ViewController+EmptyState.swift in Sources */ = {isa = PBXBuildFile; fileRef = C656817D1EBC894100F5E20F /* ViewController+EmptyState.swift */; };
+		C65681801EC0432000F5E20F /* ButtonModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C656817F1EC0432000F5E20F /* ButtonModel.swift */; };
 		C6878CED1EB1BE000065CDD2 /* EmptyState.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6878CEC1EB1BE000065CDD2 /* EmptyState.swift */; };
 		C6878CEF1EB1BE190065CDD2 /* EmptyStateMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6878CEE1EB1BE190065CDD2 /* EmptyStateMock.swift */; };
 		C6878CF71EB1D4E10065CDD2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6878CF61EB1D4E10065CDD2 /* AppDelegate.swift */; };
@@ -32,7 +33,7 @@
 		C6CF23501EADC21B00580862 /* ActionButtonProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6CF234D1EADC21B00580862 /* ActionButtonProviding.swift */; };
 		C6CF23511EADC21B00580862 /* EmptyTableViewAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6CF234E1EADC21B00580862 /* EmptyTableViewAdapter.swift */; };
 		C6CF23561EADCAB400580862 /* EmptyContentTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6CF23551EADCAB400580862 /* EmptyContentTest.swift */; };
-		C6CF23591EADCACD00580862 /* DZNEmptyTableViewDataSourceTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6CF23571EADCACD00580862 /* DZNEmptyTableViewDataSourceTest.swift */; };
+		C6CF23591EADCACD00580862 /* EmptyTableViewAdapterTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6CF23571EADCACD00580862 /* EmptyTableViewAdapterTest.swift */; };
 		C6CF235A1EADCACD00580862 /* EmptyContentDataSourceMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6CF23581EADCACD00580862 /* EmptyContentDataSourceMock.swift */; };
 		C6CF237E1EAF372E00580862 /* AnyEmptyContentDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6CF237D1EAF372E00580862 /* AnyEmptyContentDataSource.swift */; };
 		C6CF23801EB070E400580862 /* AnyStateManaging.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6CF237F1EB070E400580862 /* AnyStateManaging.swift */; };
@@ -69,6 +70,7 @@
 		C64C0B171EB9A7E100B04871 /* CustomEmptyContentViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomEmptyContentViewDataSource.swift; sourceTree = "<group>"; };
 		C64C0B191EB9A81500B04871 /* AnyCustomEmptyContentViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnyCustomEmptyContentViewDataSource.swift; sourceTree = "<group>"; };
 		C656817D1EBC894100F5E20F /* ViewController+EmptyState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ViewController+EmptyState.swift"; sourceTree = "<group>"; };
+		C656817F1EC0432000F5E20F /* ButtonModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonModel.swift; sourceTree = "<group>"; };
 		C6878CEC1EB1BE000065CDD2 /* EmptyState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptyState.swift; sourceTree = "<group>"; };
 		C6878CEE1EB1BE190065CDD2 /* EmptyStateMock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptyStateMock.swift; sourceTree = "<group>"; };
 		C6878CF41EB1D4E10065CDD2 /* Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -86,7 +88,7 @@
 		C6CF234D1EADC21B00580862 /* ActionButtonProviding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActionButtonProviding.swift; sourceTree = "<group>"; };
 		C6CF234E1EADC21B00580862 /* EmptyTableViewAdapter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptyTableViewAdapter.swift; sourceTree = "<group>"; };
 		C6CF23551EADCAB400580862 /* EmptyContentTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptyContentTest.swift; sourceTree = "<group>"; };
-		C6CF23571EADCACD00580862 /* DZNEmptyTableViewDataSourceTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DZNEmptyTableViewDataSourceTest.swift; sourceTree = "<group>"; };
+		C6CF23571EADCACD00580862 /* EmptyTableViewAdapterTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptyTableViewAdapterTest.swift; sourceTree = "<group>"; };
 		C6CF23581EADCACD00580862 /* EmptyContentDataSourceMock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptyContentDataSourceMock.swift; sourceTree = "<group>"; };
 		C6CF237D1EAF372E00580862 /* AnyEmptyContentDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnyEmptyContentDataSource.swift; sourceTree = "<group>"; };
 		C6CF237F1EB070E400580862 /* AnyStateManaging.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnyStateManaging.swift; sourceTree = "<group>"; };
@@ -160,7 +162,7 @@
 				C6CF235D1EADCC7200580862 /* Mocks */,
 				C6CF23551EADCAB400580862 /* EmptyContentTest.swift */,
 				C634F9C51EA9DC750016232D /* StateMachineTest.swift */,
-				C6CF23571EADCACD00580862 /* DZNEmptyTableViewDataSourceTest.swift */,
+				C6CF23571EADCACD00580862 /* EmptyTableViewAdapterTest.swift */,
 				C634F9B71EA9D7210016232D /* Info.plist */,
 			);
 			path = DBEmptyStateTests;
@@ -224,6 +226,7 @@
 				C64C0B171EB9A7E100B04871 /* CustomEmptyContentViewDataSource.swift */,
 				C64C0B191EB9A81500B04871 /* AnyCustomEmptyContentViewDataSource.swift */,
 				C6CF234D1EADC21B00580862 /* ActionButtonProviding.swift */,
+				C656817F1EC0432000F5E20F /* ButtonModel.swift */,
 				C618ABDB1EBB2795007C11F9 /* AnyActionButtonDataSource.swift */,
 			);
 			name = DataSource;
@@ -443,6 +446,7 @@
 			files = (
 				C6CF23801EB070E400580862 /* AnyStateManaging.swift in Sources */,
 				C6CF234B1EADC15E00580862 /* EmptyContentDataSource.swift in Sources */,
+				C65681801EC0432000F5E20F /* ButtonModel.swift in Sources */,
 				C6CF23461EADC11200580862 /* EmptyContentStyling.swift in Sources */,
 				C618ABDC1EBB2795007C11F9 /* AnyActionButtonDataSource.swift in Sources */,
 				C64C0B181EB9A7E100B04871 /* CustomEmptyContentViewDataSource.swift in Sources */,
@@ -465,7 +469,7 @@
 				C6CF235A1EADCACD00580862 /* EmptyContentDataSourceMock.swift in Sources */,
 				C618ABDE1EBB27D6007C11F9 /* StateManagingMock.swift in Sources */,
 				C6878CEF1EB1BE190065CDD2 /* EmptyStateMock.swift in Sources */,
-				C6CF23591EADCACD00580862 /* DZNEmptyTableViewDataSourceTest.swift in Sources */,
+				C6CF23591EADCACD00580862 /* EmptyTableViewAdapterTest.swift in Sources */,
 				C634F9C61EA9DC750016232D /* StateMachineTest.swift in Sources */,
 				C6CF23561EADCAB400580862 /* EmptyContentTest.swift in Sources */,
 			);

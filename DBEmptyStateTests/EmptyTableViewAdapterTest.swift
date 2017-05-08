@@ -52,6 +52,29 @@ class DZNEmptyTableViewDataSourceTest: XCTestCase {
         XCTAssertNotNil(emptyDataSource.actionButtonDataSource)
     }
     
+    func testPartialInitViewContentDataSource() {
+        //Given
+        let tableView = UITableView()
+        
+        //When
+        let emptyDataSource = EmptyTableViewAdapter(tableView: tableView, stateManaging: stateManagingMock,
+                                                    emptyContentCustomViewDataSource: emptyContentDataSource)
+        //Then
+        XCTAssertNotNil(emptyDataSource.emptyContentDataSource)
+        XCTAssertNotNil(emptyDataSource.customViewDataSource)
+    }
+    
+    func testPartialInitContentDataSource() {
+        //Given
+        let tableView = UITableView()
+        
+        //When
+        let emptyDataSource = EmptyTableViewAdapter(tableView: tableView, stateManaging: stateManagingMock,
+                                                    emptyContentDataSource: emptyContentDataSource)
+        //Then
+        XCTAssertNotNil(emptyDataSource.emptyContentDataSource)
+    }
+    
     func testAgainstMemoryLeaks() {
         //Given
         let tableView = UITableView()
