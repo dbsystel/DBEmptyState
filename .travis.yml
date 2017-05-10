@@ -4,6 +4,8 @@ matrix:
       osx_image: xcode8.3
       language: objective-c
       env: "iOS"
+      install:
+        - carthage update --platform ios --no-use-binaries
       script:
         - set -o pipefail && xcodebuild -scheme DBEmptyState -destination 'platform=iOS Simulator,name=iPhone SE,OS=latest' test CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO -enableCodeCoverage YES | xcpretty
       after_success:
