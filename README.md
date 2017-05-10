@@ -55,3 +55,17 @@ extension ExampleViewController: CustomEmptyViewDataSource {
     }
 }
 ```
+
+### Action Buttons
+If you want to add a button into you empty this is possible by implementing `ActionButtonDataSource`
+
+```swift
+func button(for state: EmptyState) -> ButtonModel? {
+        switch state {
+        case .error:
+            return ButtonModel(title: "Retry", action: {})
+        default:
+            return nil
+        }
+    }
+```
