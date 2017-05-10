@@ -17,6 +17,7 @@ override func viewDidLoad() {
 }
 ```
 
+### Empty Content
 Provide content for the states you want by implementing at least `EmptyContentDataSource`.
 ```swift
 extension ExampleViewController: EmptyContentDataSource {
@@ -32,5 +33,25 @@ extension ExampleViewController: EmptyContentDataSource {
             return nil
         }
     } 
+}
+```
+
+### Empty Custom View
+
+By implementing `CustomEmptyViewDataSource` and returning a new view for a given state you can override the default layout with a custom view.
+
+```swift
+extension ExampleViewController: CustomEmptyViewDataSource {
+    func customView(for state: EmptyState, with content: EmptyContent) -> UIView? {
+        switch state {
+        case .loading:
+            let spinner = UIActivityIndicatorView(activityIndicatorStyle: .gray)
+            spinner.startAnimating()
+            
+            return spinner
+        default:
+            return nil
+        }
+    }
 }
 ```
