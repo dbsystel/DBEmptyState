@@ -1,0 +1,10 @@
+matrix:
+  include:
+    - os: osx
+      osx_image: xcode8.3
+      language: objective-c
+      env: "iOS"
+      script:
+        - set -o pipefail && xcodebuild -scheme DBEmptyState -destination 'platform=iOS Simulator,name=iPhone SE,OS=latest' test CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO -enableCodeCoverage YES | xcpretty
+      after_success:
+        - bash <(curl -s https://codecov.io/bash)
