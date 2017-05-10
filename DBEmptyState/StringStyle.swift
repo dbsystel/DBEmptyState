@@ -39,7 +39,6 @@ public struct StringStyle {
         return style(string)
     }
     
-    static var `default`: StringStyle {
-        return StringStyle(style: NSAttributedString.init)
-    }
+    static let `default` = StringStyle(style: NSAttributedString.init)
+
 }

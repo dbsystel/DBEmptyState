@@ -36,6 +36,7 @@ extension ExampleViewController: EmptyContentDataSource {
             return nil
         }
     }
+    
 }
 
 extension ExampleViewController: CustomEmptyViewDataSource {
@@ -60,16 +61,5 @@ extension ExampleViewController: ActionButtonDataSource {
         default:
             return nil
         }
-    }
-    
-    func buttonTitleStyle(for buttonState: UIControlState, with emptyState: EmptyState) -> StringStyle {
-        let attributes: [String: Any]
-        if buttonState == .normal {
-            attributes = [NSForegroundColorAttributeName: view.tintColor]
-        } else {
-            attributes = [NSForegroundColorAttributeName: view.tintColor.withAlphaComponent(0.5)]
-        }
-        
-        return StringStyle(style: { NSAttributedString(string: $0, attributes: attributes) })
     }
 }

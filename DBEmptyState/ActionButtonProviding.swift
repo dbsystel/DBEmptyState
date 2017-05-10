@@ -33,6 +33,16 @@ public protocol ActionButtonDataSource: class {
 
 extension ActionButtonDataSource {
     public func buttonTitleStyle(for buttonState: UIControlState, with emptyState: EmptyState) -> StringStyle {
-        return .default
+        return buttonState == .highlighted ? .buttonHighlighted : .buttonNormal
+    }
+}
+
+public extension StringStyle {
+    static var buttonNormal: StringStyle {
+        return StringStyle(style: { NSAttributedString(string: $0, attributes: [NSForegroundColorAttributeName: UIView().tintColor]) })
+    }
+    
+    static var buttonHighlighted: StringStyle {
+        return StringStyle(style: { NSAttributedString(string: $0, attributes: [NSForegroundColorAttributeName: UIView().tintColor.withAlphaComponent(0.2)]) })
     }
 }
