@@ -1,5 +1,7 @@
 # DBEmptyState
 
+![Demo Example Gif](example.gif) 
+
 DBEmptyState helps you to manage your empty/error/whatever states inside your TableView. 
 You can define states and representations which get displayed once your state is active.
 
