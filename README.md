@@ -1,6 +1,8 @@
 # DBEmptyState
+[![Build Status](https://travis-ci.org/dbsystel/DBEmptyState.svg?branch=master)](https://travis-ci.org/dbsystel/DBEmptyState)
 [![Carthage Compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 [![Swift Version](https://img.shields.io/badge/Swift-3.0--3.1-F16D39.svg?style=flat)](https://developer.apple.com/swift)
+[![codecov](https://codecov.io/gh/dbsystel/DBEmptyState/branch/master/graph/badge.svg)](https://codecov.io/gh/dbsystel/DBEmptyState)
 
 ![Demo Example Gif](example.gif) 
 
