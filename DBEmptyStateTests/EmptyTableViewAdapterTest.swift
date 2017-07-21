@@ -52,6 +52,21 @@ class EmptyTableViewAdapterTest: XCTestCase {
         XCTAssertNotNil(emptyDataSource.actionButtonDataSource)
     }
     
+    func testInit2() {
+        //Given
+        let tableView = UITableView()
+        
+        //When
+        let emptyDataSource = EmptyTableViewAdapter(tableView: tableView, stateManaging: stateManagingMock,
+                                                    emptyContentDataSource: emptyContentDataSource,
+                                                    customViewDataSource: emptyContentDataSource, buttonDataSource: emptyContentDataSource)
+        
+        //Then
+        XCTAssertNotNil(emptyDataSource.emptyContentDataSource)
+        XCTAssertNotNil(emptyDataSource.customViewDataSource)
+        XCTAssertNotNil(emptyDataSource.actionButtonDataSource)
+    }
+    
     func testPartialInitViewContentDataSource() {
         //Given
         let tableView = UITableView()

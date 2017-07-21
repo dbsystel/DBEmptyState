@@ -66,13 +66,6 @@ open class EmptyViewAdapter<T: Equatable, View: UIScrollView>: NSObject, DZNEmpt
             setup()
     }
     
-    public convenience init<StateManager: StateManaging,
-                            EmptyContentData: EmptyContentDataSource & CustomEmptyViewDataSource & ActionButtonDataSource>
-        (view: View, stateManaging: StateManager, dataSource: EmptyContentData) where StateManager.State == T, EmptyContentData.EmptyState == T {
-        self.init(view: view, stateManaging: stateManaging,
-                  emptyContentDataSource: dataSource, customViewDataSource: dataSource, buttonDataSource: dataSource)
-    }
-    
     private func setup() {
         view.emptyDataSetSource = self
         update()

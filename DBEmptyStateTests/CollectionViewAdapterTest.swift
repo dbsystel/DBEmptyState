@@ -51,6 +51,20 @@ class CollectionViewAdapterTest: XCTestCase {
         XCTAssertNotNil(emptyDataSource.actionButtonDataSource)
     }
     
+    func testInit2() {
+        //Given
+        
+        //When
+        let emptyDataSource = EmptyCollectionViewAdapter(collectionView: collectionView, stateManaging: stateManagingMock,
+                                                    emptyContentDataSource: emptyContentDataSource,
+                                                    customViewDataSource: emptyContentDataSource, buttonDataSource: emptyContentDataSource)
+        
+        //Then
+        XCTAssertNotNil(emptyDataSource.emptyContentDataSource)
+        XCTAssertNotNil(emptyDataSource.customViewDataSource)
+        XCTAssertNotNil(emptyDataSource.actionButtonDataSource)
+    }
+    
     func testPartialInitViewContentDataSource() {
         //Given
         
