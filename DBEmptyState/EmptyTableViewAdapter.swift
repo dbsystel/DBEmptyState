@@ -19,112 +19,45 @@
 //  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 //  DEALINGS IN THE SOFTWARE.
 //
-import UIKit
-import DZNEmptyDataSet
 
-open class EmptyTableViewAdapter<T: Equatable>: NSObject, DZNEmptyDataSetSource, DZNEmptyDataSetDelegate {
-    public var emptyContentDataSource: AnyEmptyContentDataSource<T>?
-    public var customViewDataSource: AnyCustomEmptyViewDataSource<T>?
-    public var actionButtonDataSource: AnyActionButtonDataSource<T>?
+import UIKit
+
+open class EmptyTableViewAdapter<T: Equatable>: EmptyViewAdapter<T, UITableView> {
     
-    let tableView: UITableView
-    let stateManaging: AnyStateManaging<T>
-    
-    public init<StateManager: StateManaging, EmptyContentSource: EmptyContentDataSource,
-                CustomViewSource: CustomEmptyViewDataSource, ButtonDataSource: ActionButtonDataSource>
-        (tableView: UITableView, stateManaging: StateManager, emptyContentDataSource: EmptyContentSource,
-         customViewDataSource: CustomViewSource, buttonDataSource: ButtonDataSource)
-            where StateManager.State == T, EmptyContentSource.EmptyState == T, CustomViewSource.EmptyState == T, ButtonDataSource.EmptyState == T {
-        self.tableView = tableView
-        self.emptyContentDataSource = AnyEmptyContentDataSource(emptyContentDataSource)
-        self.customViewDataSource = AnyCustomEmptyViewDataSource(customViewDataSource)
-        self.actionButtonDataSource = AnyActionButtonDataSource(buttonDataSource)
-        self.stateManaging = AnyStateManaging(stateManaging)
-        super.init()
-        setup()
-    }
-    
-    public init<StateManager: StateManaging, EmptyContentSource: EmptyContentDataSource & CustomEmptyViewDataSource>
-        (tableView: UITableView, stateManaging: StateManager, emptyContentCustomViewDataSource: EmptyContentSource)
-        where StateManager.State == T, EmptyContentSource.EmptyState == T {
-            self.tableView = tableView
-            self.emptyContentDataSource = AnyEmptyContentDataSource(emptyContentCustomViewDataSource)
-            self.customViewDataSource = AnyCustomEmptyViewDataSource(emptyContentCustomViewDataSource)
-            self.stateManaging = AnyStateManaging(stateManaging)
-            super.init()
-            setup()
+    override open func update() {
+        super.update()
+        if view.isEmptyDataSetVisible {
+            view.tableFooterView = UIView()
+        } else {
+            view.tableFooterView = nil
+        }
     }
     
     public init<StateManager: StateManaging, EmptyContentSource: EmptyContentDataSource>
         (tableView: UITableView, stateManaging: StateManager, emptyContentDataSource: EmptyContentSource)
         where StateManager.State == T, EmptyContentSource.EmptyState == T {
-            self.tableView = tableView
-            self.emptyContentDataSource = AnyEmptyContentDataSource(emptyContentDataSource)
-            self.stateManaging = AnyStateManaging(stateManaging)
-            super.init()
-            setup()
+            super.init(view: tableView, stateManaging: stateManaging, emptyContentDataSource: emptyContentDataSource)
     }
     
-    private func setup() {
-        tableView.emptyDataSetSource = self
-        update()
-        stateManaging.onChange(execute: { [weak self] _ in
-            self?.update()
-        })
+    public init<StateManager: StateManaging, EmptyContentSource: EmptyContentDataSource,
+                CustomViewSource: CustomEmptyViewDataSource, ButtonDataSource: ActionButtonDataSource>
+        (tableView: UITableView, stateManaging: StateManager, emptyContentDataSource: EmptyContentSource,
+         customViewDataSource: CustomViewSource, buttonDataSource: ButtonDataSource)
+        where StateManager.State == T, EmptyContentSource.EmptyState == T, CustomViewSource.EmptyState == T, ButtonDataSource.EmptyState == T {
+            super.init(view: tableView, stateManaging: stateManaging, emptyContentDataSource: emptyContentDataSource,
+                       customViewDataSource: customViewDataSource, buttonDataSource: buttonDataSource)
     }
     
-    open func update() {
-        tableView.reloadEmptyDataSet()
-        if tableView.isEmptyDataSetVisible {
-            tableView.tableFooterView = UIView()
-        } else {
-            tableView.tableFooterView = nil
-        }
+    public init<StateManager: StateManaging, EmptyContentSource: EmptyContentDataSource & CustomEmptyViewDataSource>
+        (tableView: UITableView, stateManaging: StateManager, emptyContentCustomViewDataSource: EmptyContentSource)
+        where StateManager.State == T, EmptyContentSource.EmptyState == T {
+            super.init(view: tableView, stateManaging: stateManaging, emptyContentCustomViewDataSource: emptyContentCustomViewDataSource)
     }
     
-    open func title(forEmptyDataSet scrollView: UIScrollView!) -> NSAttributedString! {
-        return emptyContent()?.title.flatMap { emptyContentDataSource?.titleStyle.style($0) }
-    }
-    
-    open func description(forEmptyDataSet scrollView: UIScrollView!) -> NSAttributedString! {
-        return emptyContent()?.subtitle.flatMap { emptyContentDataSource?.subtitleStyle.style($0) }
-    }
-    
-    open func image(forEmptyDataSet scrollView: UIScrollView!) -> UIImage! {
-        return emptyContent()?.image
-    }
-    
-    open func customView(forEmptyDataSet scrollView: UIScrollView!) -> UIView! {
-        guard let emptyContent = emptyContent() else {
-            return nil
-        }
-        return customViewDataSource?.customView(for: stateManaging.state, with: emptyContent)
-    }
-    
-    private func emptyContent() -> EmptyContent? {
-        return emptyContentDataSource?.emptyContent(for: stateManaging.state)
-    }
-    
-    private func button() -> ButtonModel? {
-        return actionButtonDataSource?.button(for: stateManaging.state)
-    }
-    
-    open func buttonTitle(forEmptyDataSet scrollView: UIScrollView!, for state: UIControlState) -> NSAttributedString! {
-        return button().flatMap { actionButtonDataSource?.buttonTitleStyle(for: state, with: stateManaging.state).style($0.title) }
-    }
-    
-    open func emptyDataSet(_ scrollView: UIScrollView!, didTap button: UIButton!) {
-        self.button()?.action()
-    }
-    
-}
-
-extension EmptyTableViewAdapter {
-    
-    public convenience init<StateManager: StateManaging,
+    public init<StateManager: StateManaging,
                             EmptyContentData: EmptyContentDataSource & CustomEmptyViewDataSource & ActionButtonDataSource>
         (tableView: UITableView, stateManaging: StateManager, dataSource: EmptyContentData) where StateManager.State == T, EmptyContentData.EmptyState == T {
-        self.init(tableView: tableView, stateManaging: stateManaging,
+        super.init(view: tableView, stateManaging: stateManaging,
                   emptyContentDataSource: dataSource, customViewDataSource: dataSource, buttonDataSource: dataSource)
     }
 }
