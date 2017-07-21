@@ -92,6 +92,21 @@ extension ExampleViewController: ActionButtonDataSource {
 }
 ```
 
+### ViewAdapter Initializers
+In many cases you descide to implement just of of the mentioned dataSources. When doing so you need to use the fitting `init()` on the ViewAdapter. See the following example to find the right initializer:
+
+```swift
+//When only implementing EmptyContentDataSource
+let viewDatapter = TableViewAdapter(tableView: tableView, stateManaging: emptyState, emptyContentDataSource: self)
+
+//When implementing EmptyContentDataSource & CustomEmptyViewDataSource
+let viewDatapter = TableViewAdapter(tableView: tableView, stateManaging: emptyState, emptyContentCustomViewDataSource: self)
+
+//When your dataSources are implemented by different types
+let viewDatapter = TableViewAdapter(tableView: tableView, stateManaging: emptyState, emptyContentDataSource: self, customViewDataSource: firstOtherType, buttonDataSource: secondOtherType)
+```
+**Note:** All initializers are available for `EmptyCollectionViewAdapter` as well.
+
 ## Requirements
 
 - iOS 9.0+
