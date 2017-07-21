@@ -25,26 +25,25 @@ import UIKit
 import DZNEmptyDataSet
 import DBEmptyState
 
-class EmptyTableViewAdapterTest: XCTestCase {
-    var tableView: UITableView!
-    var emptyDataSource: EmptyTableViewAdapter<EmptyStateMock>!
+class CollectionViewAdapterTest: XCTestCase {
+    var collectionView: UICollectionView!
+    var emptyDataSource: EmptyCollectionViewAdapter<EmptyStateMock>!
     var emptyContentDataSource: EmptyContentDataSourceMock!
     var stateManagingMock: StateManagingMock!
     
     override func setUp() {
         super.setUp()
-        tableView = UITableView()
+        collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewLayout())
         emptyContentDataSource = EmptyContentDataSourceMock()
         stateManagingMock = StateManagingMock(state: .initial)
-        emptyDataSource = EmptyTableViewAdapter(tableView: tableView, stateManaging: stateManagingMock, dataSource: emptyContentDataSource)
+        emptyDataSource = EmptyCollectionViewAdapter(collectionView: collectionView, stateManaging: stateManagingMock, dataSource: emptyContentDataSource)
     }
     
     func testInit() {
         //Given
-        let tableView = UITableView()
         
         //When
-        let emptyDataSource = EmptyTableViewAdapter(tableView: tableView, stateManaging: stateManagingMock, dataSource: emptyContentDataSource)
+        let emptyDataSource = EmptyCollectionViewAdapter(collectionView: collectionView, stateManaging: stateManagingMock, dataSource: emptyContentDataSource)
         
         //Then
         XCTAssertNotNil(emptyDataSource.emptyContentDataSource)
@@ -54,10 +53,9 @@ class EmptyTableViewAdapterTest: XCTestCase {
     
     func testPartialInitViewContentDataSource() {
         //Given
-        let tableView = UITableView()
         
         //When
-        let emptyDataSource = EmptyTableViewAdapter(tableView: tableView, stateManaging: stateManagingMock,
+        let emptyDataSource = EmptyCollectionViewAdapter(collectionView: collectionView, stateManaging: stateManagingMock,
                                                     emptyContentCustomViewDataSource: emptyContentDataSource)
         //Then
         XCTAssertNotNil(emptyDataSource.emptyContentDataSource)
@@ -66,10 +64,9 @@ class EmptyTableViewAdapterTest: XCTestCase {
     
     func testPartialInitContentDataSource() {
         //Given
-        let tableView = UITableView()
         
         //When
-        let emptyDataSource = EmptyTableViewAdapter(tableView: tableView, stateManaging: stateManagingMock,
+        let emptyDataSource = EmptyCollectionViewAdapter(collectionView: collectionView, stateManaging: stateManagingMock,
                                                     emptyContentDataSource: emptyContentDataSource)
         //Then
         XCTAssertNotNil(emptyDataSource.emptyContentDataSource)
@@ -77,9 +74,9 @@ class EmptyTableViewAdapterTest: XCTestCase {
     
     func testAgainstMemoryLeaks() {
         //Given
-        let tableView = UITableView()
         var emptyContentDataSource: EmptyContentDataSourceMock! = EmptyContentDataSourceMock()
-        emptyContentDataSource?.memoryCheck = EmptyTableViewAdapter(tableView: tableView, stateManaging: stateManagingMock, dataSource: emptyContentDataSource)
+        emptyContentDataSource?.memoryCheck = EmptyCollectionViewAdapter(collectionView: collectionView,
+                                                                         stateManaging: stateManagingMock, dataSource: emptyContentDataSource)
         weak var emptyDataSource = emptyContentDataSource?.memoryCheck
         
         //When
@@ -88,7 +85,7 @@ class EmptyTableViewAdapterTest: XCTestCase {
         //
         XCTAssertNil(emptyDataSource)
     }
-
+    
     func testTitle() {
         //Given
         emptyContentDataSource.emptyContentReturning = EmptyContent(title: "Title")
@@ -101,7 +98,7 @@ class EmptyTableViewAdapterTest: XCTestCase {
         XCTAssertEqual(title?.string, "Title")
         XCTAssertEqual(emptyContentDataSource.capturedState, .error)
     }
-
+    
     func testSubtitle() {
         //Given
         emptyContentDataSource.emptyContentReturning = EmptyContent(subtitle: "Title")
@@ -112,7 +109,7 @@ class EmptyTableViewAdapterTest: XCTestCase {
         //Then
         XCTAssertEqual(subtitle?.string, "Title")
     }
-
+    
     func testImage() {
         //Given
         let image = UIImage()
@@ -124,7 +121,7 @@ class EmptyTableViewAdapterTest: XCTestCase {
         //Then
         XCTAssertEqual(image, returningImage)
     }
-
+    
     func testCustomView() {
         //Given
         let view = UIView()

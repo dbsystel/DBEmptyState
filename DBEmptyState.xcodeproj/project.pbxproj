@@ -28,6 +28,7 @@
 		C6878D011EB1D4E10065CDD2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C6878CFF1EB1D4E10065CDD2 /* LaunchScreen.storyboard */; };
 		C6C21A2F1F21D0F30004A7EB /* EmptyViewAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C21A2E1F21D0F30004A7EB /* EmptyViewAdapter.swift */; };
 		C6C21A311F21D4170004A7EB /* EmptyCollectionViewAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C21A301F21D4170004A7EB /* EmptyCollectionViewAdapter.swift */; };
+		C6C21A331F21D8130004A7EB /* CollectionViewAdapterTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C21A321F21D8130004A7EB /* CollectionViewAdapterTest.swift */; };
 		C6CF23441EADC11200580862 /* StringStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6CF23411EADC11200580862 /* StringStyle.swift */; };
 		C6CF23451EADC11200580862 /* EmptyContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6CF23421EADC11200580862 /* EmptyContent.swift */; };
 		C6CF23461EADC11200580862 /* EmptyContentStyling.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6CF23431EADC11200580862 /* EmptyContentStyling.swift */; };
@@ -85,6 +86,7 @@
 		C6878D091EB1D64B0065CDD2 /* DZNEmptyDataSet.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = DZNEmptyDataSet.framework; path = Carthage/Build/iOS/DZNEmptyDataSet.framework; sourceTree = "<group>"; };
 		C6C21A2E1F21D0F30004A7EB /* EmptyViewAdapter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptyViewAdapter.swift; sourceTree = "<group>"; };
 		C6C21A301F21D4170004A7EB /* EmptyCollectionViewAdapter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptyCollectionViewAdapter.swift; sourceTree = "<group>"; };
+		C6C21A321F21D8130004A7EB /* CollectionViewAdapterTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionViewAdapterTest.swift; sourceTree = "<group>"; };
 		C6CF23411EADC11200580862 /* StringStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringStyle.swift; sourceTree = "<group>"; };
 		C6CF23421EADC11200580862 /* EmptyContent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptyContent.swift; sourceTree = "<group>"; };
 		C6CF23431EADC11200580862 /* EmptyContentStyling.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptyContentStyling.swift; sourceTree = "<group>"; };
@@ -167,6 +169,7 @@
 				C6CF23551EADCAB400580862 /* EmptyContentTest.swift */,
 				C634F9C51EA9DC750016232D /* StateMachineTest.swift */,
 				C6CF23571EADCACD00580862 /* EmptyTableViewAdapterTest.swift */,
+				C6C21A321F21D8130004A7EB /* CollectionViewAdapterTest.swift */,
 				C634F9B71EA9D7210016232D /* Info.plist */,
 			);
 			path = DBEmptyStateTests;
@@ -480,6 +483,7 @@
 				C6CF23591EADCACD00580862 /* EmptyTableViewAdapterTest.swift in Sources */,
 				C634F9C61EA9DC750016232D /* StateMachineTest.swift in Sources */,
 				C6CF23561EADCAB400580862 /* EmptyContentTest.swift in Sources */,
+				C6C21A331F21D8130004A7EB /* CollectionViewAdapterTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

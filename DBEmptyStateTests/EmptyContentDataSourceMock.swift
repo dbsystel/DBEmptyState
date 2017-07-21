@@ -24,7 +24,7 @@ import Foundation
 import DBEmptyState
 
 class EmptyContentDataSourceMock: EmptyContentDataSource, CustomEmptyViewDataSource, ActionButtonDataSource {
-    var memoryCheck: EmptyTableViewAdapter<EmptyStateMock>?
+    var memoryCheck: NSObject?
     var emptyContentReturning: EmptyContent?
     var customViewReturning: UIView?
     var buttonReturning: ButtonModel?
