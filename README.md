@@ -9,7 +9,7 @@
 DBEmptyState helps you to manage your empty/error/whatever states inside your TableView. 
 You can define states and representations which get displayed once your state is active.
 
-## Example
+## EmptyTableViewAdapter
 
 Inside your ViewController, create and store a `EmptyTableViewAdapter` and a `StateMachine`.
 
@@ -20,6 +20,20 @@ var emptyDataSet: EmptyTableViewAdapter<EmptyState>!
 override func viewDidLoad() {
     super.viewDidLoad()
     emptyDataSet = EmptyTableViewAdapter(tableView: tableView, stateManaging: emptyState, dataSource: self)
+}
+```
+
+## EmptyCollectionViewAdapter
+
+`EmptyCollectionViewAdapter` works exaclty as `EmptyTableViewAdapter`.
+
+```swift
+let emptyState = StateMachine<EmptyState>(initialState: .initial)
+var emptyDataSet: EmptyCollectionViewAdapter<EmptyState>!
+
+override func viewDidLoad() {
+    super.viewDidLoad()
+    emptyDataSet = EmptyCollectionViewAdapter(collectionView: collectionView, stateManaging: emptyState, dataSource: self)
 }
 ```
 
