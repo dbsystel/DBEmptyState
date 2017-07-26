@@ -74,7 +74,8 @@ class CollectionViewAdapterTest: XCTestCase {
         var didCallUpdate = false
         let emptyDataSource = EmptyCollectionViewAdapter(view: collectionView, stateManaging: stateManagingMock,
                                                          emptyContentDataSource: emptyContentDataSource,
-                                                         customViewDataSource: emptyContentDataSource, buttonDataSource: emptyContentDataSource, didChangeState: { _, _ in
+                                                         customViewDataSource: emptyContentDataSource,
+                                                         buttonDataSource: emptyContentDataSource, didChangeState: { _, _ in
                                                             didCallUpdate = true
                                                             })
         
