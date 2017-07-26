@@ -22,42 +22,48 @@
 
 import UIKit
 
-open class EmptyTableViewAdapter<T: Equatable>: EmptyViewAdapter<T, UITableView> {
+extension EmptyScrollViewAdapter where View == UITableView {
     
-    override open func update() {
-        super.update()
-        if view.isEmptyDataSetVisible {
-            view.tableFooterView = UIView()
+    private static func updateTableViewOnChnage(newState: T, tableView: View) {
+        if tableView.isEmptyDataSetVisible {
+            tableView.tableFooterView = UIView()
         } else {
-            view.tableFooterView = nil
+            tableView.tableFooterView = nil
         }
     }
     
-    public init<StateManager: StateManaging, EmptyContentSource: EmptyContentDataSource>
+    public convenience init<StateManager: StateManaging, EmptyContentSource: EmptyContentDataSource>
         (tableView: UITableView, stateManaging: StateManager, emptyContentDataSource: EmptyContentSource)
         where StateManager.State == T, EmptyContentSource.EmptyState == T {
-            super.init(view: tableView, stateManaging: stateManaging, emptyContentDataSource: emptyContentDataSource)
+            self.init(view: tableView, stateManaging: stateManaging, emptyContentDataSource: emptyContentDataSource,
+                      didChangeState: EmptyScrollViewAdapter.updateTableViewOnChnage)
     }
     
-    public init<StateManager: StateManaging, EmptyContentSource: EmptyContentDataSource,
+    public convenience init<StateManager: StateManaging, EmptyContentSource: EmptyContentDataSource,
                 CustomViewSource: CustomEmptyViewDataSource, ButtonDataSource: ActionButtonDataSource>
         (tableView: UITableView, stateManaging: StateManager, emptyContentDataSource: EmptyContentSource,
          customViewDataSource: CustomViewSource, buttonDataSource: ButtonDataSource)
         where StateManager.State == T, EmptyContentSource.EmptyState == T, CustomViewSource.EmptyState == T, ButtonDataSource.EmptyState == T {
-            super.init(view: tableView, stateManaging: stateManaging, emptyContentDataSource: emptyContentDataSource,
-                       customViewDataSource: customViewDataSource, buttonDataSource: buttonDataSource)
+            self.init(view: tableView, stateManaging: stateManaging, emptyContentDataSource: emptyContentDataSource,
+                       customViewDataSource: customViewDataSource, buttonDataSource: buttonDataSource,
+                       didChangeState: EmptyScrollViewAdapter.updateTableViewOnChnage)
     }
     
-    public init<StateManager: StateManaging, EmptyContentSource: EmptyContentDataSource & CustomEmptyViewDataSource>
+    public convenience init<StateManager: StateManaging, EmptyContentSource: EmptyContentDataSource & CustomEmptyViewDataSource>
         (tableView: UITableView, stateManaging: StateManager, emptyContentCustomViewDataSource: EmptyContentSource)
         where StateManager.State == T, EmptyContentSource.EmptyState == T {
-            super.init(view: tableView, stateManaging: stateManaging, emptyContentCustomViewDataSource: emptyContentCustomViewDataSource)
+            self.init(view: tableView, stateManaging: stateManaging, emptyContentCustomViewDataSource: emptyContentCustomViewDataSource,
+                      didChangeState: EmptyScrollViewAdapter.updateTableViewOnChnage)
     }
     
-    public init<StateManager: StateManaging,
-                            EmptyContentData: EmptyContentDataSource & CustomEmptyViewDataSource & ActionButtonDataSource>
+    public convenience init<StateManager: StateManaging,
+                EmptyContentData: EmptyContentDataSource & CustomEmptyViewDataSource & ActionButtonDataSource>
         (tableView: UITableView, stateManaging: StateManager, dataSource: EmptyContentData) where StateManager.State == T, EmptyContentData.EmptyState == T {
-        super.init(view: tableView, stateManaging: stateManaging,
-                  emptyContentDataSource: dataSource, customViewDataSource: dataSource, buttonDataSource: dataSource)
+        self.init(view: tableView, stateManaging: stateManaging,
+                   emptyContentDataSource: dataSource, customViewDataSource: dataSource, buttonDataSource: dataSource,
+                   didChangeState: EmptyScrollViewAdapter.updateTableViewOnChnage)
     }
+
 }
+
+public typealias EmptyTableViewAdapter<T: Equatable> =  EmptyScrollViewAdapter<T, UITableView>

@@ -50,6 +50,8 @@ class EmptyTableViewAdapterTest: XCTestCase {
         XCTAssertNotNil(emptyDataSource.emptyContentDataSource)
         XCTAssertNotNil(emptyDataSource.customViewDataSource)
         XCTAssertNotNil(emptyDataSource.actionButtonDataSource)
+        XCTAssertNotNil(tableView.emptyDataSetSource)
+        XCTAssertNotNil(stateManagingMock.callback)
     }
     
     func testInit2() {
@@ -65,6 +67,8 @@ class EmptyTableViewAdapterTest: XCTestCase {
         XCTAssertNotNil(emptyDataSource.emptyContentDataSource)
         XCTAssertNotNil(emptyDataSource.customViewDataSource)
         XCTAssertNotNil(emptyDataSource.actionButtonDataSource)
+        XCTAssertNotNil(tableView.emptyDataSetSource)
+        XCTAssertNotNil(stateManagingMock.callback)
     }
     
     func testPartialInitViewContentDataSource() {

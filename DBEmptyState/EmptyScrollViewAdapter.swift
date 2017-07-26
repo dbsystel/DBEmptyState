@@ -23,54 +23,70 @@
 import UIKit
 import DZNEmptyDataSet
 
-open class EmptyViewAdapter<T: Equatable, View: UIScrollView>: NSObject, DZNEmptyDataSetSource, DZNEmptyDataSetDelegate {
+open class EmptyScrollViewAdapter<T: Equatable, View: UIScrollView>: NSObject, DZNEmptyDataSetSource, DZNEmptyDataSetDelegate {
     public var emptyContentDataSource: AnyEmptyContentDataSource<T>?
     public var customViewDataSource: AnyCustomEmptyViewDataSource<T>?
     public var actionButtonDataSource: AnyActionButtonDataSource<T>?
     
     let view: View
     let stateManaging: AnyStateManaging<T>
+    let didChangeState: ((T, View) -> Void)?
     
     public init<StateManager: StateManaging, EmptyContentSource: EmptyContentDataSource,
                 CustomViewSource: CustomEmptyViewDataSource, ButtonDataSource: ActionButtonDataSource>
         (view: View, stateManaging: StateManager, emptyContentDataSource: EmptyContentSource,
-         customViewDataSource: CustomViewSource, buttonDataSource: ButtonDataSource)
+         customViewDataSource: CustomViewSource, buttonDataSource: ButtonDataSource, didChangeState: ((T, View) -> Void)? = nil)
         where StateManager.State == T, EmptyContentSource.EmptyState == T, CustomViewSource.EmptyState == T, ButtonDataSource.EmptyState == T {
             self.view = view
             self.emptyContentDataSource = AnyEmptyContentDataSource(emptyContentDataSource)
             self.customViewDataSource = AnyCustomEmptyViewDataSource(customViewDataSource)
             self.actionButtonDataSource = AnyActionButtonDataSource(buttonDataSource)
             self.stateManaging = AnyStateManaging(stateManaging)
+            self.didChangeState = didChangeState
             super.init()
             setup()
     }
     
     public init<StateManager: StateManaging, EmptyContentSource: EmptyContentDataSource & CustomEmptyViewDataSource>
-        (view: View, stateManaging: StateManager, emptyContentCustomViewDataSource: EmptyContentSource)
+        (view: View, stateManaging: StateManager, emptyContentCustomViewDataSource: EmptyContentSource, didChangeState: ((T, View) -> Void)? = nil)
         where StateManager.State == T, EmptyContentSource.EmptyState == T {
             self.view = view
             self.emptyContentDataSource = AnyEmptyContentDataSource(emptyContentCustomViewDataSource)
             self.customViewDataSource = AnyCustomEmptyViewDataSource(emptyContentCustomViewDataSource)
             self.stateManaging = AnyStateManaging(stateManaging)
+            self.didChangeState = didChangeState
             super.init()
             setup()
     }
     
     public init<StateManager: StateManaging, EmptyContentSource: EmptyContentDataSource>
-        (view: View, stateManaging: StateManager, emptyContentDataSource: EmptyContentSource)
+        (view: View, stateManaging: StateManager, emptyContentDataSource: EmptyContentSource, didChangeState: ((T, View) -> Void)? = nil)
         where StateManager.State == T, EmptyContentSource.EmptyState == T {
             self.view = view
             self.emptyContentDataSource = AnyEmptyContentDataSource(emptyContentDataSource)
             self.stateManaging = AnyStateManaging(stateManaging)
+            self.didChangeState = didChangeState
             super.init()
             setup()
     }
     
+    public convenience init<StateManager: StateManaging, EmptyContentData: EmptyContentDataSource &
+        CustomEmptyViewDataSource & ActionButtonDataSource>(view: View, stateManaging: StateManager,
+                dataSource: EmptyContentData, didChangeState: ((T, View) -> Void)? = nil)
+        where StateManager.State == T, EmptyContentData.EmptyState == T {
+            self.init(view: view, stateManaging: stateManaging, emptyContentDataSource: dataSource,
+                      customViewDataSource: dataSource, buttonDataSource: dataSource, didChangeState: didChangeState)
+        }
+    
     private func setup() {
         view.emptyDataSetSource = self
         update()
-        stateManaging.onChange(execute: { [weak self] _ in
+        stateManaging.onChange(execute: { [weak self] newState in
+            guard let strongSelf = self else {
+                return
+            }
             self?.update()
+            self?.didChangeState?(newState, strongSelf.view)
         })
     }
     
