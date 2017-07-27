@@ -34,7 +34,7 @@ open class EmptyContentScrollViewAdapter<T: Equatable, View: UIScrollView>: NSOb
     let didChangeState: ((T, View) -> Void)?
     
     /**
-     Creates an `EmptyContentScrollViewAdapter` instance witch display empty content inside a scrollView subclass.
+     Creates an `EmptyContentScrollViewAdapter` instance which display empty content inside a scrollView subclass.
      
      - parameter view: the scrollView subclass to display the empty content.
      - parameter stateManaging: managing the empty state.
@@ -79,7 +79,7 @@ open class EmptyContentScrollViewAdapter<T: Equatable, View: UIScrollView>: NSOb
     }
     
     /**
-     Creates an `EmptyContentScrollViewAdapter` instance witch display empty content inside a scrollView subclass.
+     Creates an `EmptyContentScrollViewAdapter` instance which display empty content inside a scrollView subclass.
      
      - parameter view: the scrollView subclass to display the empty content.
      - parameter stateManaging: managing the empty state.
@@ -98,7 +98,7 @@ open class EmptyContentScrollViewAdapter<T: Equatable, View: UIScrollView>: NSOb
     }
     
     /**
-     Creates an `EmptyContentScrollViewAdapter` instance witch display empty content inside a scrollView subclass.
+     Creates an `EmptyContentScrollViewAdapter` instance which display empty content inside a scrollView subclass.
      
      - parameter view: the scrollView subclass to display the empty content.
      - parameter stateManaging: managing the empty state.
