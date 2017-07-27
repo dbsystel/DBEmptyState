@@ -20,26 +20,7 @@
 //  DEALINGS IN THE SOFTWARE.
 //
 
-import Foundation
-import DBEmptyState
+import UIKit
 
-class EmptyContentDataSourceMock: EmptyContentDataSource, CustomEmptyViewDataSource, ActionButtonDataSource {
-    var memoryCheck: NSObject?
-    var emptyContentReturning: EmptyContent?
-    var customViewReturning: UIView?
-    var buttonReturning: ButtonModel?
-    var capturedState: EmptyStateMock?
-    
-    func emptyContent(for state: EmptyStateMock) -> EmptyContent? {
-        capturedState = state
-        return emptyContentReturning
-    }
-    
-    func customView(for state: EmptyStateMock, with content: EmptyContent) -> UIView? {
-        return customViewReturning
-    }
-    
-    func button(for state: EmptyStateMock) -> ButtonModel? {
-        return buttonReturning
-    }
-}
+//Typealias for a `EmptyContentScrollViewAdapter` using `UICollectionView`.
+public typealias EmptyContentCollectionViewAdapter<T: Equatable> = EmptyContentScrollViewAdapter<T, UICollectionView>

@@ -9,7 +9,7 @@
 DBEmptyState helps you to manage your empty/error/whatever states inside your TableView. 
 You can define states and representations which get displayed once your state is active.
 
-## Example
+## EmptyTableViewAdapter
 
 Inside your ViewController, create and store a `EmptyTableViewAdapter` and a `StateMachine`.
 
@@ -20,6 +20,20 @@ var emptyDataSet: EmptyTableViewAdapter<EmptyState>!
 override func viewDidLoad() {
     super.viewDidLoad()
     emptyDataSet = EmptyTableViewAdapter(tableView: tableView, stateManaging: emptyState, dataSource: self)
+}
+```
+
+## EmptyCollectionViewAdapter
+
+`EmptyCollectionViewAdapter` works exaclty as `EmptyTableViewAdapter`.
+
+```swift
+let emptyState = StateMachine<EmptyState>(initialState: .initial)
+var emptyDataSet: EmptyCollectionViewAdapter<EmptyState>!
+
+override func viewDidLoad() {
+    super.viewDidLoad()
+    emptyDataSet = EmptyCollectionViewAdapter(view: collectionView, stateManaging: emptyState, dataSource: self)
 }
 ```
 
@@ -77,6 +91,21 @@ extension ExampleViewController: ActionButtonDataSource {
     }
 }
 ```
+
+### ViewAdapter Initializers
+In many cases you descide to implement just of of the mentioned dataSources. When doing so you need to use the fitting `init()` on the ViewAdapter. See the following example to find the right initializer:
+
+```swift
+//When only implementing EmptyContentDataSource
+let viewDatapter = TableViewAdapter(tableView: tableView, stateManaging: emptyState, emptyContentDataSource: self)
+
+//When implementing EmptyContentDataSource & CustomEmptyViewDataSource
+let viewDatapter = TableViewAdapter(tableView: tableView, stateManaging: emptyState, emptyContentCustomViewDataSource: self)
+
+//When your dataSources are implemented by different types
+let viewDatapter = TableViewAdapter(tableView: tableView, stateManaging: emptyState, emptyContentDataSource: self, customViewDataSource: firstOtherType, buttonDataSource: secondOtherType)
+```
+**Note:** All initializers are available for `EmptyCollectionViewAdapter` as well.
 
 ## Requirements
 

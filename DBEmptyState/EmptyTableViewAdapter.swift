@@ -19,62 +19,15 @@
 //  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 //  DEALINGS IN THE SOFTWARE.
 //
-import UIKit
-import DZNEmptyDataSet
 
-open class EmptyTableViewAdapter<T: Equatable>: NSObject, DZNEmptyDataSetSource, DZNEmptyDataSetDelegate {
-    public var emptyContentDataSource: AnyEmptyContentDataSource<T>?
-    public var customViewDataSource: AnyCustomEmptyViewDataSource<T>?
-    public var actionButtonDataSource: AnyActionButtonDataSource<T>?
+import UIKit
+
+//Typealias for a `EmptyContentScrollViewAdapter` using `UITableView`.
+public typealias EmptyContentTableViewAdapter<T: Equatable> =  EmptyContentScrollViewAdapter<T, UITableView>
+
+extension EmptyContentScrollViewAdapter where View == UITableView {
     
-    let tableView: UITableView
-    let stateManaging: AnyStateManaging<T>
-    
-    public init<StateManager: StateManaging, EmptyContentSource: EmptyContentDataSource,
-                CustomViewSource: CustomEmptyViewDataSource, ButtonDataSource: ActionButtonDataSource>
-        (tableView: UITableView, stateManaging: StateManager, emptyContentDataSource: EmptyContentSource,
-         customViewDataSource: CustomViewSource, buttonDataSource: ButtonDataSource)
-            where StateManager.State == T, EmptyContentSource.EmptyState == T, CustomViewSource.EmptyState == T, ButtonDataSource.EmptyState == T {
-        self.tableView = tableView
-        self.emptyContentDataSource = AnyEmptyContentDataSource(emptyContentDataSource)
-        self.customViewDataSource = AnyCustomEmptyViewDataSource(customViewDataSource)
-        self.actionButtonDataSource = AnyActionButtonDataSource(buttonDataSource)
-        self.stateManaging = AnyStateManaging(stateManaging)
-        super.init()
-        setup()
-    }
-    
-    public init<StateManager: StateManaging, EmptyContentSource: EmptyContentDataSource & CustomEmptyViewDataSource>
-        (tableView: UITableView, stateManaging: StateManager, emptyContentCustomViewDataSource: EmptyContentSource)
-        where StateManager.State == T, EmptyContentSource.EmptyState == T {
-            self.tableView = tableView
-            self.emptyContentDataSource = AnyEmptyContentDataSource(emptyContentCustomViewDataSource)
-            self.customViewDataSource = AnyCustomEmptyViewDataSource(emptyContentCustomViewDataSource)
-            self.stateManaging = AnyStateManaging(stateManaging)
-            super.init()
-            setup()
-    }
-    
-    public init<StateManager: StateManaging, EmptyContentSource: EmptyContentDataSource>
-        (tableView: UITableView, stateManaging: StateManager, emptyContentDataSource: EmptyContentSource)
-        where StateManager.State == T, EmptyContentSource.EmptyState == T {
-            self.tableView = tableView
-            self.emptyContentDataSource = AnyEmptyContentDataSource(emptyContentDataSource)
-            self.stateManaging = AnyStateManaging(stateManaging)
-            super.init()
-            setup()
-    }
-    
-    private func setup() {
-        tableView.emptyDataSetSource = self
-        update()
-        stateManaging.onChange(execute: { [weak self] _ in
-            self?.update()
-        })
-    }
-    
-    open func update() {
-        tableView.reloadEmptyDataSet()
+    private static func updateTableViewOnChange(newState: T, tableView: View) {
         if tableView.isEmptyDataSetVisible {
             tableView.tableFooterView = UIView()
         } else {
@@ -82,49 +35,71 @@ open class EmptyTableViewAdapter<T: Equatable>: NSObject, DZNEmptyDataSetSource,
         }
     }
     
-    open func title(forEmptyDataSet scrollView: UIScrollView!) -> NSAttributedString! {
-        return emptyContent()?.title.flatMap { emptyContentDataSource?.titleStyle.style($0) }
+    /**
+     Creates an EmptyContentScrollViewAdapter instance which display empty content inside a tableView. Cell skeletons will be hidden,
+     when empty state is visible.
+     
+     - parameter tableView: the tableView to display the empty content.
+     - parameter stateManaging: managing the empty state.
+     - parameter emptyContentDataSource: dataSource which provides the empty content.
+     */
+    public convenience init<StateManager: StateManaging, EmptyContentSource: EmptyContentDataSource>
+        (tableView: UITableView, stateManaging: StateManager, emptyContentDataSource: EmptyContentSource)
+        where StateManager.State == T, EmptyContentSource.EmptyState == T {
+            self.init(view: tableView, stateManaging: stateManaging, emptyContentDataSource: emptyContentDataSource,
+                      didChangeState: EmptyContentScrollViewAdapter.updateTableViewOnChange)
     }
     
-    open func description(forEmptyDataSet scrollView: UIScrollView!) -> NSAttributedString! {
-        return emptyContent()?.subtitle.flatMap { emptyContentDataSource?.subtitleStyle.style($0) }
+    /**
+     Creates an EmptyContentScrollViewAdapter instance which display empty content inside a tableView. Cell skeletons will be hidden,
+     when empty state is visible.
+     
+     - parameter tableView: the tableView to display the empty content.
+     - parameter stateManaging: managing the empty state.
+     - parameter emptyContentDataSource: dataSource which provides the empty content.
+     - parameter customViewDataSource: dataSource which custom empty state views.
+     - parameter buttonDataSource: dataSource which provides button & actions for specific empty states.
+     */
+    public convenience init<StateManager: StateManaging, EmptyContentSource: EmptyContentDataSource,
+                CustomViewSource: CustomEmptyViewDataSource, ButtonDataSource: ActionButtonDataSource>
+        (tableView: UITableView, stateManaging: StateManager, emptyContentDataSource: EmptyContentSource,
+         customViewDataSource: CustomViewSource, buttonDataSource: ButtonDataSource)
+        where StateManager.State == T, EmptyContentSource.EmptyState == T, CustomViewSource.EmptyState == T, ButtonDataSource.EmptyState == T {
+            self.init(view: tableView, stateManaging: stateManaging, emptyContentDataSource: emptyContentDataSource,
+                       customViewDataSource: customViewDataSource, buttonDataSource: buttonDataSource,
+                       didChangeState: EmptyContentScrollViewAdapter.updateTableViewOnChange)
     }
     
-    open func image(forEmptyDataSet scrollView: UIScrollView!) -> UIImage! {
-        return emptyContent()?.image
+    /**
+     Creates an EmptyContentScrollViewAdapter instance which display empty content inside a tableView. Cell skeletons will be hidden,
+     when empty state is visible.
+     
+     - parameter tableView: the tableView to display the empty content.
+     - parameter stateManaging: managing the empty state.
+     - parameter emptyContentCustomViewDataSource: dataSource which provides the empty content & custom empty state views.
+     */
+    public convenience init<StateManager: StateManaging, EmptyContentSource: EmptyContentDataSource & CustomEmptyViewDataSource>
+        (tableView: UITableView, stateManaging: StateManager, emptyContentCustomViewDataSource: EmptyContentSource)
+        where StateManager.State == T, EmptyContentSource.EmptyState == T {
+            self.init(view: tableView, stateManaging: stateManaging, emptyContentCustomViewDataSource: emptyContentCustomViewDataSource,
+                      didChangeState: EmptyContentScrollViewAdapter.updateTableViewOnChange)
     }
     
-    open func customView(forEmptyDataSet scrollView: UIScrollView!) -> UIView! {
-        guard let emptyContent = emptyContent() else {
-            return nil
-        }
-        return customViewDataSource?.customView(for: stateManaging.state, with: emptyContent)
-    }
-    
-    private func emptyContent() -> EmptyContent? {
-        return emptyContentDataSource?.emptyContent(for: stateManaging.state)
-    }
-    
-    private func button() -> ButtonModel? {
-        return actionButtonDataSource?.button(for: stateManaging.state)
-    }
-    
-    open func buttonTitle(forEmptyDataSet scrollView: UIScrollView!, for state: UIControlState) -> NSAttributedString! {
-        return button().flatMap { actionButtonDataSource?.buttonTitleStyle(for: state, with: stateManaging.state).style($0.title) }
-    }
-    
-    open func emptyDataSet(_ scrollView: UIScrollView!, didTap button: UIButton!) {
-        self.button()?.action()
-    }
-    
-}
-
-extension EmptyTableViewAdapter {
-    
+    /**
+     Creates an EmptyContentScrollViewAdapter instance which display empty content inside a tableView. Cell skeletons will be hidden,
+     when empty state is visible.
+     
+     - parameter tableView: the tableView to display the empty content.
+     - parameter stateManaging: managing the empty state.
+     - parameter dataSource: dataSource which provides the empty content,
+        custom empty state views and button & actions for specific empty states.
+     */
     public convenience init<StateManager: StateManaging,
-                            EmptyContentData: EmptyContentDataSource & CustomEmptyViewDataSource & ActionButtonDataSource>
+                EmptyContentData: EmptyContentDataSource & CustomEmptyViewDataSource & ActionButtonDataSource>
         (tableView: UITableView, stateManaging: StateManager, dataSource: EmptyContentData) where StateManager.State == T, EmptyContentData.EmptyState == T {
-        self.init(tableView: tableView, stateManaging: stateManaging,
-                  emptyContentDataSource: dataSource, customViewDataSource: dataSource, buttonDataSource: dataSource)
+        self.init(view: tableView, stateManaging: stateManaging,
+                   emptyContentDataSource: dataSource, customViewDataSource: dataSource, buttonDataSource: dataSource,
+                   didChangeState: EmptyContentScrollViewAdapter.updateTableViewOnChange)
     }
+
 }
