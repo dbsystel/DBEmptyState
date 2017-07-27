@@ -27,7 +27,7 @@ public typealias EmptyContentTableViewAdapter<T: Equatable> =  EmptyContentScrol
 
 extension EmptyContentScrollViewAdapter where View == UITableView {
     
-    private static func updateTableViewOnChnage(newState: T, tableView: View) {
+    private static func updateTableViewOnChange(newState: T, tableView: View) {
         if tableView.isEmptyDataSetVisible {
             tableView.tableFooterView = UIView()
         } else {
@@ -47,7 +47,7 @@ extension EmptyContentScrollViewAdapter where View == UITableView {
         (tableView: UITableView, stateManaging: StateManager, emptyContentDataSource: EmptyContentSource)
         where StateManager.State == T, EmptyContentSource.EmptyState == T {
             self.init(view: tableView, stateManaging: stateManaging, emptyContentDataSource: emptyContentDataSource,
-                      didChangeState: EmptyContentScrollViewAdapter.updateTableViewOnChnage)
+                      didChangeState: EmptyContentScrollViewAdapter.updateTableViewOnChange)
     }
     
     /**
@@ -67,7 +67,7 @@ extension EmptyContentScrollViewAdapter where View == UITableView {
         where StateManager.State == T, EmptyContentSource.EmptyState == T, CustomViewSource.EmptyState == T, ButtonDataSource.EmptyState == T {
             self.init(view: tableView, stateManaging: stateManaging, emptyContentDataSource: emptyContentDataSource,
                        customViewDataSource: customViewDataSource, buttonDataSource: buttonDataSource,
-                       didChangeState: EmptyContentScrollViewAdapter.updateTableViewOnChnage)
+                       didChangeState: EmptyContentScrollViewAdapter.updateTableViewOnChange)
     }
     
     /**
@@ -82,7 +82,7 @@ extension EmptyContentScrollViewAdapter where View == UITableView {
         (tableView: UITableView, stateManaging: StateManager, emptyContentCustomViewDataSource: EmptyContentSource)
         where StateManager.State == T, EmptyContentSource.EmptyState == T {
             self.init(view: tableView, stateManaging: stateManaging, emptyContentCustomViewDataSource: emptyContentCustomViewDataSource,
-                      didChangeState: EmptyContentScrollViewAdapter.updateTableViewOnChnage)
+                      didChangeState: EmptyContentScrollViewAdapter.updateTableViewOnChange)
     }
     
     /**
@@ -99,7 +99,7 @@ extension EmptyContentScrollViewAdapter where View == UITableView {
         (tableView: UITableView, stateManaging: StateManager, dataSource: EmptyContentData) where StateManager.State == T, EmptyContentData.EmptyState == T {
         self.init(view: tableView, stateManaging: stateManaging,
                    emptyContentDataSource: dataSource, customViewDataSource: dataSource, buttonDataSource: dataSource,
-                   didChangeState: EmptyContentScrollViewAdapter.updateTableViewOnChnage)
+                   didChangeState: EmptyContentScrollViewAdapter.updateTableViewOnChange)
     }
 
 }
