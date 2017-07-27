@@ -36,7 +36,7 @@ extension EmptyContentScrollViewAdapter where View == UITableView {
     }
     
     /**
-     Creates an EmptyContentScrollViewAdapter instance witch display empty content inside a tableView. Cell skeletons will be hidden,
+     Creates an EmptyContentScrollViewAdapter instance which display empty content inside a tableView. Cell skeletons will be hidden,
      when empty state is visible.
      
      - parameter tableView: the tableView to display the empty content.
@@ -51,7 +51,7 @@ extension EmptyContentScrollViewAdapter where View == UITableView {
     }
     
     /**
-     Creates an EmptyContentScrollViewAdapter instance witch display empty content inside a tableView. Cell skeletons will be hidden,
+     Creates an EmptyContentScrollViewAdapter instance which display empty content inside a tableView. Cell skeletons will be hidden,
      when empty state is visible.
      
      - parameter tableView: the tableView to display the empty content.
@@ -71,7 +71,7 @@ extension EmptyContentScrollViewAdapter where View == UITableView {
     }
     
     /**
-     Creates an EmptyContentScrollViewAdapter instance witch display empty content inside a tableView. Cell skeletons will be hidden,
+     Creates an EmptyContentScrollViewAdapter instance which display empty content inside a tableView. Cell skeletons will be hidden,
      when empty state is visible.
      
      - parameter tableView: the tableView to display the empty content.
@@ -86,7 +86,7 @@ extension EmptyContentScrollViewAdapter where View == UITableView {
     }
     
     /**
-     Creates an EmptyContentScrollViewAdapter instance witch display empty content inside a tableView. Cell skeletons will be hidden,
+     Creates an EmptyContentScrollViewAdapter instance which display empty content inside a tableView. Cell skeletons will be hidden,
      when empty state is visible.
      
      - parameter tableView: the tableView to display the empty content.
