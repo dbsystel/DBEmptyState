@@ -33,7 +33,8 @@ extension EmptyContentScrollViewAdapter where View == UITableView {
     }
     
     /**
-     Creates an EmptyScrollViewAdapter instance witch display empty content inside a tableView. Cell skeletons will be hidden, when empty state is visible.
+     Creates an EmptyContentScrollViewAdapter instance witch display empty content inside a tableView. Cell skeletons will be hidden,
+     when empty state is visible.
      
      - parameter tableView: the tableView to display the empty content.
      - parameter stateManaging: managing the empty state.
@@ -47,7 +48,8 @@ extension EmptyContentScrollViewAdapter where View == UITableView {
     }
     
     /**
-     Creates an EmptyScrollViewAdapter instance witch display empty content inside a tableView. Cell skeletons will be hidden, when empty state is visible.
+     Creates an EmptyContentScrollViewAdapter instance witch display empty content inside a tableView. Cell skeletons will be hidden,
+     when empty state is visible.
      
      - parameter tableView: the tableView to display the empty content.
      - parameter stateManaging: managing the empty state.
@@ -66,7 +68,8 @@ extension EmptyContentScrollViewAdapter where View == UITableView {
     }
     
     /**
-     Creates an EmptyScrollViewAdapter instance witch display empty content inside a tableView. Cell skeletons will be hidden, when empty state is visible.
+     Creates an EmptyContentScrollViewAdapter instance witch display empty content inside a tableView. Cell skeletons will be hidden,
+     when empty state is visible.
      
      - parameter tableView: the tableView to display the empty content.
      - parameter stateManaging: managing the empty state.
@@ -80,11 +83,12 @@ extension EmptyContentScrollViewAdapter where View == UITableView {
     }
     
     /**
-     Creates an EmptyScrollViewAdapter instance witch display empty content inside a tableView. Cell skeletons will be hidden, when empty state is visible.
+     Creates an EmptyContentScrollViewAdapter instance witch display empty content inside a tableView. Cell skeletons will be hidden,
+     when empty state is visible.
      
      - parameter tableView: the tableView to display the empty content.
      - parameter stateManaging: managing the empty state.
-     - parameter emptyContentCustomViewDataSource: dataSource which provides the empty content,
+     - parameter dataSource: dataSource which provides the empty content,
         custom empty state views and button & actions for specific empty states.
      */
     public convenience init<StateManager: StateManaging,

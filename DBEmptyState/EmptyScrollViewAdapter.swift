@@ -33,9 +33,9 @@ open class EmptyContentScrollViewAdapter<T: Equatable, View: UIScrollView>: NSOb
     let didChangeState: ((T, View) -> Void)?
     
     /**
-     Creates an EmptyScrollViewAdapter instance witch display empty content inside a scrollView subclasses.
+     Creates an EmptyContentScrollViewAdapter instance witch display empty content inside a scrollView subclass.
      
-     - parameter tableView: the tableView to display the empty content.
+     - parameter view: the scrollView subclass to display the empty content.
      - parameter stateManaging: managing the empty state.
      - parameter emptyContentDataSource: dataSource which provides the empty content.
      - parameter customViewDataSource: dataSource which custom empty state views.
@@ -57,6 +57,14 @@ open class EmptyContentScrollViewAdapter<T: Equatable, View: UIScrollView>: NSOb
             setup()
     }
     
+    /**
+     Creates an EmptyContentScrollViewAdapter instance witch display empty content inside a scrollView subclass.
+     
+     - parameter view: the scrollView subclass to display the empty content.
+     - parameter stateManaging: managing the empty state.
+     - parameter emptyContentCustomViewDataSource: dataSource which provides the empty content & custom empty state views.
+     - parameter didChangeState: handle a state change. One can hide or display specific view elements on this event.
+     */
     public init<StateManager: StateManaging, EmptyContentSource: EmptyContentDataSource & CustomEmptyViewDataSource>
         (view: View, stateManaging: StateManager, emptyContentCustomViewDataSource: EmptyContentSource, didChangeState: ((T, View) -> Void)? = nil)
         where StateManager.State == T, EmptyContentSource.EmptyState == T {
@@ -69,6 +77,14 @@ open class EmptyContentScrollViewAdapter<T: Equatable, View: UIScrollView>: NSOb
             setup()
     }
     
+    /**
+     Creates an EmptyContentScrollViewAdapter instance witch display empty content inside a scrollView subclass.
+     
+     - parameter view: the scrollView subclass to display the empty content.
+     - parameter stateManaging: managing the empty state.
+     - parameter emptyContentDataSource: dataSource which provides the empty content.
+     - parameter didChangeState: handle a state change. One can hide or display specific view elements on this event.
+     */
     public init<StateManager: StateManaging, EmptyContentSource: EmptyContentDataSource>
         (view: View, stateManaging: StateManager, emptyContentDataSource: EmptyContentSource, didChangeState: ((T, View) -> Void)? = nil)
         where StateManager.State == T, EmptyContentSource.EmptyState == T {
@@ -80,6 +96,15 @@ open class EmptyContentScrollViewAdapter<T: Equatable, View: UIScrollView>: NSOb
             setup()
     }
     
+    /**
+     Creates an EmptyContentScrollViewAdapter instance witch display empty content inside a scrollView subclass.
+     
+     - parameter view: the scrollView subclass to display the empty content.
+     - parameter stateManaging: managing the empty state.
+     - parameter dataSource: dataSource which provides the empty content,
+     custom empty state views and button & actions for specific empty states.
+     */
+
     public convenience init<StateManager: StateManaging, EmptyContentData: EmptyContentDataSource &
         CustomEmptyViewDataSource & ActionButtonDataSource>(view: View, stateManaging: StateManager,
                 dataSource: EmptyContentData, didChangeState: ((T, View) -> Void)? = nil)
