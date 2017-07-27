@@ -22,6 +22,10 @@
 
 import UIKit
 
+//Typealias for a `EmptyContentScrollViewAdapter` using `UITableView`.
+public typealias EmptyContentTableViewAdapter<T: Equatable> =  EmptyContentScrollViewAdapter<T, UITableView>
+
+
 extension EmptyContentScrollViewAdapter where View == UITableView {
     
     private static func updateTableViewOnChnage(newState: T, tableView: View) {
@@ -100,5 +104,3 @@ extension EmptyContentScrollViewAdapter where View == UITableView {
     }
 
 }
-
-public typealias EmptyContentTableViewAdapter<T: Equatable> =  EmptyContentScrollViewAdapter<T, UITableView>

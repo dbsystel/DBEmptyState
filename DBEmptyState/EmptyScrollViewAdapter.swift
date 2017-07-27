@@ -23,6 +23,7 @@
 import UIKit
 import DZNEmptyDataSet
 
+//EmptyContentScrollViewAdapter display empty content inside
 open class EmptyContentScrollViewAdapter<T: Equatable, View: UIScrollView>: NSObject, DZNEmptyDataSetSource, DZNEmptyDataSetDelegate {
     public var emptyContentDataSource: AnyEmptyContentDataSource<T>?
     public var customViewDataSource: AnyCustomEmptyViewDataSource<T>?
@@ -33,7 +34,7 @@ open class EmptyContentScrollViewAdapter<T: Equatable, View: UIScrollView>: NSOb
     let didChangeState: ((T, View) -> Void)?
     
     /**
-     Creates an EmptyContentScrollViewAdapter instance witch display empty content inside a scrollView subclass.
+     Creates an `EmptyContentScrollViewAdapter` instance witch display empty content inside a scrollView subclass.
      
      - parameter view: the scrollView subclass to display the empty content.
      - parameter stateManaging: managing the empty state.
@@ -58,7 +59,7 @@ open class EmptyContentScrollViewAdapter<T: Equatable, View: UIScrollView>: NSOb
     }
     
     /**
-     Creates an EmptyContentScrollViewAdapter instance witch display empty content inside a scrollView subclass.
+     Creates an `EmptyContentScrollViewAdapter` instance witch display empty content inside a scrollView subclass.
      
      - parameter view: the scrollView subclass to display the empty content.
      - parameter stateManaging: managing the empty state.
@@ -78,7 +79,7 @@ open class EmptyContentScrollViewAdapter<T: Equatable, View: UIScrollView>: NSOb
     }
     
     /**
-     Creates an EmptyContentScrollViewAdapter instance witch display empty content inside a scrollView subclass.
+     Creates an `EmptyContentScrollViewAdapter` instance witch display empty content inside a scrollView subclass.
      
      - parameter view: the scrollView subclass to display the empty content.
      - parameter stateManaging: managing the empty state.
@@ -97,7 +98,7 @@ open class EmptyContentScrollViewAdapter<T: Equatable, View: UIScrollView>: NSOb
     }
     
     /**
-     Creates an EmptyContentScrollViewAdapter instance witch display empty content inside a scrollView subclass.
+     Creates an `EmptyContentScrollViewAdapter` instance witch display empty content inside a scrollView subclass.
      
      - parameter view: the scrollView subclass to display the empty content.
      - parameter stateManaging: managing the empty state.
