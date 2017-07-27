@@ -41,6 +41,6 @@ public struct EmptyContent {
 }
 
 public extension EmptyContent {
-    //Represents content that gets overriden by a custom representation.
+    //Represents content that gets overwritten by a custom representation.
     static let customPresentation = EmptyContent(title: nil, subtitle: nil, image: nil)
 }
