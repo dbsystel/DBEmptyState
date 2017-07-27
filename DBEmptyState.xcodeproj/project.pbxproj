@@ -283,6 +283,7 @@
 				C634F9A51EA9D7210016232D /* Resources */,
 				C6878D0E1EB8B8100065CDD2 /* 📦 Carthage Copy */,
 				C656817C1EBC7AE800F5E20F /* 🚧 Swift Lint */,
+				7B5204D91F2A1EF500E2F769 /* ✂️ Remove Framework */,
 			);
 			buildRules = (
 			);
@@ -403,6 +404,20 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		7B5204D91F2A1EF500E2F769 /* ✂️ Remove Framework */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "✂️ Remove Framework";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "cd \"${CONFIGURATION_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/\"\nif [[ -d \"Frameworks\" ]]; then\nrm -fr Frameworks\nfi";
+		};
 		C656817C1EBC7AE800F5E20F /* 🚧 Swift Lint */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
