@@ -33,7 +33,7 @@ var emptyDataSet: EmptyCollectionViewAdapter<EmptyState>!
 
 override func viewDidLoad() {
     super.viewDidLoad()
-    emptyDataSet = EmptyCollectionViewAdapter(collectionView: collectionView, stateManaging: emptyState, dataSource: self)
+    emptyDataSet = EmptyCollectionViewAdapter(view: collectionView, stateManaging: emptyState, dataSource: self)
 }
 ```
 
