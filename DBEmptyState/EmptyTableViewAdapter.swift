@@ -22,7 +22,7 @@
 
 import UIKit
 
-extension EmptyScrollViewAdapter where View == UITableView {
+extension EmptyContentScrollViewAdapter where View == UITableView {
     
     private static func updateTableViewOnChnage(newState: T, tableView: View) {
         if tableView.isEmptyDataSetVisible {
@@ -32,13 +32,29 @@ extension EmptyScrollViewAdapter where View == UITableView {
         }
     }
     
+    /**
+     Creates an EmptyScrollViewAdapter instance witch display empty content inside a tableView. Cell skeletons will be hidden, when empty state is visible.
+     
+     - parameter tableView: the tableView to display the empty content.
+     - parameter stateManaging: managing the empty state.
+     - parameter emptyContentDataSource: dataSource which provides the empty content.
+     */
     public convenience init<StateManager: StateManaging, EmptyContentSource: EmptyContentDataSource>
         (tableView: UITableView, stateManaging: StateManager, emptyContentDataSource: EmptyContentSource)
         where StateManager.State == T, EmptyContentSource.EmptyState == T {
             self.init(view: tableView, stateManaging: stateManaging, emptyContentDataSource: emptyContentDataSource,
-                      didChangeState: EmptyScrollViewAdapter.updateTableViewOnChnage)
+                      didChangeState: EmptyContentScrollViewAdapter.updateTableViewOnChnage)
     }
     
+    /**
+     Creates an EmptyScrollViewAdapter instance witch display empty content inside a tableView. Cell skeletons will be hidden, when empty state is visible.
+     
+     - parameter tableView: the tableView to display the empty content.
+     - parameter stateManaging: managing the empty state.
+     - parameter emptyContentDataSource: dataSource which provides the empty content.
+     - parameter customViewDataSource: dataSource which custom empty state views.
+     - parameter buttonDataSource: dataSource which provides button & actions for specific empty states.
+     */
     public convenience init<StateManager: StateManaging, EmptyContentSource: EmptyContentDataSource,
                 CustomViewSource: CustomEmptyViewDataSource, ButtonDataSource: ActionButtonDataSource>
         (tableView: UITableView, stateManaging: StateManager, emptyContentDataSource: EmptyContentSource,
@@ -46,24 +62,39 @@ extension EmptyScrollViewAdapter where View == UITableView {
         where StateManager.State == T, EmptyContentSource.EmptyState == T, CustomViewSource.EmptyState == T, ButtonDataSource.EmptyState == T {
             self.init(view: tableView, stateManaging: stateManaging, emptyContentDataSource: emptyContentDataSource,
                        customViewDataSource: customViewDataSource, buttonDataSource: buttonDataSource,
-                       didChangeState: EmptyScrollViewAdapter.updateTableViewOnChnage)
+                       didChangeState: EmptyContentScrollViewAdapter.updateTableViewOnChnage)
     }
     
+    /**
+     Creates an EmptyScrollViewAdapter instance witch display empty content inside a tableView. Cell skeletons will be hidden, when empty state is visible.
+     
+     - parameter tableView: the tableView to display the empty content.
+     - parameter stateManaging: managing the empty state.
+     - parameter emptyContentCustomViewDataSource: dataSource which provides the empty content & custom empty state views.
+     */
     public convenience init<StateManager: StateManaging, EmptyContentSource: EmptyContentDataSource & CustomEmptyViewDataSource>
         (tableView: UITableView, stateManaging: StateManager, emptyContentCustomViewDataSource: EmptyContentSource)
         where StateManager.State == T, EmptyContentSource.EmptyState == T {
             self.init(view: tableView, stateManaging: stateManaging, emptyContentCustomViewDataSource: emptyContentCustomViewDataSource,
-                      didChangeState: EmptyScrollViewAdapter.updateTableViewOnChnage)
+                      didChangeState: EmptyContentScrollViewAdapter.updateTableViewOnChnage)
     }
     
+    /**
+     Creates an EmptyScrollViewAdapter instance witch display empty content inside a tableView. Cell skeletons will be hidden, when empty state is visible.
+     
+     - parameter tableView: the tableView to display the empty content.
+     - parameter stateManaging: managing the empty state.
+     - parameter emptyContentCustomViewDataSource: dataSource which provides the empty content,
+        custom empty state views and button & actions for specific empty states.
+     */
     public convenience init<StateManager: StateManaging,
                 EmptyContentData: EmptyContentDataSource & CustomEmptyViewDataSource & ActionButtonDataSource>
         (tableView: UITableView, stateManaging: StateManager, dataSource: EmptyContentData) where StateManager.State == T, EmptyContentData.EmptyState == T {
         self.init(view: tableView, stateManaging: stateManaging,
                    emptyContentDataSource: dataSource, customViewDataSource: dataSource, buttonDataSource: dataSource,
-                   didChangeState: EmptyScrollViewAdapter.updateTableViewOnChnage)
+                   didChangeState: EmptyContentScrollViewAdapter.updateTableViewOnChnage)
     }
 
 }
 
-public typealias EmptyTableViewAdapter<T: Equatable> =  EmptyScrollViewAdapter<T, UITableView>
+public typealias EmptyContentTableViewAdapter<T: Equatable> =  EmptyContentScrollViewAdapter<T, UITableView>

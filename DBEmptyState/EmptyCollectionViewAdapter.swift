@@ -22,4 +22,4 @@
 
 import UIKit
 
-public typealias EmptyCollectionViewAdapter<T: Equatable> = EmptyScrollViewAdapter<T, UICollectionView>
+public typealias EmptyContentCollectionViewAdapter<T: Equatable> = EmptyContentScrollViewAdapter<T, UICollectionView>

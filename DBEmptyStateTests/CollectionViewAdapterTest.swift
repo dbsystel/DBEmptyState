@@ -27,7 +27,7 @@ import DBEmptyState
 
 class CollectionViewAdapterTest: XCTestCase {
     var collectionView: UICollectionView!
-    var emptyDataSource: EmptyCollectionViewAdapter<EmptyStateMock>!
+    var emptyDataSource: EmptyContentCollectionViewAdapter<EmptyStateMock>!
     var emptyContentDataSource: EmptyContentDataSourceMock!
     var stateManagingMock: StateManagingMock!
     
@@ -36,14 +36,14 @@ class CollectionViewAdapterTest: XCTestCase {
         collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewLayout())
         emptyContentDataSource = EmptyContentDataSourceMock()
         stateManagingMock = StateManagingMock(state: .initial)
-        emptyDataSource = EmptyCollectionViewAdapter(view: collectionView, stateManaging: stateManagingMock, dataSource: emptyContentDataSource)
+        emptyDataSource = EmptyContentCollectionViewAdapter(view: collectionView, stateManaging: stateManagingMock, dataSource: emptyContentDataSource)
     }
     
     func testInit() {
         //Given
         
         //When
-        let emptyDataSource = EmptyCollectionViewAdapter(view: collectionView, stateManaging: stateManagingMock, dataSource: emptyContentDataSource)
+        let emptyDataSource = EmptyContentCollectionViewAdapter(view: collectionView, stateManaging: stateManagingMock, dataSource: emptyContentDataSource)
         
         //Then
         XCTAssertNotNil(emptyDataSource.emptyContentDataSource)
@@ -57,7 +57,7 @@ class CollectionViewAdapterTest: XCTestCase {
         //Given
         
         //When
-        let emptyDataSource = EmptyCollectionViewAdapter(view: collectionView, stateManaging: stateManagingMock,
+        let emptyDataSource = EmptyContentCollectionViewAdapter(view: collectionView, stateManaging: stateManagingMock,
                                                     emptyContentDataSource: emptyContentDataSource,
                                                     customViewDataSource: emptyContentDataSource, buttonDataSource: emptyContentDataSource)
         
@@ -72,7 +72,7 @@ class CollectionViewAdapterTest: XCTestCase {
     func testWhenStateChangesCallUpdate() {
         //Given
         var didCallUpdate = false
-        let emptyDataSource = EmptyCollectionViewAdapter(view: collectionView, stateManaging: stateManagingMock,
+        let emptyDataSource = EmptyContentCollectionViewAdapter(view: collectionView, stateManaging: stateManagingMock,
                                                          emptyContentDataSource: emptyContentDataSource,
                                                          customViewDataSource: emptyContentDataSource,
                                                          buttonDataSource: emptyContentDataSource, didChangeState: { _, _ in
@@ -90,7 +90,7 @@ class CollectionViewAdapterTest: XCTestCase {
         //Given
         
         //When
-        let emptyDataSource = EmptyCollectionViewAdapter(view: collectionView, stateManaging: stateManagingMock,
+        let emptyDataSource = EmptyContentCollectionViewAdapter(view: collectionView, stateManaging: stateManagingMock,
                                                     emptyContentCustomViewDataSource: emptyContentDataSource)
         //Then
         XCTAssertNotNil(emptyDataSource.emptyContentDataSource)
@@ -101,7 +101,7 @@ class CollectionViewAdapterTest: XCTestCase {
         //Given
         
         //When
-        let emptyDataSource = EmptyCollectionViewAdapter(view: collectionView, stateManaging: stateManagingMock,
+        let emptyDataSource = EmptyContentCollectionViewAdapter(view: collectionView, stateManaging: stateManagingMock,
                                                     emptyContentDataSource: emptyContentDataSource)
         //Then
         XCTAssertNotNil(emptyDataSource.emptyContentDataSource)
@@ -110,7 +110,7 @@ class CollectionViewAdapterTest: XCTestCase {
     func testAgainstMemoryLeaks() {
         //Given
         var emptyContentDataSource: EmptyContentDataSourceMock! = EmptyContentDataSourceMock()
-        emptyContentDataSource?.memoryCheck = EmptyCollectionViewAdapter(view: collectionView,
+        emptyContentDataSource?.memoryCheck = EmptyContentCollectionViewAdapter(view: collectionView,
                                                                          stateManaging: stateManagingMock, dataSource: emptyContentDataSource)
         weak var emptyDataSource = emptyContentDataSource?.memoryCheck
         

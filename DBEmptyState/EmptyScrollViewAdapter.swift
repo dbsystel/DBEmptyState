@@ -23,7 +23,7 @@
 import UIKit
 import DZNEmptyDataSet
 
-open class EmptyScrollViewAdapter<T: Equatable, View: UIScrollView>: NSObject, DZNEmptyDataSetSource, DZNEmptyDataSetDelegate {
+open class EmptyContentScrollViewAdapter<T: Equatable, View: UIScrollView>: NSObject, DZNEmptyDataSetSource, DZNEmptyDataSetDelegate {
     public var emptyContentDataSource: AnyEmptyContentDataSource<T>?
     public var customViewDataSource: AnyCustomEmptyViewDataSource<T>?
     public var actionButtonDataSource: AnyActionButtonDataSource<T>?
@@ -32,6 +32,16 @@ open class EmptyScrollViewAdapter<T: Equatable, View: UIScrollView>: NSObject, D
     let stateManaging: AnyStateManaging<T>
     let didChangeState: ((T, View) -> Void)?
     
+    /**
+     Creates an EmptyScrollViewAdapter instance witch display empty content inside a scrollView subclasses.
+     
+     - parameter tableView: the tableView to display the empty content.
+     - parameter stateManaging: managing the empty state.
+     - parameter emptyContentDataSource: dataSource which provides the empty content.
+     - parameter customViewDataSource: dataSource which custom empty state views.
+     - parameter buttonDataSource: dataSource which provides button & actions for specific empty states.
+     - parameter didChangeState: handle a state change. One can hide or display specific view elements on this event.
+     */
     public init<StateManager: StateManaging, EmptyContentSource: EmptyContentDataSource,
                 CustomViewSource: CustomEmptyViewDataSource, ButtonDataSource: ActionButtonDataSource>
         (view: View, stateManaging: StateManager, emptyContentDataSource: EmptyContentSource,

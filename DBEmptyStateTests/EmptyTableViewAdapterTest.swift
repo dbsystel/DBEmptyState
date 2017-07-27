@@ -25,9 +25,9 @@ import UIKit
 import DZNEmptyDataSet
 import DBEmptyState
 
-class EmptyTableViewAdapterTest: XCTestCase {
+class EmptyContentTableViewAdapterTest: XCTestCase {
     var tableView: UITableView!
-    var emptyDataSource: EmptyTableViewAdapter<EmptyStateMock>!
+    var emptyDataSource: EmptyContentTableViewAdapter<EmptyStateMock>!
     var emptyContentDataSource: EmptyContentDataSourceMock!
     var stateManagingMock: StateManagingMock!
     
@@ -36,7 +36,7 @@ class EmptyTableViewAdapterTest: XCTestCase {
         tableView = UITableView()
         emptyContentDataSource = EmptyContentDataSourceMock()
         stateManagingMock = StateManagingMock(state: .initial)
-        emptyDataSource = EmptyTableViewAdapter(tableView: tableView, stateManaging: stateManagingMock, dataSource: emptyContentDataSource)
+        emptyDataSource = EmptyContentTableViewAdapter(tableView: tableView, stateManaging: stateManagingMock, dataSource: emptyContentDataSource)
     }
     
     func testInit() {
@@ -44,7 +44,7 @@ class EmptyTableViewAdapterTest: XCTestCase {
         let tableView = UITableView()
         
         //When
-        let emptyDataSource = EmptyTableViewAdapter(tableView: tableView, stateManaging: stateManagingMock, dataSource: emptyContentDataSource)
+        let emptyDataSource = EmptyContentTableViewAdapter(tableView: tableView, stateManaging: stateManagingMock, dataSource: emptyContentDataSource)
         
         //Then
         XCTAssertNotNil(emptyDataSource.emptyContentDataSource)
@@ -59,7 +59,7 @@ class EmptyTableViewAdapterTest: XCTestCase {
         let tableView = UITableView()
         
         //When
-        let emptyDataSource = EmptyTableViewAdapter(tableView: tableView, stateManaging: stateManagingMock,
+        let emptyDataSource = EmptyContentTableViewAdapter(tableView: tableView, stateManaging: stateManagingMock,
                                                     emptyContentDataSource: emptyContentDataSource,
                                                     customViewDataSource: emptyContentDataSource, buttonDataSource: emptyContentDataSource)
         
@@ -76,7 +76,7 @@ class EmptyTableViewAdapterTest: XCTestCase {
         let tableView = UITableView()
         
         //When
-        let emptyDataSource = EmptyTableViewAdapter(tableView: tableView, stateManaging: stateManagingMock,
+        let emptyDataSource = EmptyContentTableViewAdapter(tableView: tableView, stateManaging: stateManagingMock,
                                                     emptyContentCustomViewDataSource: emptyContentDataSource)
         //Then
         XCTAssertNotNil(emptyDataSource.emptyContentDataSource)
@@ -88,7 +88,7 @@ class EmptyTableViewAdapterTest: XCTestCase {
         let tableView = UITableView()
         
         //When
-        let emptyDataSource = EmptyTableViewAdapter(tableView: tableView, stateManaging: stateManagingMock,
+        let emptyDataSource = EmptyContentTableViewAdapter(tableView: tableView, stateManaging: stateManagingMock,
                                                     emptyContentDataSource: emptyContentDataSource)
         //Then
         XCTAssertNotNil(emptyDataSource.emptyContentDataSource)
@@ -98,7 +98,8 @@ class EmptyTableViewAdapterTest: XCTestCase {
         //Given
         let tableView = UITableView()
         var emptyContentDataSource: EmptyContentDataSourceMock! = EmptyContentDataSourceMock()
-        emptyContentDataSource?.memoryCheck = EmptyTableViewAdapter(tableView: tableView, stateManaging: stateManagingMock, dataSource: emptyContentDataSource)
+        emptyContentDataSource?.memoryCheck = EmptyContentTableViewAdapter(tableView: tableView,
+                                                                           stateManaging: stateManagingMock, dataSource: emptyContentDataSource)
         weak var emptyDataSource = emptyContentDataSource?.memoryCheck
         
         //When
