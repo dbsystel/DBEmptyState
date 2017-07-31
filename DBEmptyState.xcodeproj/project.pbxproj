@@ -27,15 +27,15 @@
 		C6878CFC1EB1D4E10065CDD2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C6878CFA1EB1D4E10065CDD2 /* Main.storyboard */; };
 		C6878CFE1EB1D4E10065CDD2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C6878CFD1EB1D4E10065CDD2 /* Assets.xcassets */; };
 		C6878D011EB1D4E10065CDD2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C6878CFF1EB1D4E10065CDD2 /* LaunchScreen.storyboard */; };
-		C6C21A2F1F21D0F30004A7EB /* EmptyScrollViewAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C21A2E1F21D0F30004A7EB /* EmptyScrollViewAdapter.swift */; };
-		C6C21A311F21D4170004A7EB /* EmptyCollectionViewAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C21A301F21D4170004A7EB /* EmptyCollectionViewAdapter.swift */; };
+		C6C21A2F1F21D0F30004A7EB /* EmptyContentScrollViewAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C21A2E1F21D0F30004A7EB /* EmptyContentScrollViewAdapter.swift */; };
+		C6C21A311F21D4170004A7EB /* EmptyContentCollectionViewAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C21A301F21D4170004A7EB /* EmptyContentCollectionViewAdapter.swift */; };
 		C6C21A331F21D8130004A7EB /* CollectionViewAdapterTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C21A321F21D8130004A7EB /* CollectionViewAdapterTest.swift */; };
 		C6CF23441EADC11200580862 /* StringStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6CF23411EADC11200580862 /* StringStyle.swift */; };
 		C6CF23451EADC11200580862 /* EmptyContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6CF23421EADC11200580862 /* EmptyContent.swift */; };
 		C6CF23461EADC11200580862 /* EmptyContentStyling.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6CF23431EADC11200580862 /* EmptyContentStyling.swift */; };
 		C6CF234B1EADC15E00580862 /* EmptyContentDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6CF23491EADC15E00580862 /* EmptyContentDataSource.swift */; };
 		C6CF23501EADC21B00580862 /* ActionButtonProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6CF234D1EADC21B00580862 /* ActionButtonProviding.swift */; };
-		C6CF23511EADC21B00580862 /* EmptyTableViewAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6CF234E1EADC21B00580862 /* EmptyTableViewAdapter.swift */; };
+		C6CF23511EADC21B00580862 /* EmptyContentTableViewAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6CF234E1EADC21B00580862 /* EmptyContentTableViewAdapter.swift */; };
 		C6CF23561EADCAB400580862 /* EmptyContentTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6CF23551EADCAB400580862 /* EmptyContentTest.swift */; };
 		C6CF235A1EADCACD00580862 /* EmptyContentDataSourceMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6CF23581EADCACD00580862 /* EmptyContentDataSourceMock.swift */; };
 		C6CF237E1EAF372E00580862 /* AnyEmptyContentDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6CF237D1EAF372E00580862 /* AnyEmptyContentDataSource.swift */; };
@@ -85,15 +85,15 @@
 		C6878D001EB1D4E10065CDD2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C6878D021EB1D4E10065CDD2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C6878D091EB1D64B0065CDD2 /* DZNEmptyDataSet.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = DZNEmptyDataSet.framework; path = Carthage/Build/iOS/DZNEmptyDataSet.framework; sourceTree = "<group>"; };
-		C6C21A2E1F21D0F30004A7EB /* EmptyScrollViewAdapter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptyScrollViewAdapter.swift; sourceTree = "<group>"; };
-		C6C21A301F21D4170004A7EB /* EmptyCollectionViewAdapter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptyCollectionViewAdapter.swift; sourceTree = "<group>"; };
+		C6C21A2E1F21D0F30004A7EB /* EmptyContentScrollViewAdapter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptyContentScrollViewAdapter.swift; sourceTree = "<group>"; };
+		C6C21A301F21D4170004A7EB /* EmptyContentCollectionViewAdapter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptyContentCollectionViewAdapter.swift; sourceTree = "<group>"; };
 		C6C21A321F21D8130004A7EB /* CollectionViewAdapterTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionViewAdapterTest.swift; sourceTree = "<group>"; };
 		C6CF23411EADC11200580862 /* StringStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringStyle.swift; sourceTree = "<group>"; };
 		C6CF23421EADC11200580862 /* EmptyContent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptyContent.swift; sourceTree = "<group>"; };
 		C6CF23431EADC11200580862 /* EmptyContentStyling.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptyContentStyling.swift; sourceTree = "<group>"; };
 		C6CF23491EADC15E00580862 /* EmptyContentDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptyContentDataSource.swift; sourceTree = "<group>"; };
 		C6CF234D1EADC21B00580862 /* ActionButtonProviding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActionButtonProviding.swift; sourceTree = "<group>"; };
-		C6CF234E1EADC21B00580862 /* EmptyTableViewAdapter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptyTableViewAdapter.swift; sourceTree = "<group>"; };
+		C6CF234E1EADC21B00580862 /* EmptyContentTableViewAdapter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptyContentTableViewAdapter.swift; sourceTree = "<group>"; };
 		C6CF23551EADCAB400580862 /* EmptyContentTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptyContentTest.swift; sourceTree = "<group>"; };
 		C6CF23581EADCACD00580862 /* EmptyContentDataSourceMock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptyContentDataSourceMock.swift; sourceTree = "<group>"; };
 		C6CF237D1EAF372E00580862 /* AnyEmptyContentDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnyEmptyContentDataSource.swift; sourceTree = "<group>"; };
@@ -242,9 +242,9 @@
 		C6CF234C1EADC21000580862 /* DZNEmptyDataSet-Binding */ = {
 			isa = PBXGroup;
 			children = (
-				C6C21A2E1F21D0F30004A7EB /* EmptyScrollViewAdapter.swift */,
-				C6CF234E1EADC21B00580862 /* EmptyTableViewAdapter.swift */,
-				C6C21A301F21D4170004A7EB /* EmptyCollectionViewAdapter.swift */,
+				C6C21A2E1F21D0F30004A7EB /* EmptyContentScrollViewAdapter.swift */,
+				C6CF234E1EADC21B00580862 /* EmptyContentTableViewAdapter.swift */,
+				C6C21A301F21D4170004A7EB /* EmptyContentCollectionViewAdapter.swift */,
 			);
 			name = "DZNEmptyDataSet-Binding";
 			sourceTree = "<group>";
@@ -454,7 +454,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C6CF23801EB070E400580862 /* AnyStateManaging.swift in Sources */,
-				C6C21A311F21D4170004A7EB /* EmptyCollectionViewAdapter.swift in Sources */,
+				C6C21A311F21D4170004A7EB /* EmptyContentCollectionViewAdapter.swift in Sources */,
 				C6CF234B1EADC15E00580862 /* EmptyContentDataSource.swift in Sources */,
 				C65681801EC0432000F5E20F /* ButtonModel.swift in Sources */,
 				C6CF23461EADC11200580862 /* EmptyContentStyling.swift in Sources */,
@@ -463,10 +463,10 @@
 				C6878CED1EB1BE000065CDD2 /* EmptyState.swift in Sources */,
 				C634F9C31EA9D7400016232D /* StateManaging.swift in Sources */,
 				C6CF23441EADC11200580862 /* StringStyle.swift in Sources */,
-				C6CF23511EADC21B00580862 /* EmptyTableViewAdapter.swift in Sources */,
+				C6CF23511EADC21B00580862 /* EmptyContentTableViewAdapter.swift in Sources */,
 				C634F9C41EA9D7400016232D /* StateMachine.swift in Sources */,
 				C6CF237E1EAF372E00580862 /* AnyEmptyContentDataSource.swift in Sources */,
-				C6C21A2F1F21D0F30004A7EB /* EmptyScrollViewAdapter.swift in Sources */,
+				C6C21A2F1F21D0F30004A7EB /* EmptyContentScrollViewAdapter.swift in Sources */,
 				C64C0B1A1EB9A81500B04871 /* AnyCustomEmptyContentViewDataSource.swift in Sources */,
 				C6CF23451EADC11200580862 /* EmptyContent.swift in Sources */,
 				C6CF23501EADC21B00580862 /* ActionButtonProviding.swift in Sources */,
