@@ -19,6 +19,7 @@
 		C64C0B1A1EB9A81500B04871 /* AnyCustomEmptyContentViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64C0B191EB9A81500B04871 /* AnyCustomEmptyContentViewDataSource.swift */; };
 		C656817E1EBC894100F5E20F /* ViewController+EmptyState.swift in Sources */ = {isa = PBXBuildFile; fileRef = C656817D1EBC894100F5E20F /* ViewController+EmptyState.swift */; };
 		C65681801EC0432000F5E20F /* ButtonModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C656817F1EC0432000F5E20F /* ButtonModel.swift */; };
+		C664585E1F2F4B0100998E93 /* EmptyContentTableViewAdapterTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C664585D1F2F4B0100998E93 /* EmptyContentTableViewAdapterTest.swift */; };
 		C6878CED1EB1BE000065CDD2 /* EmptyState.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6878CEC1EB1BE000065CDD2 /* EmptyState.swift */; };
 		C6878CEF1EB1BE190065CDD2 /* EmptyStateMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6878CEE1EB1BE190065CDD2 /* EmptyStateMock.swift */; };
 		C6878CF71EB1D4E10065CDD2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6878CF61EB1D4E10065CDD2 /* AppDelegate.swift */; };
@@ -73,6 +74,7 @@
 		C64C0B191EB9A81500B04871 /* AnyCustomEmptyContentViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnyCustomEmptyContentViewDataSource.swift; sourceTree = "<group>"; };
 		C656817D1EBC894100F5E20F /* ViewController+EmptyState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ViewController+EmptyState.swift"; sourceTree = "<group>"; };
 		C656817F1EC0432000F5E20F /* ButtonModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonModel.swift; sourceTree = "<group>"; };
+		C664585D1F2F4B0100998E93 /* EmptyContentTableViewAdapterTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptyContentTableViewAdapterTest.swift; sourceTree = "<group>"; };
 		C6878CEC1EB1BE000065CDD2 /* EmptyState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptyState.swift; sourceTree = "<group>"; };
 		C6878CEE1EB1BE190065CDD2 /* EmptyStateMock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptyStateMock.swift; sourceTree = "<group>"; };
 		C6878CF41EB1D4E10065CDD2 /* Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -168,6 +170,7 @@
 				C634F9C51EA9DC750016232D /* StateMachineTest.swift */,
 				C6C21A321F21D8130004A7EB /* CollectionViewAdapterTest.swift */,
 				C634F9B71EA9D7210016232D /* Info.plist */,
+				C664585D1F2F4B0100998E93 /* EmptyContentTableViewAdapterTest.swift */,
 			);
 			path = DBEmptyStateTests;
 			sourceTree = "<group>";
@@ -474,6 +477,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C664585E1F2F4B0100998E93 /* EmptyContentTableViewAdapterTest.swift in Sources */,
 				C6CF235A1EADCACD00580862 /* EmptyContentDataSourceMock.swift in Sources */,
 				C618ABDE1EBB27D6007C11F9 /* StateManagingMock.swift in Sources */,
 				C6878CEF1EB1BE190065CDD2 /* EmptyStateMock.swift in Sources */,
