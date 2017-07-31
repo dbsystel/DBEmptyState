@@ -27,7 +27,7 @@
 //
 
 import Foundation
-
+//Represents content which gets displayed during empty states.
 public struct EmptyContent {
     public init(title: String? = nil, subtitle: String? = nil, image: UIImage? = nil) {
         self.title = title
@@ -41,5 +41,6 @@ public struct EmptyContent {
 }
 
 public extension EmptyContent {
+    //Represents content that gets overwritten by a custom representation.
     static let customPresentation = EmptyContent(title: nil, subtitle: nil, image: nil)
 }
