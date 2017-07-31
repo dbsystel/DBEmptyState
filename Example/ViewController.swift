@@ -12,11 +12,12 @@ import DBEmptyState
 class ExampleViewController: UITableViewController {
     
     let emptyState = StateMachine<EmptyState>(initialState: .initial)
-    var emptyDataSet: EmptyTableViewAdapter<EmptyState>!
+    var emptyDataSet: EmptyContentTableViewAdapter<EmptyState>!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        emptyDataSet = EmptyTableViewAdapter(view: tableView, stateManaging: emptyState, dataSource: self)
+        emptyDataSet = EmptyContentTableViewAdapter(view: tableView, stateManaging: emptyState, dataSource: self,
+                                                    whenStateChanges: EmptyContentTableViewAdapter.hideSkeletonCellsWhenEmptyStateIsVisable)
     }
     
     var stateIndex = 0
