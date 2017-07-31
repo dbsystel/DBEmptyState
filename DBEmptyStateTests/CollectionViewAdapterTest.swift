@@ -43,7 +43,13 @@ class CollectionViewAdapterTest: XCTestCase {
         //Given
         
         //When
-        let emptyDataSource = EmptyContentCollectionViewAdapter(view: collectionView, stateManaging: stateManagingMock, dataSource: emptyContentDataSource)
+        var didCallUpdate = false
+        let emptyDataSource = EmptyContentCollectionViewAdapter(view: collectionView, stateManaging: stateManagingMock,
+                                                                emptyContentDataSource: emptyContentDataSource,
+                                                                customViewDataSource: emptyContentDataSource,
+                                                                buttonDataSource: emptyContentDataSource, whenStateChanges: { _, _ in
+                                                                    didCallUpdate = true
+        })
         
         //Then
         XCTAssertNotNil(emptyDataSource.emptyContentDataSource)
@@ -51,15 +57,20 @@ class CollectionViewAdapterTest: XCTestCase {
         XCTAssertNotNil(emptyDataSource.actionButtonDataSource)
         XCTAssertNotNil(collectionView.emptyDataSetSource)
         XCTAssertNotNil(stateManagingMock.callback)
+        XCTAssert(didCallUpdate)
     }
     
     func testInit2() {
         //Given
         
         //When
+        var didCallUpdate = false
         let emptyDataSource = EmptyContentCollectionViewAdapter(view: collectionView, stateManaging: stateManagingMock,
-                                                    emptyContentDataSource: emptyContentDataSource,
-                                                    customViewDataSource: emptyContentDataSource, buttonDataSource: emptyContentDataSource)
+                                                                emptyContentDataSource: emptyContentDataSource,
+                                                                customViewDataSource: emptyContentDataSource,
+                                                                buttonDataSource: emptyContentDataSource, whenStateChanges: { _, _ in
+                                                                    didCallUpdate = true
+        })
         
         //Then
         XCTAssertNotNil(emptyDataSource.emptyContentDataSource)
@@ -67,6 +78,7 @@ class CollectionViewAdapterTest: XCTestCase {
         XCTAssertNotNil(emptyDataSource.actionButtonDataSource)
         XCTAssertNotNil(collectionView.emptyDataSetSource)
         XCTAssertNotNil(stateManagingMock.callback)
+        XCTAssert(didCallUpdate)
     }
     
     func testWhenStateChangesCallUpdate() {
@@ -75,7 +87,7 @@ class CollectionViewAdapterTest: XCTestCase {
         let emptyDataSource = EmptyContentCollectionViewAdapter(view: collectionView, stateManaging: stateManagingMock,
                                                          emptyContentDataSource: emptyContentDataSource,
                                                          customViewDataSource: emptyContentDataSource,
-                                                         buttonDataSource: emptyContentDataSource, didChangeState: { _, _ in
+                                                         buttonDataSource: emptyContentDataSource, whenStateChanges: { _, _ in
                                                             didCallUpdate = true
                                                             })
         
