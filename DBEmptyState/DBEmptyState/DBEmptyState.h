@@ -2,7 +2,7 @@
 //  DBEmptyState.h
 //  DBEmptyState
 //
-//  Created by Lukas Schmidt on 21.04.17.
+//  Created by Lukas Schmidt on 01.08.17.
 //  Copyright © 2017 DBSystel. All rights reserved.
 //
 
