@@ -16,7 +16,8 @@ class ExampleViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        emptyDataSet = EmptyContentTableViewAdapter(view: tableView, stateManaging: emptyState, dataSource: self)
+        emptyDataSet = EmptyContentTableViewAdapter(view: tableView, stateManaging: emptyState, dataSource: self,
+                                                    whenStateChanges: EmptyContentTableViewAdapter.hideSkeletonCellsWhenEmptyStateIsVisable)
     }
     
     var stateIndex = 0

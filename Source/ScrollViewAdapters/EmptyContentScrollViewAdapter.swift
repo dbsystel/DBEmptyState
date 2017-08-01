@@ -15,7 +15,7 @@
 //  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
 //  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
 //  THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-//  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+//  LIABILITY, WHETHER IN AN ACTION OF CONTRACState, TORT OR OTHERWISE, ARISING
 //  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 //  DEALINGS IN THE SOFTWARE.
 //
@@ -24,14 +24,14 @@ import UIKit
 import DZNEmptyDataSet
 
 //EmptyContentScrollViewAdapter display empty content inside
-open class EmptyContentScrollViewAdapter<T: Equatable, View: UIScrollView>: NSObject, DZNEmptyDataSetSource, DZNEmptyDataSetDelegate {
-    public var emptyContentDataSource: AnyEmptyContentDataSource<T>?
-    public var customViewDataSource: AnyCustomEmptyViewDataSource<T>?
-    public var actionButtonDataSource: AnyActionButtonDataSource<T>?
+open class EmptyContentScrollViewAdapter<State: Equatable, View: UIScrollView>: NSObject, DZNEmptyDataSetSource, DZNEmptyDataSetDelegate {
+    public var emptyContentDataSource: AnyEmptyContentDataSource<State>?
+    public var customViewDataSource: AnyCustomEmptyViewDataSource<State>?
+    public var actionButtonDataSource: AnyActionButtonDataSource<State>?
     
     let view: View
-    let stateManaging: AnyStateManaging<T>
-    let didChangeState: ((T, View) -> Void)?
+    let stateManaging: AnyStateManaging<State>
+    let whenStateChanges: ((State, View) -> Void)?
     
     /**
      Creates an `EmptyContentScrollViewAdapter` instance which display empty content inside a scrollView subclass.
@@ -41,19 +41,19 @@ open class EmptyContentScrollViewAdapter<T: Equatable, View: UIScrollView>: NSOb
      - parameter emptyContentDataSource: dataSource which provides the empty content.
      - parameter customViewDataSource: dataSource which custom empty state views.
      - parameter buttonDataSource: dataSource which provides button & actions for specific empty states.
-     - parameter didChangeState: handle a state change. One can hide or display specific view elements on this event.
+     - parameter whenStateChanges: handle a state change. One can hide or display specific view elements on this event.
      */
     public init<StateManager: StateManaging, EmptyContentSource: EmptyContentDataSource,
                 CustomViewSource: CustomEmptyViewDataSource, ButtonDataSource: ActionButtonDataSource>
         (view: View, stateManaging: StateManager, emptyContentDataSource: EmptyContentSource,
-         customViewDataSource: CustomViewSource, buttonDataSource: ButtonDataSource, didChangeState: ((T, View) -> Void)? = nil)
-        where StateManager.State == T, EmptyContentSource.EmptyState == T, CustomViewSource.EmptyState == T, ButtonDataSource.EmptyState == T {
+         customViewDataSource: CustomViewSource, buttonDataSource: ButtonDataSource, whenStateChanges: ((State, View) -> Void)? = nil)
+        where StateManager.State == State, EmptyContentSource.EmptyState == State, CustomViewSource.EmptyState == State, ButtonDataSource.EmptyState == State {
             self.view = view
             self.emptyContentDataSource = AnyEmptyContentDataSource(emptyContentDataSource)
             self.customViewDataSource = AnyCustomEmptyViewDataSource(customViewDataSource)
             self.actionButtonDataSource = AnyActionButtonDataSource(buttonDataSource)
             self.stateManaging = AnyStateManaging(stateManaging)
-            self.didChangeState = didChangeState
+            self.whenStateChanges = whenStateChanges
             super.init()
             setup()
     }
@@ -64,16 +64,16 @@ open class EmptyContentScrollViewAdapter<T: Equatable, View: UIScrollView>: NSOb
      - parameter view: the scrollView subclass to display the empty content.
      - parameter stateManaging: managing the empty state.
      - parameter emptyContentCustomViewDataSource: dataSource which provides the empty content & custom empty state views.
-     - parameter didChangeState: handle a state change. One can hide or display specific view elements on this event.
+     - parameter whenStateChanges: handle a state change. One can hide or display specific view elements on this event.
      */
     public init<StateManager: StateManaging, EmptyContentSource: EmptyContentDataSource & CustomEmptyViewDataSource>
-        (view: View, stateManaging: StateManager, emptyContentCustomViewDataSource: EmptyContentSource, didChangeState: ((T, View) -> Void)? = nil)
-        where StateManager.State == T, EmptyContentSource.EmptyState == T {
+        (view: View, stateManaging: StateManager, emptyContentCustomViewDataSource: EmptyContentSource, whenStateChanges: ((State, View) -> Void)? = nil)
+        where StateManager.State == State, EmptyContentSource.EmptyState == State {
             self.view = view
             self.emptyContentDataSource = AnyEmptyContentDataSource(emptyContentCustomViewDataSource)
             self.customViewDataSource = AnyCustomEmptyViewDataSource(emptyContentCustomViewDataSource)
             self.stateManaging = AnyStateManaging(stateManaging)
-            self.didChangeState = didChangeState
+            self.whenStateChanges = whenStateChanges
             super.init()
             setup()
     }
@@ -84,15 +84,15 @@ open class EmptyContentScrollViewAdapter<T: Equatable, View: UIScrollView>: NSOb
      - parameter view: the scrollView subclass to display the empty content.
      - parameter stateManaging: managing the empty state.
      - parameter emptyContentDataSource: dataSource which provides the empty content.
-     - parameter didChangeState: handle a state change. One can hide or display specific view elements on this event.
+     - parameter whenStateChanges: handle a state change. One can hide or display specific view elements on this event.
      */
     public init<StateManager: StateManaging, EmptyContentSource: EmptyContentDataSource>
-        (view: View, stateManaging: StateManager, emptyContentDataSource: EmptyContentSource, didChangeState: ((T, View) -> Void)? = nil)
-        where StateManager.State == T, EmptyContentSource.EmptyState == T {
+        (view: View, stateManaging: StateManager, emptyContentDataSource: EmptyContentSource, whenStateChanges: ((State, View) -> Void)? = nil)
+        where StateManager.State == State, EmptyContentSource.EmptyState == State {
             self.view = view
             self.emptyContentDataSource = AnyEmptyContentDataSource(emptyContentDataSource)
             self.stateManaging = AnyStateManaging(stateManaging)
-            self.didChangeState = didChangeState
+            self.whenStateChanges = whenStateChanges
             super.init()
             setup()
     }
@@ -108,10 +108,10 @@ open class EmptyContentScrollViewAdapter<T: Equatable, View: UIScrollView>: NSOb
 
     public convenience init<StateManager: StateManaging, EmptyContentData: EmptyContentDataSource &
         CustomEmptyViewDataSource & ActionButtonDataSource>(view: View, stateManaging: StateManager,
-                dataSource: EmptyContentData, didChangeState: ((T, View) -> Void)? = nil)
-        where StateManager.State == T, EmptyContentData.EmptyState == T {
+                dataSource: EmptyContentData, whenStateChanges: ((State, View) -> Void)? = nil)
+        where StateManager.State == State, EmptyContentData.EmptyState == State {
             self.init(view: view, stateManaging: stateManaging, emptyContentDataSource: dataSource,
-                      customViewDataSource: dataSource, buttonDataSource: dataSource, didChangeState: didChangeState)
+                      customViewDataSource: dataSource, buttonDataSource: dataSource, whenStateChanges: whenStateChanges)
         }
     
     private func setup() {
@@ -122,8 +122,9 @@ open class EmptyContentScrollViewAdapter<T: Equatable, View: UIScrollView>: NSOb
                 return
             }
             self?.update()
-            self?.didChangeState?(newState, strongSelf.view)
+            self?.whenStateChanges?(newState, strongSelf.view)
         })
+        whenStateChanges?(stateManaging.state, view)
     }
     
     open func update() {
