@@ -299,6 +299,7 @@
 				C634F9AC1EA9D7210016232D /* Sources */,
 				C634F9AD1EA9D7210016232D /* Frameworks */,
 				C634F9AE1EA9D7210016232D /* Resources */,
+				C6B116731F39854900870F3D /* 📦 Carthage Copy */,
 			);
 			buildRules = (
 			);
@@ -422,6 +423,21 @@
 			files = (
 			);
 			inputPaths = (
+			);
+			name = "📦 Carthage Copy";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks";
+		};
+		C6B116731F39854900870F3D /* 📦 Carthage Copy */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/DZNEmptyDataSet.framework",
 			);
 			name = "📦 Carthage Copy";
 			outputPaths = (
