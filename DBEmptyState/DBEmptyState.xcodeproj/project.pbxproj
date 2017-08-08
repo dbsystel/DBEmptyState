@@ -47,7 +47,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		C64EBE491F30BB5A00C1A4F7 /* EmptyContentTableViewAdapterTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptyContentTableViewAdapterTest.swift; sourceTree = "<group>"; };
+		C64EBE491F30BB5A00C1A4F7 /* EmptyContentTableViewAdapterTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EmptyContentTableViewAdapterTest.swift; path = ../../Tests/EmptyContentTableViewAdapterTest.swift; sourceTree = "<group>"; };
 		C69FC9A01F3083D3008A74D8 /* ActionButtonProviding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActionButtonProviding.swift; sourceTree = "<group>"; };
 		C69FC9A11F3083D3008A74D8 /* AnyActionButtonDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnyActionButtonDataSource.swift; sourceTree = "<group>"; };
 		C69FC9A21F3083D3008A74D8 /* AnyCustomEmptyContentViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnyCustomEmptyContentViewDataSource.swift; sourceTree = "<group>"; };
@@ -233,9 +233,7 @@
 				C6F3F0681F307249007299F0 /* Frameworks */,
 				C6F3F0691F307249007299F0 /* Headers */,
 				C6F3F06A1F307249007299F0 /* Resources */,
-				C6F3F0BA1F30734D007299F0 /* 📦 Carthage Copy */,
 				C6F3F0BB1F3073C4007299F0 /* 🚧 SwiftLint */,
-				C6F3F0BC1F30743F007299F0 /* ✂️ Remove Frameworks File */,
 			);
 			buildRules = (
 			);
@@ -253,6 +251,7 @@
 				C6F3F0711F307249007299F0 /* Sources */,
 				C6F3F0721F307249007299F0 /* Frameworks */,
 				C6F3F0731F307249007299F0 /* Resources */,
+				C6B116751F3992D300870F3D /* 📦 Carthage Copy */,
 			);
 			buildRules = (
 			);
@@ -322,7 +321,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		C6F3F0BA1F30734D007299F0 /* 📦 Carthage Copy */ = {
+		C6B116751F3992D300870F3D /* 📦 Carthage Copy */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -350,20 +349,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "if which swiftlint >/dev/null; then\ncd ../\nswiftlint\nelse\necho \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi";
-		};
-		C6F3F0BC1F30743F007299F0 /* ✂️ Remove Frameworks File */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "✂️ Remove Frameworks File";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "if [ $CONFIGURATION == \"Release\" ]; then\necho \"✂️Remove Frameworks File: ${CONFIGURATION}\"\ncd \"${CONFIGURATION_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/\"\nif [[ -d \"Frameworks\" ]]; then\nrm -fr Frameworks\nfi\nfi";
 		};
 /* End PBXShellScriptBuildPhase section */
 
