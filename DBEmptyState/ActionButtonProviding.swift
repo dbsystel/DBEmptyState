@@ -39,10 +39,10 @@ extension ActionButtonDataSource {
 
 public extension StringStyle {
     static var buttonNormal: StringStyle {
-        return StringStyle(style: { NSAttributedString(string: $0, attributes: [NSForegroundColorAttributeName: UIView().tintColor]) })
+        return StringStyle(style: { NSAttributedString(string: $0, attributes: [.foregroundColor: UIView().tintColor]) })
     }
     
     static var buttonHighlighted: StringStyle {
-        return StringStyle(style: { NSAttributedString(string: $0, attributes: [NSForegroundColorAttributeName: UIView().tintColor.withAlphaComponent(0.2)]) })
+        return StringStyle(style: { NSAttributedString(string: $0, attributes: [.foregroundColor: UIView().tintColor.withAlphaComponent(0.2)]) })
     }
 }
