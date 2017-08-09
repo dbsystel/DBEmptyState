@@ -281,7 +281,6 @@
 				C634F9A31EA9D7210016232D /* Frameworks */,
 				C634F9A41EA9D7210016232D /* Headers */,
 				C634F9A51EA9D7210016232D /* Resources */,
-				C6878D0E1EB8B8100065CDD2 /* 📦 Carthage Copy */,
 				C656817C1EBC7AE800F5E20F /* 🚧 Swift Lint */,
 			);
 			buildRules = (
@@ -300,6 +299,7 @@
 				C634F9AC1EA9D7210016232D /* Sources */,
 				C634F9AD1EA9D7210016232D /* Frameworks */,
 				C634F9AE1EA9D7210016232D /* Resources */,
+				C6B116731F39854900870F3D /* 📦 Carthage Copy */,
 			);
 			buildRules = (
 			);
@@ -432,7 +432,7 @@
 			shellPath = /bin/sh;
 			shellScript = "/usr/local/bin/carthage copy-frameworks";
 		};
-		C6878D0E1EB8B8100065CDD2 /* 📦 Carthage Copy */ = {
+		C6B116731F39854900870F3D /* 📦 Carthage Copy */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
