@@ -19,7 +19,6 @@
 //  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 //  DEALINGS IN THE SOFTWARE.
 
-
 import Foundation
 //Represents content which gets displayed during empty states.
 public struct EmptyContent {
