@@ -25,7 +25,7 @@
 		C65778931F30958E0051006E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C65778961F30958E0051006E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C65778981F30958E0051006E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		C657789E1F3095C50051006E /* ViewController+EmptyState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "ViewController+EmptyState.swift"; path = "../../Example/ViewController+EmptyState.swift"; sourceTree = "<group>"; };
+		C657789E1F3095C50051006E /* ViewController+EmptyState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ViewController+EmptyState.swift"; sourceTree = "<group>"; };
 		C65778A71F30B5EA0051006E /* DBEmptyState.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = DBEmptyState.framework; path = "../../../Library/Developer/Xcode/DerivedData/DBEmptyState-exejbnfhxuoaxkexawthftjcdcnr/Build/Products/Debug-iphonesimulator/DBEmptyState.framework"; sourceTree = "<group>"; };
 		C65778A91F30B5FF0051006E /* DZNEmptyDataSet.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = DZNEmptyDataSet.framework; path = ../Carthage/Build/iOS/DZNEmptyDataSet.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
