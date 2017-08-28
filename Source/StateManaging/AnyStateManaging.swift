@@ -19,8 +19,6 @@
 //  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 //  DEALINGS IN THE SOFTWARE.
 
-import Foundation
-
 public class AnyStateManaging<State: Equatable>: StateManaging {
     private let getState: () -> State
     private let setState: (State) -> Void

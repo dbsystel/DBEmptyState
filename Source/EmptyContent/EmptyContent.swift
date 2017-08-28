@@ -19,7 +19,8 @@
 //  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 //  DEALINGS IN THE SOFTWARE.
 
-import Foundation
+import UIKit
+
 //Represents content which gets displayed during empty states.
 public struct EmptyContent {
     public init(title: String? = nil, subtitle: String? = nil, image: UIImage? = nil) {
