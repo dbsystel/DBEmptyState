@@ -1,12 +1,14 @@
 # DBEmptyState
 [![Build Status](https://travis-ci.org/dbsystel/DBEmptyState.svg?branch=master)](https://travis-ci.org/dbsystel/DBEmptyState)
+[![codecov](https://codecov.io/gh/dbsystel/DBEmptyState/branch/master/graph/badge.svg)](https://codecov.io/gh/dbsystel/DBEmptyState)
+[![codebeat badge](https://codebeat.co/badges/a5cfc440-bc5f-4d25-be24-230f09496d38)](https://codebeat.co/projects/github-com-dbsystel-dbemptystate-master)
 [![Carthage Compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 [![Swift Version](https://img.shields.io/badge/Swift-3.0--3.1-F16D39.svg?style=flat)](https://developer.apple.com/swift)
-[![codecov](https://codecov.io/gh/dbsystel/DBEmptyState/branch/master/graph/badge.svg)](https://codecov.io/gh/dbsystel/DBEmptyState)
+
 
 ![Demo Example Gif](example.gif) 
 
-DBEmptyState helps you to manage your empty/error/whatever states inside your TableView. 
+DBEmptyState helps you to manage your empty/error/whatever states inside your TableView and CollectionView. 
 You can define states and representations which get displayed once your state is active.
 
 ## EmptyTableViewAdapter
@@ -20,6 +22,11 @@ var emptyDataSet: EmptyTableViewAdapter<EmptyState>!
 override func viewDidLoad() {
     super.viewDidLoad()
     emptyDataSet = EmptyTableViewAdapter(tableView: tableView, stateManaging: emptyState, dataSource: self)
+    
+    //Hide empty tableView skeleton cells, when empty content gets displayed
+    emptyDataSet = EmptyTableViewAdapter(tableView: tableView, stateManaging: emptyState, dataSource: self,
+                                  whenStateChanges: EmptyContentTableViewAdapter.hideSkeletonCellsWhenEmptyStateIsVisable)
+    
 }
 ```
 
@@ -122,7 +129,7 @@ let viewDatapter = TableViewAdapter(tableView: tableView, stateManaging: emptySt
 Specify the following in your `Cartfile`:
 
 ```ogdl
-github "dbsystel/DBEmptyState" ~> 0.1
+github "dbsystel/DBEmptyState" ~> 0.3
 ```
 ## Contributing
 Feel free to submit a pull request with new features, improvements on tests or documentation and bug fixes. Keep in mind that we welcome code that is well tested and documented.
