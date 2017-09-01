@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="46W-Mb-wsd">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--DBEmptyState-->
+        <scene sceneID="qtD-UI-E0w">
+            <objects>
+                <tableViewController automaticallyAdjustsScrollViewInsets="NO" id="JGu-iN-fxT" customClass="ExampleViewController" customModule="Example" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="sWb-2p-0vO">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <connections>
+                            <outlet property="dataSource" destination="JGu-iN-fxT" id="mgX-EX-egV"/>
+                            <outlet property="delegate" destination="JGu-iN-fxT" id="oBf-fe-G43"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="DBEmptyState" id="M4A-7V-ApU">
+                        <barButtonItem key="rightBarButtonItem" title="Change State" id="vSg-b8-g22">
+                            <connections>
+                                <action selector="changeState:" destination="JGu-iN-fxT" id="O1j-Vw-kWC"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6mn-et-8nO" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="241" y="73"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="wWD-UN-bZa">
+            <objects>
+                <navigationController id="46W-Mb-wsd" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="PS7-y5-tPy">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="JGu-iN-fxT" kind="relationship" relationship="rootViewController" id="x7Z-o7-gwT"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="DCJ-8V-fdE" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-711" y="73"/>
+        </scene>
+    </scenes>
+</document>
