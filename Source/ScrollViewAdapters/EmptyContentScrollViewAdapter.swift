@@ -115,6 +115,7 @@ open class EmptyContentScrollViewAdapter<State: Equatable, View: UIScrollView>: 
     
     private func setup() {
         view.emptyDataSetSource = self
+        view.emptyDataSetDelegate = self
         update()
         stateManaging.onChange(execute: { [weak self] newState in
             guard let strongSelf = self else {

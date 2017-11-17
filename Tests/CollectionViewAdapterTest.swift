@@ -55,6 +55,7 @@ class CollectionViewAdapterTest: XCTestCase {
         XCTAssertNotNil(emptyDataSource.customViewDataSource)
         XCTAssertNotNil(emptyDataSource.actionButtonDataSource)
         XCTAssertNotNil(collectionView.emptyDataSetSource)
+        XCTAssertNotNil(collectionView.emptyDataSetDelegate)
         XCTAssertNotNil(stateManagingMock.callback)
         XCTAssert(didCallUpdate)
     }

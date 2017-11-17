@@ -56,7 +56,9 @@ extension ExampleViewController: ActionButtonDataSource {
     func button(for state: EmptyState) -> ButtonModel? {
         switch state {
         case .error:
-            return ButtonModel(title: "Retry", action: {})
+            return ButtonModel(title: "Retry", action: {
+                print("Action")
+            })
         default:
             return nil
         }
