@@ -129,7 +129,7 @@ let viewDatapter = EmptyContentTableViewAdapter(tableView: tableView, stateManag
 Specify the following in your `Cartfile`:
 
 ```ogdl
-github "dbsystel/DBEmptyState" ~> 0.3
+github "dbsystel/DBEmptyState" == 0.3.1
 ```
 ## Contributing
 Feel free to submit a pull request with new features, improvements on tests or documentation and bug fixes. Keep in mind that we welcome code that is well tested and documented.
