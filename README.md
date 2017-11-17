@@ -17,14 +17,14 @@ Inside your ViewController, create and store a `EmptyTableViewAdapter` and a `St
 
 ```swift
 let emptyState = StateMachine<EmptyState>(initialState: .initial)
-var emptyDataSet: EmptyTableViewAdapter<EmptyState>!
+var emptyDataSet: EmptyContentTableViewAdapter<EmptyState>!
 
 override func viewDidLoad() {
     super.viewDidLoad()
-    emptyDataSet = EmptyTableViewAdapter(tableView: tableView, stateManaging: emptyState, dataSource: self)
+    emptyDataSet = EmptyContentTableViewAdapter(tableView: tableView, stateManaging: emptyState, dataSource: self)
     
     //Hide empty tableView skeleton cells, when empty content gets displayed
-    emptyDataSet = EmptyTableViewAdapter(tableView: tableView, stateManaging: emptyState, dataSource: self,
+    emptyDataSet = EmptyContentTableViewAdapter(tableView: tableView, stateManaging: emptyState, dataSource: self,
                                   whenStateChanges: EmptyContentTableViewAdapter.hideSkeletonCellsWhenEmptyStateIsVisable)
     
 }
@@ -32,15 +32,15 @@ override func viewDidLoad() {
 
 ## EmptyCollectionViewAdapter
 
-`EmptyCollectionViewAdapter` works exaclty as `EmptyTableViewAdapter`.
+`EmptyContentCollectionViewAdapter` works exaclty as `EmptyContentTableViewAdapter`.
 
 ```swift
 let emptyState = StateMachine<EmptyState>(initialState: .initial)
-var emptyDataSet: EmptyCollectionViewAdapter<EmptyState>!
+var emptyDataSet: EmptyContentCollectionViewAdapter<EmptyState>!
 
 override func viewDidLoad() {
     super.viewDidLoad()
-    emptyDataSet = EmptyCollectionViewAdapter(view: collectionView, stateManaging: emptyState, dataSource: self)
+    emptyDataSet = EmptyContentCollectionViewAdapter(view: collectionView, stateManaging: emptyState, dataSource: self)
 }
 ```
 
@@ -104,15 +104,15 @@ In many cases you descide to implement just of of the mentioned dataSources. Whe
 
 ```swift
 //When only implementing EmptyContentDataSource
-let viewDatapter = TableViewAdapter(tableView: tableView, stateManaging: emptyState, emptyContentDataSource: self)
+let viewDatapter = EmptyContentTableViewAdapter(tableView: tableView, stateManaging: emptyState, emptyContentDataSource: self)
 
 //When implementing EmptyContentDataSource & CustomEmptyViewDataSource
-let viewDatapter = TableViewAdapter(tableView: tableView, stateManaging: emptyState, emptyContentCustomViewDataSource: self)
+let viewDatapter = EmptyContentTableViewAdapter(tableView: tableView, stateManaging: emptyState, emptyContentCustomViewDataSource: self)
 
 //When your dataSources are implemented by different types
-let viewDatapter = TableViewAdapter(tableView: tableView, stateManaging: emptyState, emptyContentDataSource: self, customViewDataSource: firstOtherType, buttonDataSource: secondOtherType)
+let viewDatapter = EmptyContentTableViewAdapter(tableView: tableView, stateManaging: emptyState, emptyContentDataSource: self, customViewDataSource: firstOtherType, buttonDataSource: secondOtherType)
 ```
-**Note:** All initializers are available for `EmptyCollectionViewAdapter` as well.
+**Note:** All initializers are available for `EmptyContentCollectionViewAdapter` as well.
 
 ## Requirements
 
