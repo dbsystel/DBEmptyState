@@ -166,4 +166,12 @@ open class EmptyContentScrollViewAdapter<State: Equatable, View: UIScrollView>: 
         self.button()?.action()
     }
     
+    public func emptyDataSetShouldAllowScroll(_ scrollView: UIScrollView!) -> Bool {
+        guard let shouldAllowScroll = emptyContentDataSource?.emptyContent(for: stateManaging.state)?.shouldAllowScroll else {
+            return false
+        }
+        
+        return shouldAllowScroll
+    }
+    
 }

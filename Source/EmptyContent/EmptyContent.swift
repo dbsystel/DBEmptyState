@@ -23,15 +23,22 @@ import UIKit
 
 //Represents content which gets displayed during empty states.
 public struct EmptyContent {
-    public init(title: String? = nil, subtitle: String? = nil, image: UIImage? = nil) {
+    public init(title: String? = nil, subtitle: String? = nil, image: UIImage? = nil, shouldAllowTouch: Bool? = false, shouldAllowScroll: Bool? = false, shouldAllowImageViewAnimate: Bool? = false) {
         self.title = title
         self.subtitle = subtitle
         self.image = image
+        self.shouldAllowTouch = shouldAllowTouch
+        self.shouldAllowScroll = shouldAllowScroll
+        self.shouldAllowImageViewAnimate = shouldAllowImageViewAnimate
     }
     
     public let title: String?
     public let subtitle: String?
     public let image: UIImage?
+    public let shouldAllowTouch: Bool?
+    public let shouldAllowScroll: Bool?
+    public let shouldAllowImageViewAnimate: Bool?
+    
 }
 
 public extension EmptyContent {
