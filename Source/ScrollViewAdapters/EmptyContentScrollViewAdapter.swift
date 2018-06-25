@@ -166,12 +166,28 @@ open class EmptyContentScrollViewAdapter<State: Equatable, View: UIScrollView>: 
         self.button()?.action()
     }
     
+    public func emptyDataSetShouldAllowTouch(_ scrollView: UIScrollView!) -> Bool {
+        guard let shouldAllowTouch = emptyContentDataSource?.emptyContent(for: stateManaging.state)?.shouldAllowTouch else {
+            return false
+        }
+        
+        return shouldAllowTouch
+    }
+    
     public func emptyDataSetShouldAllowScroll(_ scrollView: UIScrollView!) -> Bool {
         guard let shouldAllowScroll = emptyContentDataSource?.emptyContent(for: stateManaging.state)?.shouldAllowScroll else {
             return false
         }
         
         return shouldAllowScroll
+    }
+    
+    public func emptyDataSetShouldAnimateImageView(_ scrollView: UIScrollView!) -> Bool {
+        guard let shouldAllowImageViewAnimate = emptyContentDataSource?.emptyContent(for: stateManaging.state)?.shouldAllowImageViewAnimate else {
+            return false
+        }
+        
+        return shouldAllowImageViewAnimate
     }
     
 }
