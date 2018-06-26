@@ -19,7 +19,7 @@ public protocol EmptyContentPresentation: class {
 extension EmptyContentPresentation {
     
     public func shouldAllowTouch(for state: EmptyState) -> Bool? {
-        return false
+        return true
     }
     
     public func shouldAllowScroll(for state: EmptyState) -> Bool? {
