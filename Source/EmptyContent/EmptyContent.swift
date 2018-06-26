@@ -23,21 +23,26 @@ import UIKit
 
 //Represents content which gets displayed during empty states.
 public struct EmptyContent {
-    public init(title: String? = nil, subtitle: String? = nil, image: UIImage? = nil, shouldAllowTouch: Bool? = false, shouldAllowScroll: Bool? = false, shouldAllowImageViewAnimate: Bool? = false) {
+    
+    /**
+     Creates an `EmptyContent` instance which will be displayed inside a scrollView subclass.
+     
+     - parameter title: title of empty content
+     - parameter subtitle: subtitle of empty content
+     - parameter image: image of empty content
+     - parameter shouldAllowTouch: bool if empty content should allow touch
+     - parameter shouldAllowScroll: bool if empty content should allow scroll
+     - parameter shouldAllowImageViewAnimate: bool if image view in empty content should animate
+     */
+    public init(title: String? = nil, subtitle: String? = nil, image: UIImage? = nil) {
         self.title = title
         self.subtitle = subtitle
         self.image = image
-        self.shouldAllowTouch = shouldAllowTouch
-        self.shouldAllowScroll = shouldAllowScroll
-        self.shouldAllowImageViewAnimate = shouldAllowImageViewAnimate
     }
     
     public let title: String?
     public let subtitle: String?
     public let image: UIImage?
-    public let shouldAllowTouch: Bool?
-    public let shouldAllowScroll: Bool?
-    public let shouldAllowImageViewAnimate: Bool?
     
 }
 
