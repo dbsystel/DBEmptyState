@@ -216,7 +216,7 @@ open class EmptyContentScrollViewAdapter<State: Equatable, View: UIScrollView>: 
      
     */
     open func emptyDataSetShouldAllowTouch(_ scrollView: UIScrollView!) -> Bool {
-        guard let shouldAllowTouch = presentationDelegate?.shouldAllowTouch(for: stateManaging.state) else {
+        guard let shouldAllowTouch = emptyContentPresentation?.shouldAllowTouch(for: stateManaging.state) else {
             return false
         }
 
@@ -231,7 +231,7 @@ open class EmptyContentScrollViewAdapter<State: Equatable, View: UIScrollView>: 
      
      */
     open func emptyDataSetShouldAllowScroll(_ scrollView: UIScrollView!) -> Bool {
-        guard let shouldAllowScroll = presentationDelegate?.shouldAllowScroll(for: stateManaging.state) else {
+        guard let shouldAllowScroll = emptyContentPresentation?.shouldAllowScroll(for: stateManaging.state) else {
             return false
         }
         
@@ -246,7 +246,7 @@ open class EmptyContentScrollViewAdapter<State: Equatable, View: UIScrollView>: 
      
      */
     open func emptyDataSetShouldAnimateImageView(_ scrollView: UIScrollView!) -> Bool {
-        guard let shouldAllowImageViewAnimate = presentationDelegate?.shouldAllowImageViewAnimate(for: stateManaging.state) else {
+        guard let shouldAllowImageViewAnimate = emptyContentPresentation?.shouldAllowImageViewAnimate(for: stateManaging.state) else {
             return false
         }
 
