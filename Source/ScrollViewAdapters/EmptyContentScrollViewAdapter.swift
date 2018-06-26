@@ -27,7 +27,7 @@ open class EmptyContentScrollViewAdapter<State: Equatable, View: UIScrollView>: 
     public var emptyContentDataSource: AnyEmptyContentDataSource<State>?
     public var customViewDataSource: AnyCustomEmptyViewDataSource<State>?
     public var actionButtonDataSource: AnyActionButtonDataSource<State>?
-    public var presentationDelegate: AnyPresentation<State>?
+    public var emptyContentPresentation: AnyPresentation<State>?
     
     let view: View
     let stateManaging: AnyStateManaging<State>
@@ -55,7 +55,7 @@ open class EmptyContentScrollViewAdapter<State: Equatable, View: UIScrollView>: 
             self.actionButtonDataSource = AnyActionButtonDataSource(buttonDataSource)
             self.stateManaging = AnyStateManaging(stateManaging)
             self.whenStateChanges = whenStateChanges
-            self.presentationDelegate = AnyPresentation(presentation)
+            self.emptyContentPresentation = AnyPresentation(presentation)
             super.init()
             setup()
     }
