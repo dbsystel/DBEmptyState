@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		9545AF6820E2CD2C003FE9B7 /* EmptyContentPresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9545AF6720E2CD2C003FE9B7 /* EmptyContentPresentation.swift */; };
+		9545AF6820E2CD2C003FE9B7 /* EmptyContentPresentationDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9545AF6720E2CD2C003FE9B7 /* EmptyContentPresentationDelegate.swift */; };
 		9545AF6A20E2D71A003FE9B7 /* AnyEmptyContentPresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9545AF6920E2D71A003FE9B7 /* AnyEmptyContentPresentation.swift */; };
 		C64EBE521F30BB6D00C1A4F7 /* EmptyContentTableViewAdapterTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64EBE491F30BB5A00C1A4F7 /* EmptyContentTableViewAdapterTest.swift */; };
 		C64EBE531F30BB6D00C1A4F7 /* CollectionViewAdapterTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C69FC9C21F3083E3008A74D8 /* CollectionViewAdapterTest.swift */; };
@@ -49,7 +49,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		9545AF6720E2CD2C003FE9B7 /* EmptyContentPresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyContentPresentation.swift; sourceTree = "<group>"; };
+		9545AF6720E2CD2C003FE9B7 /* EmptyContentPresentationDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyContentPresentationDelegate.swift; sourceTree = "<group>"; };
 		9545AF6920E2D71A003FE9B7 /* AnyEmptyContentPresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyEmptyContentPresentation.swift; sourceTree = "<group>"; };
 		C64EBE491F30BB5A00C1A4F7 /* EmptyContentTableViewAdapterTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EmptyContentTableViewAdapterTest.swift; path = ../../Tests/EmptyContentTableViewAdapterTest.swift; sourceTree = "<group>"; };
 		C69FC9A01F3083D3008A74D8 /* ActionButtonProviding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActionButtonProviding.swift; sourceTree = "<group>"; };
@@ -142,7 +142,7 @@
 				C69FC9A51F3083D3008A74D8 /* ButtonModel.swift */,
 				C69FC9A61F3083D3008A74D8 /* CustomEmptyContentViewDataSource.swift */,
 				C69FC9A91F3083D3008A74D8 /* EmptyContentDataSource.swift */,
-				9545AF6720E2CD2C003FE9B7 /* EmptyContentPresentation.swift */,
+				9545AF6720E2CD2C003FE9B7 /* EmptyContentPresentationDelegate.swift */,
 				9545AF6920E2D71A003FE9B7 /* AnyEmptyContentPresentation.swift */,
 			);
 			path = EmptyContentDataSource;
@@ -367,7 +367,7 @@
 				C69FC9C01F3083D3008A74D8 /* StateManaging.swift in Sources */,
 				C69FC9C11F3083D3008A74D8 /* StringStyle.swift in Sources */,
 				C69FC9B11F3083D3008A74D8 /* ActionButtonProviding.swift in Sources */,
-				9545AF6820E2CD2C003FE9B7 /* EmptyContentPresentation.swift in Sources */,
+				9545AF6820E2CD2C003FE9B7 /* EmptyContentPresentationDelegate.swift in Sources */,
 				C69FC9B21F3083D3008A74D8 /* AnyActionButtonDataSource.swift in Sources */,
 				C69FC9BD1F3083D3008A74D8 /* EmptyState.swift in Sources */,
 				C69FC9B31F3083D3008A74D8 /* AnyCustomEmptyContentViewDataSource.swift in Sources */,

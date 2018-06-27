@@ -37,9 +37,9 @@ extension ExampleViewController: EmptyContentDataSource {
     }
 }
 
-extension ExampleViewController: EmptyContentPresentation {
+extension ExampleViewController: EmptyContentPresentationDelegate {
 
-    func shouldAllowScroll(for state: EmptyState) -> Bool? {
+    func shouldAllowScroll(for state: EmptyState) -> Bool {
         switch state {
         case .initial:
             return true

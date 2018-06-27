@@ -30,9 +30,6 @@ public struct EmptyContent {
      - parameter title: title of empty content
      - parameter subtitle: subtitle of empty content
      - parameter image: image of empty content
-     - parameter shouldAllowTouch: bool if empty content should allow touch
-     - parameter shouldAllowScroll: bool if empty content should allow scroll
-     - parameter shouldAllowImageViewAnimate: bool if image view in empty content should animate
      */
     public init(title: String? = nil, subtitle: String? = nil, image: UIImage? = nil) {
         self.title = title

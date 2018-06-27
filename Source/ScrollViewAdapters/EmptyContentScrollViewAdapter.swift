@@ -27,7 +27,7 @@ open class EmptyContentScrollViewAdapter<State: Equatable, View: UIScrollView>: 
     public var emptyContentDataSource: AnyEmptyContentDataSource<State>?
     public var customViewDataSource: AnyCustomEmptyViewDataSource<State>?
     public var actionButtonDataSource: AnyActionButtonDataSource<State>?
-    public var emptyContentPresentation: AnyPresentation<State>?
+    public var emptyContentPresentationDelegate: AnyPresentation<State>?
     
     let view: View
     let stateManaging: AnyStateManaging<State>
@@ -45,7 +45,7 @@ open class EmptyContentScrollViewAdapter<State: Equatable, View: UIScrollView>: 
      - parameter whenStateChanges: handle a state change. One can hide or display specific view elements on this event.
      */
     public init<StateManager: StateManaging, EmptyContentSource: EmptyContentDataSource,
-        CustomViewSource: CustomEmptyViewDataSource, ButtonDataSource: ActionButtonDataSource, Presentation: EmptyContentPresentation>
+        CustomViewSource: CustomEmptyViewDataSource, ButtonDataSource: ActionButtonDataSource, Presentation: EmptyContentPresentationDelegate>
         (view: View, stateManaging: StateManager, emptyContentDataSource: EmptyContentSource,
          customViewDataSource: CustomViewSource, buttonDataSource: ButtonDataSource, presentation: Presentation, whenStateChanges: ((State, View) -> Void)? = nil)
         where StateManager.State == State, EmptyContentSource.EmptyState == State, CustomViewSource.EmptyState == State, ButtonDataSource.EmptyState == State, Presentation.EmptyState == State {
@@ -55,7 +55,7 @@ open class EmptyContentScrollViewAdapter<State: Equatable, View: UIScrollView>: 
             self.actionButtonDataSource = AnyActionButtonDataSource(buttonDataSource)
             self.stateManaging = AnyStateManaging(stateManaging)
             self.whenStateChanges = whenStateChanges
-            self.emptyContentPresentation = AnyPresentation(presentation)
+            self.emptyContentPresentationDelegate = AnyPresentation(presentation)
             super.init()
             setup()
     }
@@ -133,7 +133,7 @@ open class EmptyContentScrollViewAdapter<State: Equatable, View: UIScrollView>: 
      custom empty state views and button & actions and presentation settings for specific empty states.
      */
     public convenience init<StateManager: StateManaging, EmptyContentData: EmptyContentDataSource &
-        CustomEmptyViewDataSource & ActionButtonDataSource & EmptyContentPresentation>(view: View, stateManaging: StateManager,
+        CustomEmptyViewDataSource & ActionButtonDataSource & EmptyContentPresentationDelegate>(view: View, stateManaging: StateManager,
                 dataSource: EmptyContentData, whenStateChanges: ((State, View) -> Void)? = nil)
         where StateManager.State == State, EmptyContentData.EmptyState == State {
             self.init(view: view, stateManaging: stateManaging, emptyContentDataSource: dataSource,
@@ -216,11 +216,7 @@ open class EmptyContentScrollViewAdapter<State: Equatable, View: UIScrollView>: 
      
     */
     open func emptyDataSetShouldAllowTouch(_ scrollView: UIScrollView!) -> Bool {
-        guard let shouldAllowTouch = emptyContentPresentation?.shouldAllowTouch(for: stateManaging.state) else {
-            return false
-        }
-
-        return shouldAllowTouch
+        return emptyContentPresentationDelegate?.shouldAllowTouch(for: stateManaging.state) ?? true
     }
     
     /**
@@ -231,11 +227,7 @@ open class EmptyContentScrollViewAdapter<State: Equatable, View: UIScrollView>: 
      
      */
     open func emptyDataSetShouldAllowScroll(_ scrollView: UIScrollView!) -> Bool {
-        guard let shouldAllowScroll = emptyContentPresentation?.shouldAllowScroll(for: stateManaging.state) else {
-            return false
-        }
-        
-        return shouldAllowScroll
+        return emptyContentPresentationDelegate?.shouldAllowScroll(for: stateManaging.state) ?? false
     }
     
     /**
@@ -246,12 +238,7 @@ open class EmptyContentScrollViewAdapter<State: Equatable, View: UIScrollView>: 
      
      */
     open func emptyDataSetShouldAnimateImageView(_ scrollView: UIScrollView!) -> Bool {
-        guard let shouldAllowImageViewAnimate = emptyContentPresentation?.shouldAllowImageViewAnimate(for: stateManaging.state) else {
-            return false
-        }
-
-        return shouldAllowImageViewAnimate
-    
+        return emptyContentPresentationDelegate?.shouldAllowImageViewAnimate(for: stateManaging.state) ?? false
     }
     
 }

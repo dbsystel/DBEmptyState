@@ -6,17 +6,17 @@
 //  Copyright © 2018 DBSystel. All rights reserved.
 //
 
-public class AnyPresentation<EmptyState: Equatable>: EmptyContentPresentation {
+public class AnyPresentation<EmptyState: Equatable>: EmptyContentPresentationDelegate {
     
     private let shouldAllowTouch: (EmptyState) -> Bool?
     private let shouldAllowScroll: (EmptyState) -> Bool?
     private let shouldAllowImageViewAnimate: (EmptyState) -> Bool?
     
-    public init<D: EmptyContentPresentation>(_ emptyContentPresentation: D) where D.EmptyState == EmptyState {
-        unowned let weakEmptyContentPresentation = emptyContentPresentation
-        shouldAllowTouch = { weakEmptyContentPresentation.shouldAllowTouch(for: $0) }
-        shouldAllowScroll = { weakEmptyContentPresentation.shouldAllowScroll(for: $0) }
-        shouldAllowImageViewAnimate = { weakEmptyContentPresentation.shouldAllowImageViewAnimate(for: $0) }
+    public init<D: EmptyContentPresentationDelegate>(_ emptyContentPresentationDelegate: D) where D.EmptyState == EmptyState {
+        unowned let weakEmptyContentPresentationDelegate = emptyContentPresentationDelegate
+        shouldAllowTouch = { weakEmptyContentPresentationDelegate.shouldAllowTouch(for: $0) }
+        shouldAllowScroll = { weakEmptyContentPresentationDelegate.shouldAllowScroll(for: $0) }
+        shouldAllowImageViewAnimate = { weakEmptyContentPresentationDelegate.shouldAllowImageViewAnimate(for: $0) }
     }
     
     public func shouldAllowScroll(for state: EmptyState) -> Bool? {
