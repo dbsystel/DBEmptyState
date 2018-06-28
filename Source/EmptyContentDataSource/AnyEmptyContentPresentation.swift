@@ -6,7 +6,7 @@
 //  Copyright © 2018 DBSystel. All rights reserved.
 //
 
-public class AnyPresentation<EmptyState: Equatable>: EmptyContentPresentationDelegate {
+public class AnyEmptyContentPresentation<EmptyState: Equatable>: EmptyContentPresentationDelegate {
     
     private let shouldAllowTouch: (EmptyState) -> Bool?
     private let shouldAllowScroll: (EmptyState) -> Bool?
