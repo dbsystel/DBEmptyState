@@ -23,6 +23,14 @@ import UIKit
 
 //Represents content which gets displayed during empty states.
 public struct EmptyContent {
+    
+    /**
+     Creates an `EmptyContent` instance which will be displayed inside a scrollView subclass.
+     
+     - parameter title: title of empty content
+     - parameter subtitle: subtitle of empty content
+     - parameter image: image of empty content
+     */
     public init(title: String? = nil, subtitle: String? = nil, image: UIImage? = nil) {
         self.title = title
         self.subtitle = subtitle
@@ -32,6 +40,7 @@ public struct EmptyContent {
     public let title: String?
     public let subtitle: String?
     public let image: UIImage?
+    
 }
 
 public extension EmptyContent {

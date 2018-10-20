@@ -7,17 +7,33 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9564346E20E2DC0900F4DEAA /* DBEmptyState.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9564346D20E2DC0900F4DEAA /* DBEmptyState.framework */; };
+		9564346F20E2DC0900F4DEAA /* DBEmptyState.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 9564346D20E2DC0900F4DEAA /* DBEmptyState.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C657788D1F30958E0051006E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C657788C1F30958E0051006E /* AppDelegate.swift */; };
 		C657788F1F30958E0051006E /* ExampleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C657788E1F30958E0051006E /* ExampleViewController.swift */; };
 		C65778921F30958E0051006E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C65778901F30958E0051006E /* Main.storyboard */; };
 		C65778941F30958E0051006E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C65778931F30958E0051006E /* Assets.xcassets */; };
 		C65778971F30958E0051006E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C65778951F30958E0051006E /* LaunchScreen.storyboard */; };
 		C657789F1F3095C50051006E /* ViewController+EmptyState.swift in Sources */ = {isa = PBXBuildFile; fileRef = C657789E1F3095C50051006E /* ViewController+EmptyState.swift */; };
-		C65778A81F30B5EA0051006E /* DBEmptyState.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C65778A71F30B5EA0051006E /* DBEmptyState.framework */; };
 		C65778AA1F30B5FF0051006E /* DZNEmptyDataSet.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C65778A91F30B5FF0051006E /* DZNEmptyDataSet.framework */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		9564347020E2DC0900F4DEAA /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				9564346F20E2DC0900F4DEAA /* DBEmptyState.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		9564346D20E2DC0900F4DEAA /* DBEmptyState.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = DBEmptyState.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C65778891F30958E0051006E /* ExampleApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ExampleApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C657788C1F30958E0051006E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C657788E1F30958E0051006E /* ExampleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleViewController.swift; sourceTree = "<group>"; };
@@ -35,7 +51,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C65778A81F30B5EA0051006E /* DBEmptyState.framework in Frameworks */,
+				9564346E20E2DC0900F4DEAA /* DBEmptyState.framework in Frameworks */,
 				C65778AA1F30B5FF0051006E /* DZNEmptyDataSet.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -46,6 +62,7 @@
 		C65778801F30958E0051006E = {
 			isa = PBXGroup;
 			children = (
+				9564346D20E2DC0900F4DEAA /* DBEmptyState.framework */,
 				C657788B1F30958E0051006E /* ExampleApp */,
 				C657788A1F30958E0051006E /* Products */,
 				C65778A61F30B5EA0051006E /* Frameworks */,
@@ -94,6 +111,7 @@
 				C65778861F30958E0051006E /* Frameworks */,
 				C65778871F30958E0051006E /* Resources */,
 				C65778AC1F30B77F0051006E /* 📦 Carthage Copy */,
+				9564347020E2DC0900F4DEAA /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -116,6 +134,7 @@
 				TargetAttributes = {
 					C65778881F30958E0051006E = {
 						CreatedOnToolsVersion = 8.3.3;
+						DevelopmentTeam = ZMT5NFLAH2;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -165,7 +184,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "/usr/local/bin/carthage copy-frameworks";
+			shellScript = "/usr/local/bin/carthage copy-frameworks\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -311,6 +330,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = ZMT5NFLAH2;
 				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/../Carthage/Build/iOS";
 				INFOPLIST_FILE = ExampleApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -324,6 +344,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = ZMT5NFLAH2;
 				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/../Carthage/Build/iOS";
 				INFOPLIST_FILE = ExampleApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

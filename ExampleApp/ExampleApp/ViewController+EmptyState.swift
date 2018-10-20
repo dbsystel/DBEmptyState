@@ -26,7 +26,7 @@ extension ExampleViewController: EmptyContentDataSource {
     func emptyContent(for state: EmptyState) -> EmptyContent? {
         switch state {
         case .initial:
-            return EmptyContent(title: "Initial State", subtitle: "This is an initial state with subtitles", image: UIImage(named: "ic_impressum_dbkeks.png"))
+            return EmptyContent(title: "Initial State", subtitle: "This is an initial state with subtitles wich is also scrollable", image: UIImage(named: "ic_impressum_dbkeks.png"))
         case .loading:
             return .customPresentation
         case .error:
@@ -35,7 +35,18 @@ extension ExampleViewController: EmptyContentDataSource {
             return nil
         }
     }
-    
+}
+
+extension ExampleViewController: EmptyContentPresentationDelegate {
+
+    func shouldAllowScroll(for state: EmptyState) -> Bool {
+        switch state {
+        case .initial:
+            return true
+        default:
+            return false
+        }
+    }
 }
 
 extension ExampleViewController: CustomEmptyViewDataSource {

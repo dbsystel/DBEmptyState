@@ -27,6 +27,7 @@ open class EmptyContentScrollViewAdapter<State: Equatable, View: UIScrollView>: 
     public var emptyContentDataSource: AnyEmptyContentDataSource<State>?
     public var customViewDataSource: AnyCustomEmptyViewDataSource<State>?
     public var actionButtonDataSource: AnyActionButtonDataSource<State>?
+    public var emptyContentPresentation: AnyEmptyContentPresentation<State>?
     
     let view: View
     let stateManaging: AnyStateManaging<State>
@@ -40,10 +41,37 @@ open class EmptyContentScrollViewAdapter<State: Equatable, View: UIScrollView>: 
      - parameter emptyContentDataSource: dataSource which provides the empty content.
      - parameter customViewDataSource: dataSource which custom empty state views.
      - parameter buttonDataSource: dataSource which provides button & actions for specific empty states.
+     - parameter presentation: delegate which provides details for presentation settings
      - parameter whenStateChanges: handle a state change. One can hide or display specific view elements on this event.
      */
     public init<StateManager: StateManaging, EmptyContentSource: EmptyContentDataSource,
-                CustomViewSource: CustomEmptyViewDataSource, ButtonDataSource: ActionButtonDataSource>
+        CustomViewSource: CustomEmptyViewDataSource, ButtonDataSource: ActionButtonDataSource, Presentation: EmptyContentPresentationDelegate>
+        (view: View, stateManaging: StateManager, emptyContentDataSource: EmptyContentSource,
+         customViewDataSource: CustomViewSource, buttonDataSource: ButtonDataSource, presentation: Presentation, whenStateChanges: ((State, View) -> Void)? = nil)
+        where StateManager.State == State, EmptyContentSource.EmptyState == State, CustomViewSource.EmptyState == State, ButtonDataSource.EmptyState == State, Presentation.EmptyState == State {
+            self.view = view
+            self.emptyContentDataSource = AnyEmptyContentDataSource(emptyContentDataSource)
+            self.customViewDataSource = AnyCustomEmptyViewDataSource(customViewDataSource)
+            self.actionButtonDataSource = AnyActionButtonDataSource(buttonDataSource)
+            self.stateManaging = AnyStateManaging(stateManaging)
+            self.whenStateChanges = whenStateChanges
+            self.emptyContentPresentation = AnyEmptyContentPresentation(presentation)
+            super.init()
+            setup()
+    }
+    
+    /**
+     Creates an `EmptyContentScrollViewAdapter` instance which display empty content inside a scrollView subclass.
+     
+     - parameter view: the scrollView subclass to display the empty content.
+     - parameter stateManaging: managing the empty state.
+     - parameter emptyContentDataSource: dataSource which provides the empty content.
+     - parameter customViewDataSource: dataSource which custom empty state views.
+     - parameter buttonDataSource: dataSource which provides button & actions for specific empty states.
+     - parameter whenStateChanges: handle a state change. One can hide or display specific view elements on this event.
+     */
+    public init<StateManager: StateManaging, EmptyContentSource: EmptyContentDataSource,
+        CustomViewSource: CustomEmptyViewDataSource, ButtonDataSource: ActionButtonDataSource>
         (view: View, stateManaging: StateManager, emptyContentDataSource: EmptyContentSource,
          customViewDataSource: CustomViewSource, buttonDataSource: ButtonDataSource, whenStateChanges: ((State, View) -> Void)? = nil)
         where StateManager.State == State, EmptyContentSource.EmptyState == State, CustomViewSource.EmptyState == State, ButtonDataSource.EmptyState == State {
@@ -102,16 +130,30 @@ open class EmptyContentScrollViewAdapter<State: Equatable, View: UIScrollView>: 
      - parameter view: the scrollView subclass to display the empty content.
      - parameter stateManaging: managing the empty state.
      - parameter dataSource: dataSource which provides the empty content,
-     custom empty state views and button & actions for specific empty states.
+     custom empty state views and button & actions and presentation settings for specific empty states.
      */
-
     public convenience init<StateManager: StateManaging, EmptyContentData: EmptyContentDataSource &
-        CustomEmptyViewDataSource & ActionButtonDataSource>(view: View, stateManaging: StateManager,
+        CustomEmptyViewDataSource & ActionButtonDataSource & EmptyContentPresentationDelegate>(view: View, stateManaging: StateManager,
                 dataSource: EmptyContentData, whenStateChanges: ((State, View) -> Void)? = nil)
         where StateManager.State == State, EmptyContentData.EmptyState == State {
             self.init(view: view, stateManaging: stateManaging, emptyContentDataSource: dataSource,
-                      customViewDataSource: dataSource, buttonDataSource: dataSource, whenStateChanges: whenStateChanges)
+                      customViewDataSource: dataSource, buttonDataSource: dataSource, presentation: dataSource, whenStateChanges: whenStateChanges)
         }
+    
+    /**
+     Creates an `EmptyContentScrollViewAdapter` instance which display empty content inside a scrollView subclass.
+     
+     - parameter view: the scrollView subclass to display the empty content.
+     - parameter stateManaging: managing the empty state.
+     - parameter dataSource: dataSource which provides the empty content,
+     custom empty state views and button & actions for specific empty states.
+     */
+    public convenience init<StateManager: StateManaging, EmptyContentData: EmptyContentDataSource &
+        CustomEmptyViewDataSource & ActionButtonDataSource>(view: View, stateManaging: StateManager, dataSource: EmptyContentData, whenStateChanges: ((State, View) -> Void)? = nil)
+        where StateManager.State == State, EmptyContentData.EmptyState == State {
+            self.init(view: view, stateManaging: stateManaging, emptyContentDataSource: dataSource,
+                      customViewDataSource: dataSource, buttonDataSource: dataSource, whenStateChanges: whenStateChanges)
+    }
     
     private func setup() {
         view.emptyDataSetSource = self
@@ -164,6 +206,39 @@ open class EmptyContentScrollViewAdapter<State: Equatable, View: UIScrollView>: 
     
     open func emptyDataSet(_ scrollView: UIScrollView!, didTap button: UIButton!) {
         self.button()?.action()
+    }
+    
+    /**
+    
+     Delegate function of DZNEmptyDataSet if empty content should allow touch
+     
+     - parameter _: the scrollView subclass to display the empty content.
+     
+    */
+    open func emptyDataSetShouldAllowTouch(_ scrollView: UIScrollView!) -> Bool {
+        return emptyContentPresentation?.shouldAllowTouch(for: stateManaging.state) ?? true
+    }
+    
+    /**
+     
+     Delegate function of DZNEmptyDataSet if empty content should allow scroll
+     
+     - parameter _: the scrollView subclass to display the empty content.
+     
+     */
+    open func emptyDataSetShouldAllowScroll(_ scrollView: UIScrollView!) -> Bool {
+        return emptyContentPresentation?.shouldAllowScroll(for: stateManaging.state) ?? false
+    }
+    
+    /**
+     
+     Delegate function of DZNEmptyDataSet if image view of empty content should animate
+     
+     - parameter _: the scrollView subclass to display the empty content.
+     
+     */
+    open func emptyDataSetShouldAnimateImageView(_ scrollView: UIScrollView!) -> Bool {
+        return emptyContentPresentation?.shouldAllowImageViewAnimate(for: stateManaging.state) ?? false
     }
     
 }
