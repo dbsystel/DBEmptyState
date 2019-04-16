@@ -158,7 +158,7 @@ open class EmptyContentScrollViewAdapter<State: Equatable, View: UIScrollView>: 
         return actionButtonDataSource?.button(for: stateManaging.state)
     }
     
-    open func buttonTitle(forEmptyDataSet scrollView: UIScrollView!, for state: UIControlState) -> NSAttributedString! {
+    open func buttonTitle(forEmptyDataSet scrollView: UIScrollView!, for state: UIControl.State) -> NSAttributedString! {
         return button().flatMap { actionButtonDataSource?.buttonTitleStyle(for: state, with: stateManaging.state).style($0.title) }
     }
     
