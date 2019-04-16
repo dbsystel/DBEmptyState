@@ -38,12 +38,12 @@ extension ActionButtonDataSource {
 
 public extension StringStyle {
     static var buttonNormal: StringStyle {
-        return StringStyle(style: { NSAttributedString(string: $0, attributes: [NSAttributedString.Key.foregroundColor: UIView().tintColor as Any]) })
+        return StringStyle(style: { NSAttributedString(string: $0, attributes: [.foregroundColor: UIView().tintColor as Any]) })
     }
     
     static var buttonHighlighted: StringStyle {
         return StringStyle(style: {
-            NSAttributedString(string: $0, attributes: [NSAttributedString.Key.foregroundColor: UIView().tintColor.withAlphaComponent(0.2)])
+            NSAttributedString(string: $0, attributes: [.foregroundColor: UIView().tintColor.withAlphaComponent(0.2)])
         })
     }
 }

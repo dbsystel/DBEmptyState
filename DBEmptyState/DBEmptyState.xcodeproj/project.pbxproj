@@ -280,7 +280,6 @@
 					};
 					C6F3F0741F307249007299F0 = {
 						CreatedOnToolsVersion = 8.3.3;
-						DevelopmentTeam = TN3QZKXQS6;
 						LastSwiftMigration = 1020;
 						ProvisioningStyle = Automatic;
 					};
@@ -573,7 +572,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CLANG_ENABLE_MODULES = YES;
-				DEVELOPMENT_TEAM = TN3QZKXQS6;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = DBEmptyStateTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.dbsystel.DBEmptyStateTests;
@@ -589,7 +588,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CLANG_ENABLE_MODULES = YES;
-				DEVELOPMENT_TEAM = TN3QZKXQS6;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = DBEmptyStateTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.dbsystel.DBEmptyStateTests;
