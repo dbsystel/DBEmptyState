@@ -21,10 +21,10 @@ var emptyDataSet: EmptyContentTableViewAdapter<EmptyState>!
 
 override func viewDidLoad() {
     super.viewDidLoad()
-    emptyDataSet = EmptyContentTableViewAdapter(tableView: tableView, stateManaging: emptyState, dataSource: self)
+    emptyDataSet = EmptyContentTableViewAdapter(view: tableView, stateManaging: emptyState, dataSource: self)
     
     //Hide empty tableView skeleton cells, when empty content gets displayed
-    emptyDataSet = EmptyContentTableViewAdapter(tableView: tableView, stateManaging: emptyState, dataSource: self,
+    emptyDataSet = EmptyContentTableViewAdapter(view: tableView, stateManaging: emptyState, dataSource: self,
                                   whenStateChanges: EmptyContentTableViewAdapter.hideSkeletonCellsWhenEmptyStateIsVisable)
     
 }
