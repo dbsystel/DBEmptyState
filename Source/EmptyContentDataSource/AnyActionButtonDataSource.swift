@@ -23,7 +23,7 @@ import UIKit
 
 public class AnyActionButtonDataSource<EmptyState: Equatable>: ActionButtonDataSource {
     private let butonFor: (EmptyState) -> ButtonModel?
-    private let buttonTitleStyleFor: (UIControlState, EmptyState) -> StringStyle
+    private let buttonTitleStyleFor: (UIControl.State, EmptyState) -> StringStyle
     
     public init<D: ActionButtonDataSource>(_ buttonActionProviding: D) where D.EmptyState == EmptyState {
         unowned let weakButtonActionProviding = buttonActionProviding
@@ -35,7 +35,7 @@ public class AnyActionButtonDataSource<EmptyState: Equatable>: ActionButtonDataS
         return butonFor(state)
     }
     
-    public func buttonTitleStyle(for buttonState: UIControlState, with emptyState: EmptyState) -> StringStyle {
+    public func buttonTitleStyle(for buttonState: UIControl.State, with emptyState: EmptyState) -> StringStyle {
         return buttonTitleStyleFor(buttonState, emptyState)
     }
 }
