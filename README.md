@@ -3,7 +3,7 @@
 [![codecov](https://codecov.io/gh/dbsystel/DBEmptyState/branch/master/graph/badge.svg)](https://codecov.io/gh/dbsystel/DBEmptyState)
 [![codebeat badge](https://codebeat.co/badges/a5cfc440-bc5f-4d25-be24-230f09496d38)](https://codebeat.co/projects/github-com-dbsystel-dbemptystate-master)
 [![Carthage Compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
-[![Swift Version](https://img.shields.io/badge/Swift-4.0--5.0-F16D39.svg?style=flat)](https://developer.apple.com/swift)
+[![Swift Version](https://img.shields.io/badge/Swift-3.0--3.1-F16D39.svg?style=flat)](https://developer.apple.com/swift)
 
 
 ![Demo Example Gif](example.gif) 
@@ -21,10 +21,10 @@ var emptyDataSet: EmptyContentTableViewAdapter<EmptyState>!
 
 override func viewDidLoad() {
     super.viewDidLoad()
-    emptyDataSet = EmptyContentTableViewAdapter(view: tableView, stateManaging: emptyState, dataSource: self)
+    emptyDataSet = EmptyContentTableViewAdapter(tableView: tableView, stateManaging: emptyState, dataSource: self)
     
     //Hide empty tableView skeleton cells, when empty content gets displayed
-    emptyDataSet = EmptyContentTableViewAdapter(view: tableView, stateManaging: emptyState, dataSource: self,
+    emptyDataSet = EmptyContentTableViewAdapter(tableView: tableView, stateManaging: emptyState, dataSource: self,
                                   whenStateChanges: EmptyContentTableViewAdapter.hideSkeletonCellsWhenEmptyStateIsVisable)
     
 }
@@ -117,8 +117,8 @@ let viewDatapter = EmptyContentTableViewAdapter(tableView: tableView, stateManag
 ## Requirements
 
 - iOS 9.0+
-- Xcode 10.0+
-- Swift 4.0+
+- Xcode 8.0+
+- Swift 3.0
 
 ## Installation
 
@@ -129,7 +129,7 @@ let viewDatapter = EmptyContentTableViewAdapter(tableView: tableView, stateManag
 Specify the following in your `Cartfile`:
 
 ```ogdl
-github "dbsystel/DBEmptyState" == 0.4.0
+github "dbsystel/DBEmptyState" == 0.3.1
 ```
 ## Contributing
 Feel free to submit a pull request with new features, improvements on tests or documentation and bug fixes. Keep in mind that we welcome code that is well tested and documented.

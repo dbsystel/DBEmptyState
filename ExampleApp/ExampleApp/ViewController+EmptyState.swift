@@ -42,7 +42,7 @@ extension ExampleViewController: CustomEmptyViewDataSource {
     func customView(for state: EmptyState, with content: EmptyContent) -> UIView? {
         switch state {
         case .loading:
-            let spinner = UIActivityIndicatorView(style: .gray)
+            let spinner = UIActivityIndicatorView(activityIndicatorStyle: .gray)
             spinner.startAnimating()
             
             return spinner
