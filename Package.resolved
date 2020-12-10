@@ -1,0 +1,16 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "DZNEmptyDataSet",
+        "repositoryURL": "https://github.com/dzenbot/DZNEmptyDataSet",
+        "state": {
+          "branch": "master",
+          "revision": "b66d6a80457dc6286af3cff9d59e1259d3ca0b70",
+          "version": null
+        }
+      }
+    ]
+  },
+  "version": 1
+}
