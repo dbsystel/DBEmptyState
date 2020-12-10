@@ -122,6 +122,16 @@ let viewDatapter = EmptyContentTableViewAdapter(tableView: tableView, stateManag
 
 ## Installation
 
+### Swift Package Manager
+
+[SPM](https://swift.org/package-manager/) is integrated with the Swift build system to automate the process of downloading, compiling, and linking dependencies.
+
+Specify the following in your `Package.swift`:
+
+```swift
+.package(url: "https://github.com/dbsystel/DBEmptyState", from: "X.X.0"),
+```
+
 ### Carthage
 
 [Carthage](https://github.com/Carthage/Carthage) is a decentralized dependency manager that builds your dependencies and provides you with binary frameworks.
